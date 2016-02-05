@@ -49,7 +49,6 @@ add major sections (clauses) as necessary
 make a copy of clauses-examples.adoc and label it as follows
 then comment out clauses-examples include above
 
-include::clause-07.adoc[]
 include::clause-08.adoc[]
 include::clause-09.adoc[]
 ...
