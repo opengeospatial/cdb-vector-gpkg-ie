@@ -9,8 +9,10 @@ Note that the file index.adoc should not be modified, but you should begin with 
   * references.adoc
   * terms.adoc
   * overview.adoc
+  * clause-requirements.adoc
+  * clause-solutions.adoc
 
-  * clauses-examples.adoc  == use as many clause sections as necessary.  Number as clause-05.adoc, clause-06.adoc, etc.
+  * clauses-examples.adoc  == use as many clause sections as necessary.  Number as clause-08.adoc, clause-09.adoc, etc.
  
   * annex-a.adoc  --|
   * annex-b.adoc    |-- Use as needed
