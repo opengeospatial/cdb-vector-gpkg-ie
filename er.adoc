@@ -1,0 +1,73 @@
+:doctype: book
+:encoding: utf-8
+:lang: en
+:toc: macro
+:toclevels: 3
+:numbered:
+
+= Testbed-12 (( Title of ER ))
+
+Publication Date: 2016-mm-dd
+
+Approval Date: 2016-mm-dd
+
+Posted Date: 2016-((01-01))
+
+Reference number of this document: (((OGC 15-077r1)))OGC 16-((NNNrN))
+
+Reference URL for this document: http://www.opengis.net/doc/PER/t12-((xxx))
+
+Category: Public Engineering Report
+
+Editor: ((editor full name))
+
+Title: [big]#Testbed-12 (( Title of ER ))#
+
+''''
+
+////
+Organize your ER includes  
+The includes down to the clause-solution should not be modified here. 
+You will need to modify each file as appropriate
+////
+include::preface.adoc[]
+
+include::intro.adoc[]
+
+include::references.adoc[]
+
+include::terms.adoc[]
+
+include::overview.adoc[]
+
+include::clause-requirements.adoc[]
+
+include::clause-solutions.adoc[]
+
+////
+add major sections (clauses) as necessary
+make a copy of clauses-examples.adoc and label it as follows
+then comment out clauses-examples include above
+
+include::clause-07.adoc[]
+include::clause-08.adoc[]
+include::clause-09.adoc[]
+...
+////
+
+////
+add or remove annexes as necessary
+////
+include::annex-a.adoc[]
+
+include::annex-b.adoc[]
+
+include::annex-c.adoc[]
+
+//// 
+Revision History should be the last annex before the Bibliography
+Bibliography should be the last annex
+////
+include::history.adoc[]
+
+include::bibliography.adoc[]

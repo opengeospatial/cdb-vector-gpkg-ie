@@ -1,0 +1,63 @@
+[appendix]
+= UML model
+
+(( A UML model may be relevant to an Engineering Report. This template thus includes this annex as the place for recording this UML model. ))
+
+(( As indicated below in the template for this UML model, all the tables in the body of this standard that list parameters included in various operation requests and responses are considered part of this UML model. More specifically, those tables comprise the data dictionary that must accompany the UML class diagrams included in this annex. On the other hand, these class diagrams provide often-useful graphical views of the various operation requests and responses, as indicated by notes in the body of this document.))
+
+(( There are rudimentary ways to draw UML diagrams using AsciidocFX and PlantUML.  Depending upon your usecase, it might be more advantagous to create your UML in your UML tool of choice and export images to include in this document. NOTE: The below example will only export if you have the PlantUML extension properly installed.))
+
+.[big]*C.1	Introduction*
+
+This annex provides a UML model of the TBD interface, using the OGC/ISO profile of UML summarized in Subclause 5.2 of [06-121r9].
+
+Figure C.1 is a simple UML diagram summarizing the TBD interface. This class diagram shows that the TBD class inherits the getCapabilities operation from the OGCWebService interface class, and adds the TBD operations. (The capitalization of names uses the OGC/ISO profile of UML.)
+
+
+.UML Diagram Example
+[uml,file="uml-example.png"]
+--
+abstract class AbstractList
+abstract AbstractCollection
+interface List
+interface Collection
+
+List <|-- AbstractList
+Collection <|-- AbstractCollection
+
+Collection <|- List
+AbstractCollection <|- AbstractList
+AbstractList <|-- ArrayList
+
+class ArrayList {
+  Object[] elementData
+  size()
+}
+
+enum TimeUnit {
+  DAYS
+  HOURS
+  MINUTES
+}
+
+annotation SuppressWarnings
+--
+
+
+Each of the TBD operations uses a request and a response data type, each of which is defined by one or more additional UML classes. The following subclauses provide a more complete UML model of the TBD interface, adding UML classes defining the operation request and response data types.
+
+.[big]*C.2	UML packages*
+
+The TBD interface UML model is organized in TBD packages, as shown in the package diagram in Figure B.2. These TBD TBD-specific packages make use of six non-TBD-specific packages, named OWS Web Service, OWS Operations Metadata, OWS Service Identification, OWS Service Provider, ISO 19115 Subset, and GML Subset. This package diagram shows the dependencies among the various packages shown.
+
+insert diagram for specific topic  
+
+Figure x — TBD interface package diagram
+
+.[big]*C.3	TBD Service package*
+
+The TBD Service package is shown in the class diagram in Figure C.3. This diagram does not show the classes used by the TBD operation requests and responses, which are shown (with part of this package) in the TBD packages. This diagram also shows TBD used classes from the OWS Web Service package, which is common to all OGC Web Services, plus one used class from the TBD package. 
+
+insert diagram for specific topic  
+
+Figure x — TBD Service package class diagram

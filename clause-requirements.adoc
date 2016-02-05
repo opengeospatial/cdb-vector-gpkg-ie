@@ -1,0 +1,30 @@
+[[Clause_Requirements]]
+== ((Status Quo & New Requirements Statement))
+
+[NOTE]
+.Instructions (Delete this note). 
+===============================================
+This section explains the status quo and the new requirements or existing problems/issues that have been addressed by this ER. 
+===============================================
+
+
+
+=== Status Quo
+[NOTE]
+.Instructions  (Delete this note). 
+===============================================
+Start with a status quo description and answer questions such as: What is currently existing?
+===============================================
+
+(Text goes here...)
+
+
+=== Requirements Statement
+[NOTE]
+.Instructions  (Delete this note). 
+===============================================
+Next is the description of the new requirements or the description of the known issues/problems that have been addressed in this ER. Answer questions such as: What is the problem with existing specifications/models/schemas, what needs to be addressed and why, what functionality shall be added, what shall be extended?
+===============================================
+
+(Text goes here...)
+
