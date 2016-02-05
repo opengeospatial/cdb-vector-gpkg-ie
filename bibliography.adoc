@@ -12,15 +12,15 @@ Springer LNCS is widely used in technical and computer science journals and othe
 
 – Actual References:
 
-* Journal: Author Surname, A.: Title. Publication Title. Volume number, Issue number, Pages Used (Year Published)
+[n] Journal: Author Surname, A.: Title. Publication Title. Volume number, Issue number, Pages Used (Year Published)
 
-* Web: Author Surname, A.: Title, http://Website-Url
+[n] Web: Author Surname, A.: Title, http://Website-Url
 
 ===============================================
 
 
 
-* OGC,: OGC Testbed 11 Demonstration. (2015).
+[1] OGC,: OGC Testbed 11 Demonstration. (2015).
 
-* Lee, J., Zlatanova, S.: 3D geoinformation science. Springer (2009).
+[2] Lee, J., Zlatanova, S.: 3D geoinformation science. Springer (2009).
 
