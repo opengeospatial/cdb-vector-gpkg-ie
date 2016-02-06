@@ -13,7 +13,7 @@ Approval Date: 2016-mm-dd
 
 Posted Date: 2016-((01-01))
 
-Reference number of this document: (((OGC 15-077r1)))OGC 16-((NNNrN))
+Reference number of this document: OGC 16-((NNNrN))
 
 Reference URL for this document: http://www.opengis.net/doc/PER/t12-((xxx))
 
