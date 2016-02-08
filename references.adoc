@@ -12,7 +12,7 @@ The following documents are referenced in this document. For dated references, s
 
 (( The reference(s) clause gives a list of the documents to which reference is made in the document in such a way as to make them indispensable for the application of the document. ))
 
-(( The list shall not include documents which have merely served as references in the preparation of this document. Such documents may be listed in a bibliography. ))
+(( The list shall not include documents which have merely served as references in the preparation of this document. Such documents may be listed in a bibliography. it should not include references to documents that are not acccessible after registering or accepting license agreements. ))
 
 (( For dated references, each shall be given with its year of publication, or, in the case of enquiry or final drafts, with a dash together with a footnote «To be published.», and full title. Subsequent amendments to, or revisions of, dated references will need to be incorporated by amendment of the document referring to them. References to specific divisions or subdivisions, tables and figures of another document shall always be dated. ))
 
