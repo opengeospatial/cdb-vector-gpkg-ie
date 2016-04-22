@@ -4,16 +4,26 @@
 [NOTE]
 .Instructions (Delete this note). 
 ===============================================
-This section explains the status quo and the new requirements or existing problems/issues that have been addressed by this ER. 
+This section explains why this ER is being produced and what existing problems/issues it addresses. 
 ===============================================
 
+
+
+=== Use Cases
+[NOTE]
+.Instructions  (Delete this note). 
+===============================================
+Start by describing the use cases that this ER pertains to.
+===============================================
+
+(Text goes here...)
 
 
 === Status Quo
 [NOTE]
 .Instructions  (Delete this note). 
 ===============================================
-Start with a status quo description and answer questions such as: What is currently existing?
+Next describe the current state of the situation.
 ===============================================
 
 (Text goes here...)
@@ -23,7 +33,7 @@ Start with a status quo description and answer questions such as: What is curren
 [NOTE]
 .Instructions  (Delete this note). 
 ===============================================
-Next is the description of the new requirements or the description of the known issues/problems that have been addressed in this ER. Answer questions such as: What is the problem with existing specifications/models/schemas, what needs to be addressed and why, what functionality shall be added, what shall be extended?
+Finally describe the new requirements or the known issues/problems that have been addressed in this ER. Answer questions such as: What is the problem with existing specifications/models/schemas, what needs to be addressed and why, what functionality shall be added, what shall be extended?
 ===============================================
 
 (Text goes here...)
