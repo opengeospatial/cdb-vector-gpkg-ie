@@ -1,16 +1,15 @@
 [preface]
 
-.[big]*OGC Engineering Report*
+== OGC Engineering Report
 
 *COPYRIGHT*
 
 Copyright © 2016 Open Geospatial Consortium.
 To obtain additional rights of use, visit http://www.opengeospatial.org/
 
-
 *WARNING*
 
-This document is not an OGC Standard. This document is an OGC Public Engineering Report created as a deliverable in an OGC Interoperability Initiative and is not an official position of the OGC membership. It is distributed for review and comment. It is subject to change without notice and may not be referred to as an OGC Standard. Further, any OGC Engineering Report should not be referenced as required or mandatory technology in procurements. However, the discussions in this document could very well lead to the definition of an OGC Standard. 
+This document is not an OGC Standard. This document is an OGC Public Engineering Report created as a deliverable in an OGC Interoperability Initiative and is not an official position of the OGC membership. It is distributed for review and comment. It is subject to change without notice and may not be referred to as an OGC Standard. Further, any OGC Engineering Report should not be referenced as required or mandatory technology in procurements. However, the discussions in this document could very well lead to the definition of an OGC Standard.
 
 <<<<
 
@@ -32,7 +31,7 @@ This document is not an OGC Standard. This document is an OGC Public Engineering
 
 <<<<
 
-toc::[] 
+toc::[]
 
 <<<<
 
@@ -40,16 +39,16 @@ toc::[]
 .USER GUIDES (Please Delete this Note)
 =====================================================================
  Anything inside of Double Parentheticals (( )) should be edited or removed. Do not modify Double or Single Square Brackets "[".
- 
- The AsciidocFX User Guide is available from their GitHub Page: 
+
+ The AsciidocFX User Guide is available from their GitHub Page:
    https://github.com/asciidocfx/AsciidocFX
-   
+
  The ASCIIDOC User Guide is available at:
    http://www.methods.co.nz/asciidoc/userguide.html
-   
+
  A good AsciiDoctor Guide for reference is:
    http://asciidoctor.org/docs/user-manual
-   
+
 =====================================================================
 
 
@@ -59,13 +58,13 @@ toc::[]
 
 
 .[big]*Business Value*
-(( The Business Value statement should describe the value of this Engineering Report to improve interoperability, advance location-based technologies or realize innovations. The content in this section should describe “why” the content of this report is important to achieving or improving interoperability of location-based technologies. )) 
+(( The Business Value statement should describe the value of this Engineering Report to improve interoperability, advance location-based technologies or realize innovations. The content in this section should describe “why” the content of this report is important to achieving or improving interoperability of location-based technologies. ))
 
 .[big]*What this ER means for the Working Group and OGC in general*
 (( This is why this ER should be important to the working group and OGC ))
 
 .[big]*How this ER relates to the work of the Working Group*
-(( This is the working group's response to why they think it is important. )) 
+(( This is the working group's response to why they think it is important. ))
 
 .[big]*Keywords*
 ogcdocs, testbed-12, (( SOAP, Web services etc. ))
