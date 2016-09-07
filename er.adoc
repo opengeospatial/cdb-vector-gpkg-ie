@@ -4,18 +4,20 @@
 :toc: macro
 :toclevels: 3
 :numbered:
+:sectanchors:
+:source-highlighter: pygments
 
-= Testbed-12 (( Title of ER ))
+= Testbed-13 (( Title of ER ))
 
-Publication Date: 2016-mm-dd
+Publication Date: 2017-mm-dd
 
-Approval Date: 2016-mm-dd
+Approval Date: 2017-mm-dd
 
-Posted Date: 2016-((01-01))
+Posted Date: 2017-((xx-xx))
 
-Reference number of this document: OGC 16-((NNNrN))
+Reference number of this document: OGC 17-((NNNrN))
 
-Reference URL for this document: http://www.opengis.net/doc/PER/t12-((xxx))
+Reference URL for this document: http://www.opengis.net/doc/PER/t13-((xxx))
 
 Category: Public Engineering Report
 
@@ -26,31 +28,32 @@ Title: [big]#Testbed-12 (( Title of ER ))#
 ''''
 
 ////
-Organize your ER includes  
-The includes down to the clause-solution should not be modified here. 
+Organize your ER includes
+The includes down to the clause-solution should not be modified here.
 You will need to modify each file as appropriate
 ////
 include::preface.adoc[]
 
-include::intro.adoc[]
+include::clause-1-intro.adoc[]
 
-include::references.adoc[]
+include::clause-2-references.adoc[]
 
-include::terms.adoc[]
+include::clause-3-terms.adoc[]
 
-include::overview.adoc[]
+include::clause-4-overview.adoc[]
 
-include::clause-requirements.adoc[]
+include::clause-5-clause-requirements.adoc[]
 
-include::clause-solutions.adoc[]
+include::clause-6-clause-solutions.adoc[]
 
 ////
 add major sections (clauses) as necessary
 make a copy of clauses-examples.adoc and label it as follows
 then comment out clauses-examples include above
 
-include::clause-08.adoc[]
-include::clause-09.adoc[]
+include::clause-07-example.adoc[]
+//include::clause-08-.adoc[]
+//include::clause-09-.adoc[]
 ...
 ////
 
@@ -63,7 +66,7 @@ include::annex-b.adoc[]
 
 include::annex-c.adoc[]
 
-//// 
+////
 Revision History should be the last annex before the Bibliography
 Bibliography should be the last annex
 ////

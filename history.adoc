@@ -2,7 +2,7 @@
 = Revision History
 
 [NOTE]
-.Example History (Delete this note). 
+.Example History (Delete this note).
 ===============================================
 replace below entries as needed
 ===============================================
@@ -10,8 +10,8 @@ replace below entries as needed
 .Revision History
 [width="90%",options="header"]
 |====================
-|Date |Release |Editor | Primary clauses modified |Descriptions 
+|Date |Release |Editor | Primary clauses modified |Descriptions
 |June 15, 2016 |I. Simonis | .1 |all |initial version
-|July 22, 2016 |I. Simonis | .9 |all |comments integrated, SPS added
-|September 3, 2016 |S. Simmons |1.0|various |preparation for publication
+|July 22, 2016 |I. Simonis | .9 |all |comments integrate
+|September 7, 2016 |S. Simmons |1.0|various |preparation for publication
 |====================

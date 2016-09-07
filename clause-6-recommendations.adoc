@@ -1,0 +1,29 @@
+[[Clause_Solutions]]
+== ((Solutions))
+
+[NOTE]
+.Instructions (Delete this note). 
+===============================================
+This section explains the solutions that have been envisioned at the beginning of the testbed, experimented with during the testbed, and that have either been discarded, or implemented, or the decision has been deferred to future activities.  
+===============================================
+
+
+
+=== Targeted Solutions
+[NOTE]
+.Instructions  (Delete this note). 
+===============================================
+This first section addresses all solutions that have been discussed during the testbed. Please include even those possible solutions that have been discarded during the testbed. Always add the key arguments why a possible solution was discarded or implemented (or had to be deferred to future activities). Ideally, this section links to relevant sections. 
+===============================================
+
+(Text goes here...)
+
+
+=== Recommendations 
+[NOTE]
+.Instructions  (Delete this note). 
+===============================================
+This second section summarizes the recommended solution(s) that will be further described in following clauses. It briefly explains the solution(s) and ideally links to relevant sections. 
+===============================================
+
+(Text goes here...)
