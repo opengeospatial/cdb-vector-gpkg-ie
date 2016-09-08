@@ -61,15 +61,13 @@ toc::[]
 (( The Business Value statement should describe the value of this Engineering Report to improve interoperability, advance location-based technologies or realize innovations. The content in this section should describe “why” the content of this report is important to achieving or improving interoperability of location-based technologies. ))
 
 .[big]*What this ER means for the Working Group and OGC in general*
-(( This is why this ER should be important to the working group and OGC ))
+(( This is why this ER should be important to the working group and OGC. This is the perspective of the *editor*. ))
 
 .[big]*How this ER relates to the work of the Working Group*
-(( This is the working group's response to why they think it is important. ))
+(( This is the working group's response to why they think it is important. This is the perspective of the *DWG/SWG*. ))
 
 .[big]*Keywords*
 ogcdocs, testbed-12, (( SOAP, Web services etc. ))
 
 .[big]*Proposed OGC Working Group for Review and Approval*
 (( list the Standards Working Group (SWG) or Domain Working Group (DWG) that you propose to submit this Engineering Report to for review and comment. ))
-
-
