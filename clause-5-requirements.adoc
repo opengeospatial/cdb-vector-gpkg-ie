@@ -1,19 +1,19 @@
 [[Clause_Requirements]]
-== ((Status Quo & New Requirements Statement))
+== ((Status Quo & New Requirements))
 
 [NOTE]
-.Instructions (Delete this note). 
+.Instructions (Delete this note).
 ===============================================
-This section explains why this ER is being produced and what existing problems/issues it addresses. 
+This section explains why this ER is being produced and what existing problems/issues it addresses.
 ===============================================
 
 
 
 === Use Cases
 [NOTE]
-.Instructions  (Delete this note). 
+.Instructions  (Delete this note).
 ===============================================
-Start by describing the use cases that this ER pertains to.
+Start by describing the use cases that this ER pertains to (if applicable).
 ===============================================
 
 (Text goes here...)
@@ -21,7 +21,7 @@ Start by describing the use cases that this ER pertains to.
 
 === Status Quo
 [NOTE]
-.Instructions  (Delete this note). 
+.Instructions  (Delete this note).
 ===============================================
 Next describe the current state of the situation.
 ===============================================
@@ -31,10 +31,9 @@ Next describe the current state of the situation.
 
 === Requirements Statement
 [NOTE]
-.Instructions  (Delete this note). 
+.Instructions  (Delete this note).
 ===============================================
 Finally describe the new requirements or the known issues/problems that have been addressed in this ER. Answer questions such as: What is the problem with existing specifications/models/schemas, what needs to be addressed and why, what functionality shall be added, what shall be extended?
 ===============================================
 
 (Text goes here...)
-

@@ -42,18 +42,18 @@ include::clause-3-terms.adoc[]
 
 include::clause-4-overview.adoc[]
 
-include::clause-5-clause-requirements.adoc[]
+include::clause-5-requirements.adoc[]
 
-include::clause-6-clause-solutions.adoc[]
+include::clause-6-recommendations.adoc[]
 
 ////
 add major sections (clauses) as necessary
 make a copy of clause-7-example.adoc and label it as follows
 ////
 
-include::clause-07-example.adoc[]
-//include::clause-08-topic.adoc[]
-//include::clause-09-topic.adoc[]
+include::clause-7-example.adoc[]
+//include::clause-8-topic.adoc[]
+//include::clause-9-topic.adoc[]
 
 
 ////
@@ -69,6 +69,6 @@ include::annex-c.adoc[]
 Revision History should be the last annex before the Bibliography
 Bibliography should be the last annex
 ////
-include::history.adoc[]
+include::annex-history.adoc[]
 
-include::bibliography.adoc[]
+include::annex-bibliography.adoc[]

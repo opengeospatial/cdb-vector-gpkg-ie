@@ -1,5 +1,5 @@
 [[Section_Title]]
-== ((Section Title))
+== ((Asciidoc Example Clause))
 
 [NOTE]
 .Examples (Delete this note).
