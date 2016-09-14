@@ -32,7 +32,7 @@ Organize your ER includes
 The includes down to the clause-solution should not be modified here.
 You will need to modify each file as appropriate
 ////
-include::preface.adoc[]
+include::clause-0-preface.adoc[]
 
 include::clause-1-intro.adoc[]
 
@@ -48,14 +48,13 @@ include::clause-6-clause-solutions.adoc[]
 
 ////
 add major sections (clauses) as necessary
-make a copy of clauses-examples.adoc and label it as follows
-then comment out clauses-examples include above
+make a copy of clause-7-example.adoc and label it as follows
+////
 
 include::clause-07-example.adoc[]
-//include::clause-08-.adoc[]
-//include::clause-09-.adoc[]
-...
-////
+//include::clause-08-topic.adoc[]
+//include::clause-09-topic.adoc[]
+
 
 ////
 add or remove annexes as necessary

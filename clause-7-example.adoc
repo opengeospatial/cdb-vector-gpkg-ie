@@ -1,0 +1,140 @@
+[[Section_Title]]
+== ((Section Title))
+
+[NOTE]
+.Examples (Delete this note).
+===============================================
+Use the following items as needed.
+===============================================
+
+
+
+=== Level 2 Heading
+
+Normal Paragraph with *Bold* and _italic_ and [underline]#underline# text
+
+==== Level 3 Heading
+
+Normal paragraph
+
+===== Level 4 Heading
+
+Normal paragraph
+
+
+
+=== Adding images
+
+To add images, use the following pattern
+(figures are auto numbered). Please make sure you set the width value to match font-sizes used in the figure with the text font size. If no fonts are used in a figure, please make sure your figure is of reasonable size. Please check pdf and html outputs.
+
+You can link to images using the <<img_dragon, image link notation>>.
+----
+[[img_imageLink]]
+.figure label
+image::<target>[width=600px]
+----
+
+Example of an image:
+
+[[img_dragon]]
+.Capture of this figure
+image::images/dragon.jpg[width=600px]
+
+
+=== Adding a Table
+
+The following example shows how to use tables. Please make sure your table fits on a pdf page in portrait mode! The attributes define the details of the table. The first attributed _cols_ defines the styles of each column. The allowed style types are documented in the table below. To keep the overview, it is easiest to follow the formatting examples provided below, i.e. each column starts in a new line. Tables are auto-numbered.
+
+[[table_styles1]]
+.Table Label: Styles e, a, m, s
+[cols="e,a,m,s", width="90%", options="header"]
+|===
+|Style "e" | Style "a" | Style "m" | Style "s"
+
+|emphasized style
+|*asciidoc* _markup_
+
+ * listing A
+ * listing B
+ * listing C
+
+|monospace/with line breaks
+|strong
+
+|this is the
+|second line of
+|a table filled
+|with example text
+
+|===
+
+[[table_styles2]]
+.Table Label: Styles e, a, m, s
+[cols="h,l,d,v", width="90%", options="header"]
+|===
+|Style "h" | Style "l" | Style "d" | Style "v"
+
+|header style, all values styled as header
+|literal, text is shown in monospace font
+ and line breaks are kept
+|default
+|verse
+
+|this is the
+|second line of
+|a table filled
+|with example text
+
+|===
+
+
+=== Unordered Lists
+* Item
+* Item
+** Subitem
+*** Sub-subitem
+* Item
+
+=== Ordered Lists
+ 
+. Item 1
+. Item 2
+.. Item 2a
+.. Item 2b
+... Item 2b(i)
+. Item 3
+
+
+=== Example Code Listing
+Code can be either provided inline or by reference. The <<code_inline, following first example>> shows inline usage, the <<code_byReference, second example>> shows usage by reference.
+
+==== Code inline
+
+[[code_inline]]
+.Label of the code
+[source,xml]
+----
+<ows:Operation name="GetCapabilities">
+  <ows:DCP>
+    <ows:HTTP>
+      <ows:Post xlink:href="http://www.opengis.uab.es/cgi-bin/world/MiraMon5_0.cgi?">
+        <ows:Constraint name="PostEncoding">
+          <allowedValues>
+            <ows:Value>SOAP</ows:Value>
+          </ows:AllowedValues>
+        </ows:Constraint>
+      </ows:Post>
+    </ows:HTTP>
+  </ows:DCP>
+</ows:Operation>
+----
+
+==== Code by reference
+
+[[code_byReference]]
+.Label of the code
+[source,json]
+----
+include::code/employees.json[]
+----
