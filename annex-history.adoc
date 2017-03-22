@@ -14,4 +14,5 @@ replace below entries as needed
 |June 15, 2016 |I. Simonis | .1 |all |initial version
 |July 22, 2016 |I. Simonis | .9 |all |comments integrate
 |September 7, 2016 |S. Simmons |1.0|various |preparation for publication
+|March 23, 2017 |I. Simonis | 2.0 |all |template simplified
 |====================

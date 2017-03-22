@@ -1,3 +1,29 @@
+// *****************************************************************************
+// please provide the following elements
+// *****************************************************************************
+// name of the ER after the colon
+:title: OGC Testbed-13:
+// document identifier. The identifier has the format OGC YY-nnn, e.g. OGC 17-067. You can obtain the identifier from the OGC Portal: https://portal.opengeospatial.org/?m=public&subtab=request&tab=1
+:docReference: OGC XX-XXX
+// date when you posted the document to OGC Portal>Pending Documents. Please use the format: yyyy-mm-dd
+:postedDate: YYYY-MM-DD
+// name of all editors. Separate multiple editors by comma, e.g. John Wayne, Bud Spencer
+:editor: Your Name
+// proposed working group for review, e.g. Architecture DWG, or WCS SWG
+:workingGroup:
+// *****************************************************************************
+// done, please continue with the imports at line 58 of this document
+// *****************************************************************************
+
+// *****************************************************************************
+// please don't change any of the following
+// *****************************************************************************
+:publicationDate: YYYY-MM-DD
+:approvalDate: YYYY-MM-DD
+:referenceURL: ID
+:copyrightYear: 2017
+//
+:titletext: {title}
 :doctype: book
 :encoding: utf-8
 :lang: en
@@ -5,55 +31,45 @@
 :toclevels: 3
 :numbered:
 :sectanchors:
-:source-highlighter: pygments
+:source-highlighter: coderay
+// set media to output format print or screen for pdf export
+:media: print
 
-= Testbed-13 (( Title of ER ))
+= {title}
 
-Publication Date: 2017-mm-dd
+Publication Date: {publicationDate}
 
-Approval Date: 2017-mm-dd
+Approval Date: {approvalDate}
 
-Posted Date: 2017-((xx-xx))
+Posted Date: {postedDate}
 
-Reference number of this document: OGC 17-((NNNrN))
+Reference number of this document: {docReference}
 
-Reference URL for this document: http://www.opengis.net/doc/PER/t13-((xxx))
+Reference URL for this document: http://www.opengis.net/doc/PER/t13-{referenceURL}
 
 Category: Public Engineering Report
 
-Editor: ((editor full name))
+Editor: {editor}
 
-Title: [big]#Testbed-12 (( Title of ER ))#
+Title: {titletext}
 
 ''''
 
-////
-Organize your ER includes
-The includes down to the clause-solution should not be modified here.
-You will need to modify each file as appropriate
-////
-include::clause-0-preface.adoc[]
+include::0-preface.adoc[]
 
-include::clause-1-intro.adoc[]
+include::1-summary.adoc[]
 
-include::clause-2-references.adoc[]
+// *****************************************************************************
+// Organize your included files as appropriate
+// *****************************************************************************
+include::2-references.adoc[]
 
-include::clause-3-terms.adoc[]
+include::3-terms.adoc[]
 
-include::clause-4-overview.adoc[]
+include::4-overview.adoc[]
 
-include::clause-5-requirements.adoc[]
+include::5-example.adoc[]
 
-include::clause-6-recommendations.adoc[]
-
-////
-add major sections (clauses) as necessary
-make a copy of clause-7-example.adoc and label it as follows
-////
-
-include::clause-7-example.adoc[]
-//include::clause-8-topic.adoc[]
-//include::clause-9-topic.adoc[]
 
 
 ////
@@ -72,3 +88,7 @@ Bibliography should be the last annex
 include::annex-history.adoc[]
 
 include::annex-bibliography.adoc[]
+
+// *****************************************************************************
+// Now jump to the first file, 0-summary.adoc and start editing it for content. File 0-preface.adoc shall remain untouched.
+// *****************************************************************************
