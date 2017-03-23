@@ -4,5 +4,5 @@
 The index is normally left completely empty, it's contents being
 generated automatically by the DocBook toolchain.
 
-Please start with er.adoc
-////////////////////////////////////////////////////////////////  
+Please do not change anything here!
+////////////////////////////////////////////////////////////////
