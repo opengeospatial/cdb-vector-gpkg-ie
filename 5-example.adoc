@@ -39,4 +39,13 @@ In order to achieve a uniform look-and-feel of all ERs in both HTML and PDF, we 
 * asciidoctor-pdf -a pdf-stylesdir=resources -a pdf-style=ogc -a pdf-fontsdir=resources/fonts cfp.adoc
 
 === Asciidoc(tor) Syntax Help
-Is available e.g. here: http://asciidoctor.org/docs/ 
+Is available e.g. here: http://asciidoctor.org/docs/
+
+=== Citations
+Please use the following syntax to insert citiations:
+
+cite:[VanZyl2009]
+
+Then you need to provide all citation information in the file resources/bibtex-file.bib. Everything else is done automatically. 
+
+For further information, please consult https://github.com/asciidoctor/asciidoctor-bibtex.
