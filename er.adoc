@@ -16,7 +16,7 @@
 // *****************************************************************************
 
 // *****************************************************************************
-// please don't change any of the following
+// please don't change any of the following, but proceed at line 62
 // *****************************************************************************
 :publicationDate: YYYY-MM-DD
 :approvalDate: YYYY-MM-DD
@@ -34,6 +34,7 @@
 :source-highlighter: coderay
 // set media to output format print or screen for pdf export
 :media: print
+:bibtex-file: resources/bibtex-file.bib
 
 = {title}
 
