@@ -10,7 +10,7 @@ For the purposes of this report, the definitions specified in Clause 4 of the OW
 
 .NOTE: 	The Terms and definitions clause is an optional element giving definitions necessary for the understanding of certain terms used in this document.
 
-==	Abbreviated terms
+===	Abbreviated terms
 
 .NOTE: The abbreviated terms clause gives a list of the abbreviated terms and the symbols necessary for understanding this document. All symbols should be listed in alphabetical order.	Some more frequently used abbreviated terms are provided below as examples.
 
