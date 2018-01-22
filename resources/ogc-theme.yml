@@ -1,5 +1,11 @@
 font:
   catalog:
+    # Ingo: font-family: 'Source Sans Pro', sans-serif;
+    Source Sans Pro:
+      normal: SourceSansPro-Regular.ttf
+      bold: SourceSansPro-Bold.ttf
+      italic: SourceSansPro-Italic.ttf
+      bold_italic: SourceSansPro-BoldItalic.ttf
     # Ingo: Palatino
     Palatino:
       normal: Palatino-Roman.ttf
@@ -45,7 +51,7 @@ base:
   # color as CMYK array (approximated)
   #font_color: [0, 0, 0, 0.92]
   #font_color: [0, 0, 0, 92%]
-  font_family: Palatino #ingo: Noto Serif
+  font_family: Source Sans Pro #ingo: Palatino #ingo: Noto Serif
   # choose one of these font_size/line_height_length combinations
   font_size: 12
   line_height_length: 16
