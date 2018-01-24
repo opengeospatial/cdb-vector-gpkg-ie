@@ -1,5 +1,6 @@
 [appendix]
-=== UML model
+[[UMLModel]]
+= UML model
 
 (( A UML model may be relevant to an Engineering Report. This template thus includes this annex as the place for recording this UML model. ))
 

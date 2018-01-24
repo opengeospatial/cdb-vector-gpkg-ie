@@ -1,13 +1,14 @@
 [appendix]
+[[XMLSchemaDocuments]]
 = XML Schema Documents
 
 (( XML Schema Documents may be relevant to an Engineering Report. ))
 
 The term “XML schema“ means all the XML schema parts having the same XML namespace, usually separated into multiple XML Schema Document files (with the file type “.xsd“. The XML schema parts in one XML namespace are usually separated into multiple XML Schema Documents to ease human understanding.
 
-In addition to this document, this report includes several XML Schema Documents. These XML Schema Documents are bundled in a zip file with the present document. 
+In addition to this document, this report includes several XML Schema Documents. These XML Schema Documents are bundled in a zip file with the present document.
 
-The TBD abilities now specified in this document use TBD specified XML Schema Documents included in the zip file with this document. These XML Schema Documents combine the XML schema fragments listed in various subclauses of this document, eliminating duplications. 
+The TBD abilities now specified in this document use TBD specified XML Schema Documents included in the zip file with this document. These XML Schema Documents combine the XML schema fragments listed in various subclauses of this document, eliminating duplications.
 
 These XML Schema Documents roughly match the TBD UML packages described in Annex B, and are named:
 
