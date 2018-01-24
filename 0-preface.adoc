@@ -1,7 +1,7 @@
 //:numbered!:
 
 // *****************************************************************************
-// please don't change anything in this file!
+// Editors please do not alter anything in this file!
 // *****************************************************************************
 
 .[big]*OGC Engineering Report*
