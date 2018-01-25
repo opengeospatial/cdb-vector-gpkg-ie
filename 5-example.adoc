@@ -68,10 +68,10 @@ This environment allows you to use keyboard shortcuts, autocomplete, syntax high
 In order to achieve a uniform look-and-feel of all ERs in both HTML and PDF, we have provided a css and theme file. The following commands can be used to convert the ER:
 
 *Command for PDF output:*
- asciidoctor-pdf -a pdf-stylesdir=resources -a pdf-style=ogc -a pdf-fontsdir=resources/fonts er.adoc
+ asciidoctor-pdf -a pdf-stylesdir=resources -a pdf-style=ogc -a pdf-fontsdir=resources/fonts -o 18-xxx.pdf  er.adoc
 
 *Command for HTML output:*
- asciidoctor -a stylesheet=ogc.css -a stylesdir=./resources/stylesheets er.adoc
+ asciidoctor -a data-uri -a stylesheet=ogc.css -a stylesdir=./resources/stylesheets -o 18-xxx er.adoc
 
 === Source Code
 
