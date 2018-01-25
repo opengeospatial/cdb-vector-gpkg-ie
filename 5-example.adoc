@@ -67,12 +67,41 @@ This environment allows you to use keyboard shortcuts, autocomplete, syntax high
 === Asciidoc Conversion
 In order to achieve a uniform look-and-feel of all ERs in both HTML and PDF, we have provided a css and theme file. The following commands can be used to convert the ER:
 
-Command for PDF output:
-asciidoctor-pdf -a pdf-stylesdir=resources -a pdf-style=ogc -a pdf-fontsdir=resources/fonts er.adoc
+*Command for PDF output:*
+ asciidoctor-pdf -a pdf-stylesdir=resources -a pdf-style=ogc -a pdf-fontsdir=resources/fonts er.adoc
 
-Command for HTML output:
-asciidoctor -a stylesheet=ogc.css -a stylesdir=./resources/stylesheets er.adoc
+*Command for HTML output:*
+ asciidoctor -a stylesheet=ogc.css -a stylesdir=./resources/stylesheets er.adoc
 
+=== Source Code
+
+You can add code snippets using the following syntax:
+
+.Code Example XML
+[source,xml]
+----
+<section>
+  <title>Section Title</title> <!--1-->
+</section>
+----
+<1> This notation allows to reference particular sections within the code.
+
+
+.Code Example JSON
+[source,json]
+----
+{"menu": {
+  "id": "file",
+  "value": "File",
+  "popup": {
+    "menuitem": [
+      {"value": "New", "onclick": "CreateNewDoc()"},
+      {"value": "Open", "onclick": "OpenDoc()"},
+      {"value": "Close", "onclick": "CloseDoc()"}
+    ]
+  }
+}}
+----
 
 === Asciidoc(tor) Syntax Help
 Is available e.g. here: http://asciidoctor.org/docs/
