@@ -10,13 +10,11 @@ For the purposes of this report, the definitions specified in Clause 4 of the OW
 
  text of the definition
 
-.NOTE: 	The Terms and definitions clause is an optional element giving definitions necessary for the understanding of certain terms used in this document.
 
 ===	Abbreviated terms
 
-.NOTE: The abbreviated terms clause gives a list of the abbreviated terms and the symbols necessary for understanding this document. All symbols should be listed in alphabetical order.	Some more frequently used abbreviated terms are provided below as examples.
+.NOTE: The abbreviated terms clause gives a list of the abbreviated terms and the symbols necessary for understanding this document. All symbols should be listed in alphabetical order. Some more frequently used abbreviated terms are provided below as examples.
 
-* API	Application Program Interface
 * COM	Component Object Model
 * CORBA	Common Object Request Broker Architecture
 * COTS	Commercial Off The Shelf
