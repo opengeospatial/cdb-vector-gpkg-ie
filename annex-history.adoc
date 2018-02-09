@@ -1,4 +1,5 @@
 [appendix]
+[[RevisionHistory]]
 = Revision History
 
 [NOTE]
@@ -15,4 +16,5 @@ replace below entries as needed
 |July 22, 2016 |I. Simonis | .9 |all |comments integrate
 |September 7, 2016 |S. Simmons |1.0|various |preparation for publication
 |March 23, 2017 |I. Simonis | 2.0 |all |template simplified
+|January 18, 2018 |S. Serich | 2.1 |all |additional guidance to Editors; clean up headings in appendices
 |====================

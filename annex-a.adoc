@@ -1,9 +1,10 @@
 [appendix]
+[[AbstractTestSuite]]
 = Abstract Test Suite
 
 (( An Abstract Test Suite may be relevant to an Engineering Report. ))
 
-((An Abstract Test Suite is specified in Clause 9 and Annex A of ISO 19105. That Clause and Annex specify the ISO/TC 211 requirements for Abstract Test Suites. 
+((An Abstract Test Suite is specified in Clause 9 and Annex A of ISO 19105. That Clause and Annex specify the ISO/TC 211 requirements for Abstract Test Suites.
 Examples of Abstract Test Suites are available in an annex of most ISO 191XX documents, one of the more useful is in ISO 19136. Note that this guidance may be more abstract than needed in an OGC® Implementation Standard. ))
 
 .[big]*A.1 Test module for conformance level 1*
