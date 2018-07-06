@@ -52,6 +52,7 @@ Cell alignment: If you need to align a column, you may indicate this by setting 
 In any case, please make sure that your table fit on a piece of A4 or letter-size paper!!
 
 [[RecommendedAsciidocEnvironment]]
+=== Recommended Asciidoc Environment
 
 We recommend to use http://asciidoctor.org[asciidoctor] and http://asciidoctor.org/docs/convert-asciidoc-to-pdf/[asciidoctor-pdf] in combination with the https://atom.io[Atom] editor.
 
