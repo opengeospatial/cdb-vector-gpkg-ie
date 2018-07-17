@@ -73,7 +73,7 @@
 // *****************************************************************************
 // Editors please do not alter the administrative front matter below.
 // *****************************************************************************
-:categoy: OGC Public Engineering Report
+:category: OGC Public Engineering Report
 :publicationDate: YYYY-MM-DD
 :approvalDate: YYYY-MM-DD
 :referenceURLID: ID
