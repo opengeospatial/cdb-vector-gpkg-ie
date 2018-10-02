@@ -51,9 +51,30 @@ Cell alignment: If you need to align a column, you may indicate this by setting 
 
 In any case, please make sure that your table fit on a piece of A4 or letter-size paper!!
 
+[[RecommendedAsciidocEnvironment]]
 === Recommended Asciidoc Environment
+
 We recommend to use http://asciidoctor.org[asciidoctor] and http://asciidoctor.org/docs/convert-asciidoc-to-pdf/[asciidoctor-pdf] in combination with the https://atom.io[Atom] editor.
 
+==== Installation on MacOS and Linux
+. Please follow the steps on https://asciidoctor.org/#installation.
+. Install the bibtex extension: _gem install asciidoctor-bibtex_
+
+
+==== Installation on Windows
+We have made best experiences with the following steps:
+
+. Install ruby for windows: https://rubyinstaller.org/downloads/. If you experience any issues, the following link may help: https://stackoverflow.com/questions/18908708/installing-ruby-gem-in-windows[stackoverflow]
+
+. Open command prompt and install two gems:
+.. Execute: "gem install asciidoctor"
+.. Execute: "gem install asciidoctor-bibtex"
+
+. Text your installation
+.. Open a folder that contains your Engineering Report asciidoc source files, including the _er.adoc_ file.
+.. Execute the following command: _asciidoctor -r asciidoctor-bibtex er.adoc_
+
+==== Using Asciidoctor with Atom
 In Atom, you should install the following packages:
 
 * asciidoc-preview
@@ -68,10 +89,10 @@ This environment allows you to use keyboard shortcuts, autocomplete, syntax high
 In order to achieve a uniform look-and-feel of all ERs in both HTML and PDF, we have provided a css and theme file. The following commands can be used to convert the ER:
 
 *Command for PDF output:*
- asciidoctor-pdf -a pdf-stylesdir=resources -a pdf-style=ogc -a pdf-fontsdir=resources/fonts -o 18-xxx.pdf  er.adoc
+ asciidoctor-pdf -r asciidoctor-bibtex -a pdf-stylesdir=resources -a pdf-style=ogc -a pdf-fontsdir=resources/fonts er.adoc
 
 *Command for HTML output:*
- asciidoctor -a data-uri -a stylesheet=ogc.css -a stylesdir=./resources/stylesheets -o 18-xxx er.adoc
+asciidoctor -r asciidoctor-bibtex -a linkcss -a stylesheet=rocket-panda.css -a stylesdir=./stylesheets er.adoc
 
 === Source Code
 
@@ -109,7 +130,7 @@ Is available e.g. here: http://asciidoctor.org/docs/
 === Citations
 Please use the following syntax to insert citations:
 
-cite:[VanZyl2009]
+cite:[VanZyl2009]  cite:[Pross2018]
 
 Then you need to provide all citation information in the file resources/bibtex-file.bib. Everything else is done automatically.
 
