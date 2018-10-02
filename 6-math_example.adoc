@@ -1,5 +1,5 @@
 [[MathExample]]
-= Example using equations in asciidoc
+== Example using equations in asciidoc
 
 You need to define the equation either as an asciimath inline macro:
 
@@ -29,7 +29,7 @@ image::images/mathAtom.png[width=600,align="center"]
 .Screenshot from Browser: the formular is correctly displayed
 image::images/mathBrowser.png[width=600,align="center"]
 
-That means that the stem is not supported by the asciidoctor-pdf engine, i.e. you cannot produce pdf documents that way.
+That means that the stem is not supported by the asciidoctor-pdf engine, i.e. you cannot produce pdf documents that way. We recommend that you rather use screenshots from the rendered html version for your pdf.
 
 To compile this example, you would use
 
