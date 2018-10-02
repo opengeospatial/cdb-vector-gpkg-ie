@@ -5,14 +5,22 @@ You need to define the equation either as an asciimath inline macro:
 
 asciimath:[$\frac{32\ 881\ \ 581.700504}{2^{n + 8}}$]meters/pixels
 
-or as a delimited block:
+as a delimited block:
 
 [asciimath]
 ++++
 [$\frac{Tsble4at60}{Table4at90} = \frac{4214.27}{4516.57} = 0.933069.$]
 ++++
 
-and you can use either asciimath or latexmath macro identifiers:
+or use the compact '\' notation
+
+alternative
+
+\[
+   e^{2\pi \sqrt{-1}} = 1,
+\]
+
+For the macross, you can use either asciimath or latexmath macro identifiers:
 
 latexmath:[$\frac{Tsble4at60}{Table4at90} = \frac{4214.27}{4516.57} = 0.933069.$]
 
@@ -34,5 +42,5 @@ That means that the stem is not supported by the asciidoctor-pdf engine, i.e. yo
 To compile this example, you would use
 
 ....
-asciidoctor -a stem=latexmath math_example.adoc
+asciidoctor -a stem=latexmath 6-math_example.adoc
 ....
