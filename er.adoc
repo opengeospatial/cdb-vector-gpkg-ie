@@ -137,6 +137,8 @@ include::4-overview.adoc[]
 
 include::5-example.adoc[]
 
+include::6-math_example.adoc[]
+
 // you may add any number of chapters as required here
 
 // *****************************************************************************
