@@ -39,8 +39,16 @@ image::images/mathBrowser.png[width=600,align="center"]
 
 That means that the stem is not supported by the asciidoctor-pdf engine, i.e. you cannot produce pdf documents that way. We recommend that you rather use screenshots from the rendered html version for your pdf.
 
+=== Compiling AsciiDoc with Equations
 To compile this example, you would use
 
 ....
 asciidoctor -a stem=latexmath 6-math_example.adoc
 ....
+
+=== Generate Equations
+If you need some help generating equations, http://asciimath.org[http://asciimath.org] offers a great equation building and compiling tool and provides further information.
+
+[#img_screenshotAsciiMath,reftext='{figure-caption} {counter:figure-num}']
+.Screenshot AsciiMath equation tool
+image::images/asciiMath.png[width=600,align="center"]
