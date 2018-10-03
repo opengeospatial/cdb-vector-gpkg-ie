@@ -107,9 +107,11 @@ You can add code snippets using the following syntax:
 ----
 <1> This notation allows to reference particular sections within the code.
 
+You can alternatively use line numbers to reference a specific section in your code.
+
 
 .Code Example JSON
-[source,json]
+[source,json,linenumbers]
 ----
 {"menu": {
   "id": "file",
@@ -123,6 +125,8 @@ You can add code snippets using the following syntax:
   }
 }}
 ----
+
+As shown in line 2, the value of "id" is "File".
 
 === Asciidoc(tor) Syntax Help
 Is available e.g. here: http://asciidoctor.org/docs/
