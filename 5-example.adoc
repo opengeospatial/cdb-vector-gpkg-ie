@@ -134,7 +134,7 @@ Is available e.g. here: http://asciidoctor.org/docs/
 === Citations
 Please use the following syntax to insert citations:
 
-cite:[VanZyl2009]  cite:[Pross2018]
+cite:[VanZyl2009]  cite:[Pross2018] cite:[OGCTechTrends2018]
 
 Then you need to provide all citation information in the file resources/bibtex-file.bib. Everything else is done automatically.
 

@@ -33,7 +33,7 @@ image::images/mathAtom.png[width=600,align="center"]
 
 ...but once compiled with the stem "latexmath" being set, it works well in the html (reason is that the code is actually interpreted by the Javascript engine of the browser).
 
-[#img_screenshotAtom,reftext='{figure-caption} {counter:figure-num}']
+[#img_screenshotAtom2,reftext='{figure-caption} {counter:figure-num}']
 .Screenshot from Browser: the formular is correctly displayed
 image::images/mathBrowser.png[width=600,align="center"]
 
