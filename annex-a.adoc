@@ -7,9 +7,11 @@
 ((An Abstract Test Suite is specified in Clause 9 and Annex A of ISO 19105. That Clause and Annex specify the ISO/TC 211 requirements for Abstract Test Suites.
 Examples of Abstract Test Suites are available in an annex of most ISO 191XX documents, one of the more useful is in ISO 19136. Note that this guidance may be more abstract than needed in an OGC® Implementation Standard. ))
 
-.[big]*A.1 Test module for conformance level 1*
+NOTE: We skip level 2 headers so that asciidoc correctly numbers the subsections in the appendix.
 
-.A.1.1	Conformance level 1
+=== Test module for conformance level 1
+
+==== 	Conformance level 1
 [cols=">20h,<80d",width="100%"]
 |====================
 |Test identifier | /test/case/id
@@ -27,7 +29,7 @@ Examples of Abstract Test Suites are available in an annex of most ISO 191XX doc
 |Test type: |Capability
 |====================
 
-.A.1.2	Test case for validity of XML response entity
+==== 	Test case for validity of XML response entity
 [cols=">20h,<80d",width="100%"]
 |====================
 |Test identifier | http://www.opengis.net/spec/xxx/conf/WRS.General-ValidResponse
@@ -37,9 +39,9 @@ Examples of Abstract Test Suites are available in an annex of most ISO 191XX doc
 |Test type: |Capability
 |====================
 
-.[big]*A.2	Test module for conformance level 2*
+=== Test module for conformance level 2
 
-.A.2.1	Conformance level 2
+==== Conformance level 2
 [cols=">20h,<80d",width="100%"]
 |====================
 |Test identifier | /test/case/id
@@ -57,7 +59,7 @@ Examples of Abstract Test Suites are available in an annex of most ISO 191XX doc
 |Test type: |Capability
 |====================
 
-.A.2.2	Test case for validity of XML response entity
+==== Test case for validity of XML response entity
 [cols=">20h,<80d",width="100%"]
 |====================
 |Test identifier | http://www.opengis.net/spec/xxx/conf/WRS.General-ValidResponse
