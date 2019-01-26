@@ -8,10 +8,10 @@
 (( This section shall be between 2-3 paragraphs and not longer than 507 words.))
 
 === Requirements & Research Motivation
-(( A precise descriptions of the requirements that have been addressed by the work documented in this Engineering Report; together with the research motivation that answers the fundamental question: What motivated us to address this topic in this report? ))
+(( In the commercial modelling and simulation industry, geospatial data content and use is exploding at a rate that is outpacing the innovation and utilization of the traditional M&S industry. The M&S and geospatial-intelligence (GEOINT) industries are on a path of convergence. Within the OGC, there are two geospatial standards that best enable the unification of the M&S and GEOINT industries: OGC CDB and GeoPackage. OGC CDB and GeoPackage are both standards increasingly used in M&S and GEOINT industry, but they both contain weaknesses and strengths when it comes to the combined needs of both industries. ))
 
 === Prior-After Comparison
-(( This section shall provide a prior-after comparison. It describes the situation/status of discussion in the OGC working groups being most relevant for the addressed topic. This part is reviewed in close detail by the appropriate SWG/DWG to ensure that the latest developments have been considered. The section will be complemented at the end of the initiative by comparing the results documented in the ER with the original situation. ))
+(( This IE is based on preliminary work conducted under funding by the U.S. Army Geospatial Center (AGC), the results of which have been publicly released as OGC Document Number 18-077:  OGC CDB and GeoPackage Discussion Paper   (https://portal.opengeospatial.org/files/?artifact_id=80537&version=1). The Discussion Paper documents the results of research, design, and prototype efforts to present the OGC with an approach to creating “GeoCDB” — a technology mashing of GeoPackage and OGC CDB — as a deterministic repository of easily read data geospatial datasets suitable for storage, runtime access, and dissemination for live, virtual, constructive, gaming, and mission command (MC) systems. ))
 
 === Recommendations for Future Work
 (( This section should answer the question: What does this ER mean for the Working Group and OGC in general? What aspects shall be addressed next? In any specific order? What actions are necessary? ))
