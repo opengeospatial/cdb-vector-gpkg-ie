@@ -1,9 +1,9 @@
 == Summary
-(( This OGC Engineering Report (ER) documents the results of the CDB Vector Data in GeoPackage Interoperability Experiment (IE). This IE tested the encoding of vector data into one or more GeoPackage(s) and storing the result in a CDB data store. GeoPackage Version 1.2 and CDB Version 1.1 and related Best Practices were the standards baseline used for this experiment. The IE builds on the work described in the OGC "CDB, Leveraging GeoPackage" Discussion Paper. ))
+(( This OGC Engineering Report (ER) documents the results of the CDB Vector Data in GeoPackage Interoperability Experiment (IE). The participants in this IE tested the encoding of vector data into one or more GeoPackage(s) and storing the result in a CDB data store. GeoPackage Version 1.2 and CDB Version 1.1 and related Best Practices were the standards baseline used for this experiment. The IE builds on the work described in the OGC "CDB, Leveraging GeoPackage" Discussion Paper. ))
 
 (( A primary objective of this IE will be to inform decision making for possible enhancements in the OGC CDB Standards Working Group (SWG).  ))
 
-(( The Summary clause shall define without ambiguity the subject of this document and the aspect(s) covered. It shall be succinct so that it can be used as a text for bibliographic purposes. Briefly, it shall contain the key results of the work described in the ER. ))
+(( Once the IE activity is completed, Insert key findings here. ))
 
 (( This section shall be between 2-3 paragraphs and not longer than 507 words.))
 
