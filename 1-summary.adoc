@@ -23,9 +23,11 @@ All questions regarding this document should be directed to the editor or the co
 *Contacts*
 [width="80%",options="header",caption=""]
 |====================
-|Name |Organization
-|((editor)) | (( from org ))
-|((contributor)) | ((from org))
+|Role| Name |Organization
+|((editor)) | (( TBD )) | (( organization ))|
+|((Initiator)) | (( David Graham )) | (( CAE ))|
+|((Initiator)) | (( Kevin Bentley )) | (( Cognitics ))|
+|((editor)) | (( TBD )) | (( organization ))|
 |====================
 
 
