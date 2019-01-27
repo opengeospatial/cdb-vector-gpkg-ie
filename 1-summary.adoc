@@ -25,9 +25,9 @@ All questions regarding this document should be directed to the editor or the co
 |====================
 |Role| Name |Organization
 |((editor)) | (( TBD )) | (( organization ))
-|((Initiator)) | (( David Graham )) | (( CAE ))|
-|((Initiator)) | (( Kevin Bentley )) | (( Cognitics ))|
-|((editor)) | (( TBD )) | (( organization ))|
+|((Initiator/Lead)) | (( David Graham )) | (( CAE ))
+|((Initiator)) | (( Kevin Bentley )) | (( Cognitics ))
+|((Technical Lead)) | (( Carl Reed )) | (( Carl Reed&Associates ))|
 |====================
 
 
