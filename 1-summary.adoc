@@ -24,7 +24,7 @@ All questions regarding this document should be directed to the editor or the co
 [width="80%",options="header",caption=""]
 |====================
 |Role| Name |Organization
-|((editor)) | (( TBD )) | (( organization ))|
+|((editor)) | (( TBD )) | (( organization ))
 |((Initiator)) | (( David Graham )) | (( CAE ))|
 |((Initiator)) | (( Kevin Bentley )) | (( Cognitics ))|
 |((editor)) | (( TBD )) | (( organization ))|
