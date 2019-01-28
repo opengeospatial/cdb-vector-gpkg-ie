@@ -8,7 +8,7 @@ The goal of this IE will be achieved by replicating the experimentation conducte
 These IE participants will produce an OGC Engineering Report that discusses whether the recommended alternate encoding of CDB vector data as a GeoPackage is fit for use and submission to the OGC for consideration as an approved change to the OGC CDB 1.1 Standard and/or Best Practices.
 
 === IE Experiments
-Experiment #1
+==== Experiment #1: Data Preparation and General Workflow
 
 The methodology involves:
 
@@ -17,7 +17,7 @@ The methodology involves:
    * Consensus and provision of baseline (unmodified) and three alternative encoding datasets.
    * Evaluate process and provide feedback on conversions resulting from Experiment #1.
 
-Experiment #2
+==== Experiment #2: 1.	Replace each Shapefile with a GeoPackage
 
 The methodology involves:
 
@@ -26,7 +26,7 @@ The methodology involves:
    * Evaluate and compare performance using the baseline CDB datasets and the Alternative #1 datasets.
    * Evaluate analysis and results from Experiment #2  for performance, backwards-compatibility and risks to interoperability.
 
-Experiment #3
+==== Experiment #3: Store each CDB LOD as a layer in GeoPackage 
 
 The methodology involves: 
 
@@ -35,7 +35,7 @@ The methodology involves:
    * Evaluate and compare performance using the baseline CDB datasets and the Alternative #2 datasets.
    * Evaluate analysis and results from Experiment #3 for performance, backwards-compatibility and risks to interoperability.
 
-Experiment #4
+==== Experiment #4: Store all the Vector Data of a Geocell in one GeoPackage 
 
 The methodology involves:
 
