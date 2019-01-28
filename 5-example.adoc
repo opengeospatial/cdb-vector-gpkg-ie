@@ -21,10 +21,10 @@ Experiment #2
 
 The methodology involves:
 
-    Modifying implementation software according to Alternative #1.
-        Replace each Shapefile, consolidating the three geometry files with a single GeoPackage.
-    Evaluate and compare performance using the baseline CDB datasets and the Alternative #1 datasets.
-    Evaluate analysis and results from Experiment #2  for performance, backwards-compatibility and risks to interoperability.
+   * Modifying implementation software according to Alternative #1.
+   * Replace each Shapefile, consolidating the three geometry files with a single GeoPackage.
+   * Evaluate and compare performance using the baseline CDB datasets and the Alternative #1 datasets.
+   * Evaluate analysis and results from Experiment #2  for performance, backwards-compatibility and risks to interoperability.
 
 Experiment #3
 
@@ -39,19 +39,16 @@ Experiment #4
 
 The methodology involves:
 
-    Modifying implementation software according to Alternative #3.
-        Store each Geocell of Vector Data as a layer in GeoPackage (extends Alternative #3 to have a single GeoPackage per Geocell of CDB, with all LODs and all CDB feature layers).
-    Evaluate and compare performance using the baseline CDB datasets and the Alternative #3 datasets.
-    Evaluate analysis and results from Experiment #4 for performance, backwards-compatibility and risks to interoperability.
+   * Modifying implementation software according to Alternative #3.
+   * Store each Geocell of Vector Data as a layer in GeoPackage (extends Alternative #3 to have a single GeoPackage per Geocell of CDB, with all LODs and all CDB feature layers).
+   * Evaluate and compare performance using the baseline CDB datasets and the Alternative #3 datasets.
+   * Evaluate analysis and results from Experiment #4 for performance, backwards-compatibility and risks to interoperability.
 
 [NOTE]
 .Instructions
 ===============================================
 This section explains some concepts frequently required by Asciidoc novices. Please use this file as a template for your own clauses.
 ===============================================
-
-=== Headlines
-All headlines are marked by "=" signs. The top level in each each file starts with level 2 ("=="). Important: For whatever strange reason, headings in annexes are marked differently.
 
 === Figures
 If you want to reference a figure by using a figure number, it is important to use the following syntax. The figure identifier for <<img_mindMap>> is the first statement of the header. Please adapt the width as appropriate.
