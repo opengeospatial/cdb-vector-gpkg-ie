@@ -13,7 +13,7 @@ For the purposes of this report, the definitions specified in Clause 4 of the OW
 
 ===	Abbreviated terms
 
-.NOTE: The abbreviated terms clause gives a list of the abbreviated terms and the symbols necessary for understanding this document. All symbols should be listed in alphabetical order. Some more frequently used abbreviated terms are provided below as examples.
+The following abbreviated terms provides a list of the abbreviated terms and the symbols necessary for understanding this document.
 
     CRS  Coordinate Reference System
     DDIL Denied, Degraded, Intermittent, or Limited
