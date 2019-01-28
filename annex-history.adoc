@@ -6,6 +6,6 @@
 [width="90%",options="header"]
 |====================
 |Date |Editor |Release | Primary clauses modified |Descriptions
-|January 36, 2019 |C. Reed | .1 |all |Cloned initial version
+|January 26, 2019 |C. Reed | .1 |all |Cloned initial version
 | | |  | |
 |====================
