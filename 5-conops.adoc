@@ -44,7 +44,7 @@ The methodology involves:
    * Evaluate and compare performance using the baseline CDB datasets and the Alternative #3 datasets.
    * Evaluate analysis and results from Experiment #4 for performance, backwards-compatibility and risks to interoperability.
 
-CITE:[VanZyl2009]
+cite:[VanZyl2009]
 
 [NOTE]
 .Instructions
