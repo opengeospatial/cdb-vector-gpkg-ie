@@ -7,14 +7,11 @@
 This 4-overview.adoc file helps the reader to better understand the various sections of the ER. It should be written like an extended table of contents.
 ====
 
-
-(( Example: ))
-
 (( Section 5 introduces the background and requirements for adding GeoPackages as a storage format in a CDB data store. It describes the situation prior to the Interoperability Experiment and discusses the requirements defined by the CDB user base. ))
 
-(( Section 6 discusses the experiments in detail. It provides recommendations on preferred strategies. ))
+(( Section 6 discusses the experiments in detail. The concept of operation also provides recommendations on preferred strategies. ))
 
-(( Section 7 presents the solution developed in this testbed. A clear mapping of requirements to solutions is provided. The section shows additional work is required to implement 3D tiles, which could not be addressed in this activity. ))
+(( Section 7 discusses the results of the various experiments performed as part of this initiative. A clear mapping of requirements for proposed GeoPackages in a CDB datastore candidate standard/best practice is provided. ))
 
 (( Section 8 provides a summary of the main findings and discusses proposed change requests. ))
 
