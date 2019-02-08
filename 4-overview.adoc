@@ -1,12 +1,6 @@
 [[Overview]]
 == Overview
 
-[NOTE]
-.Instructions
-====
-This 4-overview.adoc file helps the reader to better understand the various sections of the ER. It should be written like an extended table of contents.
-====
-
 (( Section 5 introduces the background and requirements for adding GeoPackages as a storage format in a CDB data store. It describes the situation prior to the Interoperability Experiment and discusses the requirements defined by the CDB user base. ))
 
 (( Section 6 discusses the experiments in detail. The concept of operation also provides recommendations on preferred strategies. ))
