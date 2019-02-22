@@ -24,10 +24,32 @@ All questions regarding this document should be directed to the editor or the co
 [width="80%",options="header",caption=""]
 |====================
 |Role| Name |Organization
-|((editor)) | (( TBD )) | (( organization ))
 |((Initiator/Lead)) | (( David Graham )) | (( CAE ))
+|((Technical Lead)) | (( Carl Reed )) | (( Carl Reed & Associates ))
+|((editor)) | (( Carl Reed )) | (( Carl Reed & Associates ))
 |((Initiator)) | (( Kevin Bentley )) | (( Cognitics ))
-|((Technical Lead)) | (( Carl Reed )) | (( Carl Reed&Associates ))|
+|((Initiator)) | (( Hermann Brassard )) | (( Presagis ))
+|((Initiator)) | (( Brian Ford )) | (( FlightSafety ))
+|((Initiator)) | (( Ryan Franz )) | (( FlightSafety ))
+|((Initiator)) | (( Jay Freeman )) | (( CAE ))
+|((Initiator)) | (( Glen Johnson )) | (( VATC ))
+|((Initiator)) | (( Mike Lokuta )) | (( CAE ))
+|((Initiator)) | (( Bernard Leclerc )) | (( CAE ))
+|((Initiator)) | (( Lance Marrou )) | (( Leidos ))
+|((Initiator)) | (( Earl Miller )) | (( USSOCOM ))
+|((Initiator)) | (( Ronald Moore )) | (( Leidos ))
+|((Initiator)) | (( Susan Raymie )) | (( USSOCOM ))
+|((Initiator)) | (( Sara Saeedi )) | (( U of Calgary ))
+|((Participant)) | (( Jordan Dauble )) | (( Simblocks.io ))
+|((Participant)) | (( Paul Foley )) | (( KaDSci ))
+|((Participant)) | (( Priamos Georgiades )) | (( Aechelon ))
+|((Participant)) | (( Robert Goff )) | (( Hexagon US Federal ))
+|((Participant)) | (( Dave Lajoie )) | (( Presgis ))
+|((Participant)) | (( Graham Long )) | (( Thales ))
+|((Participant)) | (( Jason McDonald )) | (( Compusult ))
+|((Participant)) | (( Nacho Sans-Pastor )) | (( Aechelon ))
+|((Participant)) | (( Kathleen Ski )) | (( ISPA Technology ))
+|((Participant)) | (( Trent Tinker )) | (( Luciad ))|
 |====================
 
 
