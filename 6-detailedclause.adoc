@@ -1,6 +1,18 @@
 [[DetailedClause]]
 == Details of the Experiments Performed
-=== Data
+=== CDB Data - General Overview
+
+A CDB structured data store is physically arranged on disk into the following top level directory structures:
+
+- Metadata contains a set of XML metadata and controlled vocabulary files that are global to the data store.
+- GTModel contains geotypical models, generic models that are defined once in the CDB and are intended to be rendered in multiple places throughout the data store (contrast with geospecific or GS models). They aren’t intended to represent specific objects, but simply a typical representation of an object type such as a tree.
+- MModel contains Moving Models, which don’t have a fixed location and are intended to be dynamically placed and moved throughout a simulation. An example is an automobile or aircraft.
+- Tiles contains tiled datasets. This is the structure in which the majority of vector based Shapefiles are stored.
+- Navigation contains global navigation datasets.
+
+A CDB data stored is structured into partitions that organizes the world into 1-degree by 1-degree cells. Within each cell, the tiled datasets are organized into a Level of Detail (LOD) hierarchy. All data are referenced to the WGS 84 Earth-centered,  Earth-fixed  terrestrial  reference  system  and geodetic datum.
+
+=== CDB Data Used in the Interoperability Experiment
 
 Three complete CDB data stores were provided for use in this Interoperability Experiment.
 
