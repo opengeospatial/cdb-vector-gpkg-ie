@@ -16,13 +16,10 @@ For the purposes of this report, the definitions specified in Clause 4 of the OW
 The following abbreviated terms provides a list of the abbreviated terms and the symbols necessary for understanding this document.
 
     CRS  Coordinate Reference System
-    DDIL Denied, Degraded, Intermittent, or Limited
     GPKG GeoPackage
-    KML  Keyhole Markup Language
+    ER   Engineering Report
+    IE   Interoperability Experiment
     OGC  Open Geospatial Consortium
     OWS  OGC Web Services
     SRS  Spatial Reference System
     SWG  Standards Working Group
-    WFS  Web Feature Service
-    WMS  Web Map Service
-    WMTS Web Map Tile Service
