@@ -37,7 +37,7 @@
 // The title here should match the title on the first page.
 // *****************************************************************************
 
-:title: OGC Testbed-14:
+:title: OGC CDB Vector Data in GeoPackage Interoperability Experiment
 
 // *****************************************************************************
 // Document identifier, with format "OGC YY-nnn" (e.g., OGC 17-067).
@@ -45,7 +45,7 @@
 // https://portal.opengeospatial.org/?m=public&subtab=request&tab=1.
 // *****************************************************************************
 
-:docReference: OGC XX-XXX
+:docReference: OGC 19-XXX
 
 // *****************************************************************************
 // Date posted to OGC Portal>Pending Documents, with format: yyyy-mm-dd.
@@ -57,13 +57,13 @@
 // Names of all editors, comma-separated (e.g., John Doe, Sue Smith)
 // *****************************************************************************
 
-:editor: Name(s)
+:editor: Carl Reed, PhD
 
 // *****************************************************************************
 // Proposed working group for review (e.g. Architecture DWG, WCS SWG)
 // *****************************************************************************
 
-:workingGroup: SWG/DWG for Review: Name(s)
+:workingGroup: SWG/DWG for Review: CDB SWG
 
 // *****************************************************************************
 // End of Editor's front-matter elements.
@@ -77,7 +77,7 @@
 :publicationDate: YYYY-MM-DD
 :approvalDate: YYYY-MM-DD
 :referenceURLID: ID
-:copyrightYear: 2018
+:copyrightYear: 2019
 //
 :titletext: {title}
 :doctype: book
@@ -137,7 +137,9 @@ include::4-overview.adoc[]
 
 include::5-conops.adoc[]
 
-include::6-math_example.adoc[]
+include::6-detailedclause.adoc[]
+
+include::7-results.adoc[]
 
 // you may add any number of chapters as required here
 
