@@ -28,6 +28,7 @@ All questions regarding this document should be directed to the editor or the co
 |((Technical Lead)) | (( Carl Reed )) | (( Carl Reed & Associates ))
 |((editor)) | (( Carl Reed )) | (( Carl Reed & Associates ))
 |((Initiator)) | (( Kevin Bentley )) | (( Cognitics ))
+|((Initiator)) | (( Holly Black )) | (( CACI ))
 |((Initiator)) | (( Hermann Brassard )) | (( Presagis ))
 |((Initiator)) | (( Brian Ford )) | (( FlightSafety ))
 |((Initiator)) | (( Ryan Franz )) | (( FlightSafety ))
