@@ -16,9 +16,9 @@ Most CDB datasets are organized in a tile structure and stored in the \CDB\Tiles
 
 Point, line, and area features are encoded in a CDB store as Shapefiles and are organized into several Vector Datasets and LoDs. For each LoD, the CDB standard specifies the maximum number of points allowed per Tile-LoD and the resulting average Feature Density is defined. All vector data in a CDB store are referenced to the WGS 84 Earth-centered,  Earth-fixed  terrestrial  reference  system  and geodetic datum.
 
-=== CDB Data Used in the Interoperability Experiment
+=== CDB Data Used in the Interoperability Experiment (Experiment 1)
 
-Three complete CDB data stores were provided for use in this Interoperability Experiment.
+Three complete CDB data stores were provided for use in this Interoperability Experiment. The provision of CDB dta stores and the subsequent conversion of Shapefiles into GeoPackages was defined in the IE Activity Plan in Experiment 1.
 
 ==== << >>
 
