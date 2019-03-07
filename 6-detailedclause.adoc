@@ -36,3 +36,39 @@ The data provided in this CDB data store are in one CDB Geocell containing downt
 - USGS 1/3 NED Elevation (CDB Lod 4)
 - OpenStreetMap Vector Map
 - Los Angeles County Building footprint information.
+
+=== Details Related to Experiment 2
+
+Experiment 2 focused on approaches to replacing each Shapefile in an existing CDB data store thereby consolidating the three geometry files into a single GeoPackage. The objectives was to determine the best practices for not only replacing Shapefiles for also allowing the storage and use of both Shapefiles and Geopackages in a CDB data store. Part of this experiment was to also evaluate and compare performance using the baseline CDB datasets made available as part of Experiment 1. finally, this experiment also focused on evaluating and analyzing and results from Experiment #2 related to performance, backwards-compatibility and risks to interoperability.
+
+The Participants identifed four possible approaches to converting and/or using GeoPackages in a CDB data store.
+
+==== Option 1a – 1:1 Conversion of Shapefiles to GeoPackages
+
+This experiment researched the direct 1 to 1 conversion of Shapefiles in a CDB datastore into a corresponding set of Geopackages. GDAL (https://www.gdal.org/drv_geopackage.html) and << >> were used to do the conversion. Charcateristics of the Option 1a approach are:
+
+- There is a 4:1 reduction in the  number of files.
+- There is one layer (table) per  GeoPackage.
+- The Feature Class and Extended Attribute files have no geometry.
+- “Off the Shelf” GeoPackage  Viewers will have no compatibility  over the feature class and  extended attributes layers.
+- This approach under-utilizes the  capabilities of GeoPackage.
+
+[#img_exp2opt1a,reftext='{figure-caption} {counter:figure-num}']
+.One to one conversion of Shapefiles to GeoPackages
+image::images/experiment-2-option-1a.png[width=600,align="center"]
+
+==== Option 1b – Conversion of Shapefiles to GeoPackages using Normalized SQL Data
+
+This experiment researched the approach of using normalized SQL in the conversion of Shapefiles into GeoPackages. This approach has the following characteristics:
+
+- Utilizes a standard normalized relational database design, utilizing foreign keys.
+- There is a 12:1 reduction in the number of files.
+- There are three layers per GeoPackage.
+- The Feature Class and Extended Attribute tables have no geometry.
+- However, “Off the Shelf” GeoPackage software will not be aware of the extended and feature class attributes. This can be somewhat mitigated when a SQL View is used, which gives viewers (clients) read-only visibility  over these attributes.
+
+[#img_exp2opt1b,reftext='{figure-caption} {counter:figure-num}']
+.Use of Normalized SQL
+image::images/experiment-2-option-1b.png[width=800,align="center"]
+
+
