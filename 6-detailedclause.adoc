@@ -71,4 +71,38 @@ This experiment researched the approach of using normalized SQL in the conversio
 .Use of Normalized SQL
 image::images/experiment-2-option-1b.png[width=800,align="center"]
 
+==== Option 1c – Flattened Attribution
+
+This experiment researched the approach of using flattened attribution in the conversion of Shapefiles into GeoPackages. This approach has the following characteristics:
+
+- There is a 12:1 reduction in the number of files.
+- Some duplication of data, resulting in larger files.
+- There is one layer per GeoPackage.
+- The Feature Class and Extended Attributes are populated for each feature.
+- This approach utilizes a standard normalized relational database design, utilizing foreign keys.
+- Full “Off the Shelf” GeoPackage software compatibility.
+
+[#img_exp2opt1c,reftext='{figure-caption} {counter:figure-num}']
+.Flattened Attributes Approach
+image::images/experiment-2-option-1c.png[width=800,align="center"]
+
+==== Option 1d – Flattened Attribution + extensions
+
+This experiment researched the approach of using flattened attribution plus the GeoPackage related Tables extension in the conversion of Shapefiles into GeoPackages. The reason for using the extension was to enhance the ease of moving data in both directions (Shapefile to GeoPackage and visa-versa) using existing tools and without any data loss. This approach has the following characteristics:
+
+- Flatten CDB standard instance and class attribute – maximum GIS tools compatibility
+- “Off the Shelf” GeoPackage software compatibility for CDB standard attributes. 
+- Table (related tables) for extended attributes
+- This approach utilizes a standard normalized relational database design, utilizing foreign keys.
+- Some duplication of data, resulting in larger files (Class attributes).
+- There is one layer per GeoPackage.
+- The Feature Class and Extended Attributes are populated for each feature.
+
+[#img_exp2opt1d,reftext='{figure-caption} {counter:figure-num}']
+.Flattened Attributes Approach
+image::images/experiment-2-option-1d.png[width=800,align="center"]
+
+=== Experiment 3
+
+=== Experiment 4
 
