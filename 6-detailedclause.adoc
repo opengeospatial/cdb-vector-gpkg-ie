@@ -16,7 +16,7 @@ Most CDB datasets are organized in a tile structure and stored in the \CDB\Tiles
 
 Point, line, and area features are encoded in a CDB store as Shapefiles and are organized into several Vector Datasets and LoDs. For each LoD, the CDB standard specifies the maximum number of points allowed per Tile-LoD and the resulting average Feature Density is defined. All vector data in a CDB store are referenced to the WGS 84 Earth-centered,  Earth-fixed  terrestrial  reference  system  and geodetic datum.
 
-=== CDB Data Used in the Interoperability Experiment (Experiment 1)
+=== Details on Experiment 1: CDB Data Used
 
 Three complete CDB data stores were provided for use in this Interoperability Experiment. The provision of CDB dta stores and the subsequent conversion of Shapefiles into GeoPackages was defined in the IE Activity Plan in Experiment 1.
 
@@ -36,6 +36,12 @@ The data provided in this CDB data store are in one CDB Geocell containing downt
 - USGS 1/3 NED Elevation (CDB Lod 4)
 - OpenStreetMap Vector Map
 - Los Angeles County Building footprint information.
+
+==== Tools used to convert Shapefiles to GeoPackages
+
+==== Key discussion topics related to CDB data stores
+
+Given the size of the CDB data stores used in this IE, there was discussion related to how best to provide data stores updated with GeoPackage content. The general concensus was that downloading the entire data store just to get the GeoPackages was non-optimal and time wasteful. Therefore, the particpants discussed using *_Version_* metadata (Volume 1 CDB Standard, Clause 5.1.8). They determined that the original CDB data with Shapefiles would be Version 1 and that CDB enhanced with GeoPackages would be Version 2. 
 
 === Details Related to Experiment 2
 
