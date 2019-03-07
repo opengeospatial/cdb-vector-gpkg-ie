@@ -7,7 +7,7 @@ The goal of this IE will be achieved by replicating the experimentation conducte
 
 These IE participants will produce an OGC Engineering Report that discusses whether the recommended alternate encoding of CDB vector data as a GeoPackage is fit for use and submission to the OGC for consideration as an approved change to the OGC CDB 1.1 Standard and/or Best Practices.
 
-=== IE Experiments
+=== IE Experiments: Overview
 ==== Experiment #1: Data Preparation and General Workflow
 
 The methodology involves:
