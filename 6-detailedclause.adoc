@@ -47,6 +47,17 @@ Given the size of the CDB data stores used in this IE, there was discussion rela
 
 Experiment 2 focused on approaches to replacing each Shapefile in an existing CDB data store thereby consolidating the three geometry files into a single GeoPackage. The objectives was to determine the best practices for not only replacing Shapefiles for also allowing the storage and use of both Shapefiles and Geopackages in a CDB data store. Part of this experiment was to also evaluate and compare performance using the baseline CDB datasets made available as part of Experiment 1. finally, this experiment also focused on evaluating and analyzing and results from Experiment #2 related to performance, backwards-compatibility and risks to interoperability.
 
+==== Participation in Experiment 2
+
+The following IE participants executed the following options defined for Experiment 2. Note: Details of the options are provided below.
+
+- Aechelon - Options 1a, 1b & 1c with the Yemen and Los Angeles DBs
+- CAE Montreal - option 1a with the numerous CDB databases that are available and perform a before-after comparison of the overall performance of the system.
+- Compusult - All options
+- FlightSafety - Option 1d
+- Luciad - Option 1d
+- Presagis - 
+
 The Participants identifed four possible approaches to converting and/or using GeoPackages in a CDB data store.
 
 ==== Option 1a – 1:1 Conversion of Shapefiles to GeoPackages
@@ -110,5 +121,9 @@ image::images/experiment-2-option-1d.png[width=800,align="center"]
 
 === Experiment 3
 
+FlightSafety and Luciad are planning on running experiment 3.
+
 === Experiment 4
+
+FlightSafety and Luciad are planning on running experiment 3.
 
