@@ -18,7 +18,12 @@ Point, line, and area features are encoded in a CDB store as Shapefiles and are 
 
 === Details on Experiment 1: CDB Data Used
 
-Three complete CDB data stores were provided for use in this Interoperability Experiment. The provision of CDB dta stores and the subsequent conversion of Shapefiles into GeoPackages was defined in the IE Activity Plan in Experiment 1.
+Three complete CDB data stores were provided for use in this Interoperability Experiment. The provision of CDB dta stores and the subsequent conversion of Shapefiles into GeoPackages was defined in the IE Activity Plan in Experiment 1. The participants identified a number of activities associated with executing Experiment 1.
+
+. Identify and document any differences in the Shapefile to GeoPackage conversions that resulted from the use of different conversion tools.
+. 
+
+=== The CDB Data Stores used in this IE
 
 ==== << >>
 
@@ -125,5 +130,5 @@ FlightSafety and Luciad are planning on running experiment 3.
 
 === Experiment 4
 
-FlightSafety and Luciad are planning on running experiment 3.
+FlightSafety and Luciad are planning on running experiment 4.
 
