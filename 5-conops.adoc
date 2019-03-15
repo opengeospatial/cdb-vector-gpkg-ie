@@ -44,3 +44,12 @@ The methodology involves:
    * Evaluate and compare performance using the baseline CDB datasets and the Alternative #3 datasets.
    * Evaluate analysis and results from Experiment #4 for performance, backwards-compatibility and risks to interoperability.
 
+=== Who is doing what
+
+==== Hexagon/Luciad
+
+For our involvement as a participant in the current GeoPackage conversion IE we are at this point planning to complete all listed experiments (1 - 4).
+
+Additionally, we are currently modifying our existing CDB client software to produce the converted vector data in the GeoPackage format and are implementing Option 1d of the conversion strategies.
+
+We will be focused primarily on the client visualization performance for our contribution to the ER. As discussed on last week's call we will also provide some file system metrics after the data conversion. If time permits we will perform the conversions and experiments for all three datasets.
