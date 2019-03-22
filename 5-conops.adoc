@@ -53,3 +53,13 @@ For our involvement as a participant in the current GeoPackage conversion IE we 
 Additionally, we are currently modifying our existing CDB client software to produce the converted vector data in the GeoPackage format and are implementing Option 1d of the conversion strategies.
 
 We will be focused primarily on the client visualization performance for our contribution to the ER. As discussed on last week's call we will also provide some file system metrics after the data conversion. If time permits we will perform the conversions and experiments for all three datasets.
+
+=== Metrics captured
+
+==== FSI
+For the client side, FSI documented the following metrics:
+
+- Time to open a GeoPackage (plus SQLite overhead) vs reading/parsing multiple smaller files for shapefile (more I/O operations)
+- Time to find/get a layer
+- Time to close and dispose of a GeoPackage vs shapefile
+- Time to query getting a set of features by SQL query of dataset/lod/row/column vs an rtree SQL search
