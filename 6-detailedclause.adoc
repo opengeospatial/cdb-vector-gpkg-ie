@@ -65,7 +65,7 @@ The following IE participants executed the following options defined for Experim
 - Aechelon - Options 1a, 1b & 1c with the Yemen and Los Angeles DBs
 - CAE Montreal - option 1a with the numerous CDB databases that are available and perform a before-after comparison of the overall performance of the system.
 - Compusult - All options
-- FlightSafety - Option 1d
+- FlightSafety - FlightSafety intends to test all the option 1 variants, as well as option 3 and 4.  We are going to have more of a client focus with our testing, since that is more performance sensitive.  
 - Luciad - Option 1d
 - Presagis - 
 If time permit, we will also test the dynamic creation of Vector data when the simulation modifies the database at runtime.
