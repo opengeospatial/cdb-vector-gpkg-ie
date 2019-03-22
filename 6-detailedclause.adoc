@@ -42,6 +42,8 @@ The data provided in this CDB data store are in one CDB Geocell containing downt
 - OpenStreetMap Vector Map (Entire geocell)
 - Los Angeles County Building footprint information. (Approximately 1,734,043 buildings were extruded from the footprint data)
 
+For the IE, VATC made the data available at https://storage.cloud.google.com/epic_builder/OGC_IE/LosAngeles_CDB.zip?_ga=2.3746352.-1225582785.1543877247
+
 === Tools used to convert Shapefiles to GeoPackages
 
 ==== VATC
@@ -66,6 +68,7 @@ The following IE participants executed the following options defined for Experim
 - FlightSafety - Option 1d
 - Luciad - Option 1d
 - Presagis - 
+If time permit, we will also test the dynamic creation of Vector data when the simulation modifies the database at runtime.
 - VATC - Supported Option 1b initially both with data creation and opensource visualization of this option. We will make a best effort to include visualization for Compusult’s LA updates as well as our own (and others as published) .  It is our intent as well to support one other option (option 3 most likely)
 
 The Participants identifed four possible approaches to converting and/or using GeoPackages in a CDB data store.
