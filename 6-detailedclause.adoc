@@ -36,15 +36,19 @@ The Presagis provided data store is for the country of Yemen.
 The VATC provided CDB data store was created from fully open data sources.
 The data provided in this CDB data store are in one CDB Geocell containing downtown Los Angeles.The data include:
 
-- USGS NAIP 1m background (CDB Lod 7)
-- USGS HighRes Ortho Program 1ft Ortho (CDB Lod 9)
-- USGS 1/3 NED Elevation (CDB Lod 4)
-- OpenStreetMap Vector Map
-- Los Angeles County Building footprint information.
+- USGS NAIP 1m background (Entire Geocell) (CDB Lod 7)
+- USGS HighRes Ortho Program 1ft Ortho (Southern section of Geocell) (CDB Lod 9)
+- USGS 1/3 NED Elevation (CDB Lod 4 for an entire geocell)
+- OpenStreetMap Vector Map (Entire geocell)
+- Los Angeles County Building footprint information. (Approximately 1,734,043 buildings were extruded from the footprint data)
 
-==== Tools used to convert Shapefiles to GeoPackages
+=== Tools used to convert Shapefiles to GeoPackages
 
-==== Key discussion topics related to CDB data stores
+==== VATC
+
+We will have link’s to download our core 3rd Party as built libraries for windows. (linux users will need to build with cmake… depending on support library) and Github links for opensource lib’s that have been modified to support CDB (this includes OpenSceneGraph, osgEarth, and GDAL) (note we do not anticipate any further fixes to the GDAL library will be required for this IE and the built GDAL version from the 3rd Party is expected to suffice for this experiment) 
+
+=== Key discussion topics related to CDB data stores
 
 Given the size of the CDB data stores used in this IE, there was discussion related to how best to provide data stores updated with GeoPackage content. The general concensus was that downloading the entire data store just to get the GeoPackages was non-optimal and time wasteful. Therefore, the particpants discussed using *_Version_* metadata (Volume 1 CDB Standard, Clause 5.1.8). They determined that the original CDB data with Shapefiles would be Version 1 and that CDB enhanced with GeoPackages would be Version 2. 
 
@@ -62,6 +66,7 @@ The following IE participants executed the following options defined for Experim
 - FlightSafety - Option 1d
 - Luciad - Option 1d
 - Presagis - 
+- VATC - Supported Option 1b initially both with data creation and opensource visualization of this option. We will make a best effort to include visualization for Compusult’s LA updates as well as our own (and others as published) .  It is our intent as well to support one other option (option 3 most likely)
 
 The Participants identifed four possible approaches to converting and/or using GeoPackages in a CDB data store.
 
