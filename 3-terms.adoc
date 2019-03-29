@@ -19,7 +19,9 @@ The following abbreviated terms provides a list of the abbreviated terms and the
     GPKG GeoPackage
     ER   Engineering Report
     IE   Interoperability Experiment
+    IG   Image Generation
     OGC  Open Geospatial Consortium
+    OGR  OGR Simple Features Library
     OWS  OGC Web Services
     SRS  Spatial Reference System
     SWG  Standards Working Group
