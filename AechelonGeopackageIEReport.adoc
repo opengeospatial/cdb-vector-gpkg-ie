@@ -1,10 +1,15 @@
 = Aechelon Technology Experiment Report
 
 == Use case and experiment focus
-* CDB is used as source for offline publishing into the Aechelon Image Generator (IG) runtime format. While reducing CDB storage requirements is a consideration, the primary concern is with read access speed. Even so, the time taken by the 'feature scan' step of the publishing process, where we scan the CDB source vector files to identify the features to import is 2 orders of magnitude smaller than the rest of the pipeline. However, any improvements in speed and/or storage requirements are welcome!
-* The publishing software is in python, with invocations of C++ EXEs for performance-critical processing; the feature scan step is entirely in python, version 3.5.
-* Note that we only look for and read metadata fields that affect the appearance of features and ignore the rest, such as tactical data, or the entire geopolitical dataset. We also ignore the hydrography network dataset since we use the RMTexture dataset to identify areas of water.
-* The changes implemented on the publisher side to support geopackage were the minimal necessary to get functional parity with the shape-based implementation (i.e. no attempt was made to optimize the code to take advantage of the internals of the geopackage files using sqlite, and all data access went through the OGR module.)
+
+The following is a description of a key use case in the Aechelon content processing workflow to use in an image generator.
+
+* A CDB data store is used as the source for content to feed a publishing process into the Aechelon Image Generator (IG) runtime format. While reducing CDB storage requirements is a consideration, the primary concern in this workflow is with read access speed. Even so, the time taken by the 'feature scan' step of the publishing process, where we scan the CDB source vector files to identify the features to import, is 2 orders of magnitude smaller than the rest of the pipeline. However, any improvements in speed and/or storage requirements are have a positive impact on the efficiency of the Achelon publication workflow.
+* Note: After the feature scan step in the publishing process, all references to all features are in various python data structures, which are then given to the first of multiple processing steps to begin the data transformations. For example, point features with models will have their OpenFlight models converted to an intermediate Aechelon-specific model format, while their instance geographical data are saved in an Aechelon-specific lookup table format.
+
+The publishing software is in python, with invocations of C++ EXEs for performance-critical processing; the feature scan step is entirely in python, version 3.5. Please note that for the image genration workflow, only metadata fields that affect the appearance of features are considered and remainder of the CDB content is ignored, such as tactical data, or the entire geopolitical dataset. We also ignore the hydrography network dataset since we use the RMTexture dataset to identify areas of water.
+
+The changes implemented on the publisher side to support GeoPackage were the minimal necessary to get functional parity with the Shapefile based implementation. In othr words, no attempt was made to optimize the code to take advantage of the internals of the GeoPackage files using sqlite, and all data access went through the OGR module.
 
 == Methodology
 * Following generation of the GPKG files for each option, we made changes as needed in the publishing scripts to be able to read and publish the data.
