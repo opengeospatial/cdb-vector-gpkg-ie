@@ -95,8 +95,7 @@ In the tables below, "Baseline" refers to metrics based on the source ShapeFiles
 |===
 
 == Legend
-* Option 3 is for Alternative 2 (Experiment 3)
-* Option 4 is for Alternative 3 (Experiment 4) 
+
 * Feat count: feature count of valid features found of the given type
 * PVF count: primary vector file count, after validation, for the given type (i.e. only counting .shp files for Experiment 1 or .gpkg files for Experiment 2.)
 * Time: in minute:second notation when over 1 minute, else in seconds
