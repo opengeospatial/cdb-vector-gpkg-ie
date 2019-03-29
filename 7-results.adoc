@@ -1,6 +1,24 @@
 [[ResultsClause]]
 == IE Experiment Results
-=== Guidance Related to CDB Data Store (Experiment 1)
+=== Results Related to CDB Data Store (Experiment 1)
+
+==== Compusult metrics from Experiment 2
+Approach: One GeoPackage per LOD per dataset
+
+CDB: CDBYemen_4.0.0
+
+Available Datasets:
+
+    101_GTFeature
+    100_GSFeature
+    401_Navigation
+    201_RoadNetwork
+
+Number of ShapeFiles processed: 358
+Number of GeoPackages created: 18
+Total byte size of ShapeFiles (bytes): 3,569,324
+Total byte size of GeoPackages (bytes): 41,715,712
+Elapsed time (seconds): 173
 
 === Results from Experiment 2
 
