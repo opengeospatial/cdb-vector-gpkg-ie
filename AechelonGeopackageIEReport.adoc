@@ -17,48 +17,44 @@ The changes implemented on the publisher side to support GeoPackage were the min
 
 The following is a concise description of the methodolocy used for execution of the Aechelon committed tasks in this Interoperability Experiment.
 
-* Following generation of the GPKG files for each option, changes were made as needed in the publishing scripts to be able to read and publish the data.
+* Following generation of the GeoPackage files for each option, changes were made as needed in the publishing scripts to be able to read and publish the data.
 * Each feature type was tested by spot-checking in the image generator using a small reference database with representative data for each of the five feature types.
-* The next step was to convert the following three of thef our CDB data stores made available for the interoperability experiments. However, the entire publication end-to-end workflow for image generation was not performed due to the considerable time it would take for each run:
+* The next step was to convert the following three of the four CDB data stores made available for the interoperability experiments. However, the entire publication end-to-end workflow for image generation was not performed due to the considerable time it would take for each run:
   ** Yemen (4 geocells), from Presagis.
   ** Downtown Los Angeles (1 geocell), from VATC.
   ** Greater Los Angeles (4 geocells), from Cognitics.
-* To generate data for option 1A:
+* To generate data for Experiment 2, option 1A:
   ** Ran Option1.py from the Cognitics conversion scripts in the master branch (https://github.com/Cognitics/GeoCDB/tree/master).
   ** Deleted existing .shp, .shx, sidecar .dbf, .dbt & .prj files (i.e. kept .dbf files holding class/extended data.)
-* To generate data for option 1C:
+* To generate data for Experiment 2, option 1C:
   ** Ran Option1.py from the Cognitics conversion scripts in the Presagis branch (https://github.com/Cognitics/GeoCDB/tree/Presagis).
   ** Deleted the existing .shp, .shx, .dbf, .dbt & .prj files.
-* To generate data for option 1D:
+* To generate data for Experiment 2, option 1D:
   ** Ran Option1d.py from the Cognitics conversion scripts in the master branch (after update of March 17, 2019, and some local edits to protect against 'None' during conversion of the LA databases.)
   ** Deleted the existing .shp, .shx, .dbf, .dbt & .prj files.
-* To generate data for option 3:
+* To generate data for Experiment 3:
   ** Ran Option3.py from the Cognitics conversion scripts in the master branch (after update of March 17, 2019, and some local edits to uncomment writing the class metadata to the instance tables and to protect against 'None' during conversion of the LA databases.)
   ** Deleted the 100_GSFeature, 101_GTFeature, 202_RailroadNetwork and 203_PowerlineNetwork folders from each geocell.
-* To generate data for option 4:
+* To generate data for Experiment 4:
   ** Ran Option4.py from the Cognitics conversion scripts in the master repository (after update of March 17, 2019, and some local edits to uncomment writing the class metadata to the instance tables and to protect against 'None' during conversion of the LA databases.)
   ** Deleted the 100_GSFeature, 101_GTFeature, 202_RailroadNetwork and 203_PowerlineNetwork folders from each geocell.
-* Then, for each option, disabled the publishing process beyond the 'feature scan' step and captured the following metrics for the three databases.
+* Then, for each option, disabled the publishing process beyond the 'feature scan' step and captured the following metrics for the three CDB data stores.
 
 == Metrics
 
 .Yemen (4 geocells)
-[cols="9*>"]
+[width="90%",options="header"]
 |===
-|           |           |          |Baseline  |Option 1A |Option 1C |Option 1D |Option 3 |Option 4     
-
+|           |           |          |Baseline  |Option 1A |Option 1C |Option 1D |Exper. 3 |Exper. 4     
 |Dataset(s) |Feat count |PVF count |     time |     time |     time |     time |    time |    time
 |tree       |     64091 |     440  |        8 |        7 |        7 |       16 |       6 |       2
 |light      |        60 |      13  |       <1 |       <1 |       <1 |       <1 |       1 |       1
 |cultural   |     16502 |     409  |       12 |        9 |        5 |        7 |       5 |       4
 |powerline  |       975 |      20  |       <1 |       <1 |       <1 |       <1 |       1 |       1
 |railroad   |         0 |       0  |        0 |        0 |        0 |        0 |       0 |       0
-|===
-[cols="9*>"]
-|===
-3+|total time |                            21 |       17 |       13 |       24 |      14 |       8
-3+|file count |                          8224 |     2056 |     1023 |     1023 |      10 |      10           
-3+|size (MB)  |                           34.2|     152.5|     161.9|     165.9|     57.6|     38.1 
+|total time |  | |                         21 |       17 |       13 |       24 |      14 |       8
+|file count |  | |                       8224 |     2056 |     1023 |     1023 |      10 |      10           
+|size (MB)  |  | |                        34.2|     152.5|     161.9|     165.9|     57.6|     38.1 
 |===
 
                                                                                                
