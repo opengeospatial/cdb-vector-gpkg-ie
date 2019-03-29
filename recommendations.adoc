@@ -1,4 +1,4 @@
-This section discusses recommendations and change requests.
+This section discusses issues, recommendations and change requests.
 
 1. Backwards compatibility in the CDB context
 
