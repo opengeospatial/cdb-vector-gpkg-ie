@@ -141,6 +141,8 @@ include::6-detailedclause.adoc[]
 
 include::7-results.adoc[]
 
+include::8-recommendations.adoc[]
+
 // you may add any number of chapters as required here
 
 // *****************************************************************************
@@ -148,10 +150,6 @@ include::7-results.adoc[]
 // *****************************************************************************
 
 include::annex-a.adoc[]
-
-include::annex-b.adoc[]
-
-include::annex-c.adoc[]
 
 // *****************************************************************************
 // Revision History should be the last annex before the Bibliography.
