@@ -42,6 +42,10 @@ The following is a concise description of the methodolocy used for execution of 
 
 == Metrics
 
+The following three tables provide basic performance metrics for the three CDB data stores processed in this experiment. Providing performance metrics is one of the tasks identified in Experiment 1 of the GeoPackage in CDB IE.
+
+In the tables below, "Baseline" refers to metrics based on the source ShapeFiles. Option 1A, Option 1C, and Option 1D refer to the sub-options for Experiment 2 (one to one transformation of Shapefiles into GeoPackages).
+
 .Yemen (4 geocells)
 [width="90%",options="header"]
 |===
@@ -59,9 +63,9 @@ The following is a concise description of the methodolocy used for execution of 
 
                                                                                                
 .Downtown Los Angeles (1 geocell)
-[cols="9*>"]
+[width="90%",options="header"]
 |===
-|           |           |          |Baseline  |Option 1A |Option 1C |Option 1D |Option 3 |Option 4     
+|           |           |          |Baseline  |Option 1A |Option 1C |Option 1D |Exper. 3 |Exper. 4     
 
 |Dataset(s) |Feat count |PVF count |     time |     time |     time |     time |    time |    time
 |tree       |        2  |        1 |       <1 |       <1 |       <1 |       <1 |      <1 |      <1
@@ -69,18 +73,15 @@ The following is a concise description of the methodolocy used for execution of 
 |cultural   |  1730622  |     1948 |     9:01 |     7:13 |     3:06 |     3:34 |    3:26 |    3:41
 |powerline  |     1208  |       56 |        2 |        1 |        1 |        1 |      <1 |       1
 |railroad   |     1386  |        4 |        1 |       <1 |       <1 |       <1 |      <1 |       1
-|===
-[cols="9*>"]
-|===
-3+|total time |                          9:04 |     7:15 |     3:08 |     3:36 |    3:27 |    3:44          
-3+|file count |                         12540 |     4180 |     2090 |     2090 |       4 |       4       
-3+|size (MB)  |                         2185.7|    2309.2|     958.5|    1021.5|    791.5|    798.0
+|total time |   ||                      9:04 |     7:15 |     3:08 |     3:36 |    3:27 |    3:44          
+|file count |   ||                     12540 |     4180 |     2090 |     2090 |       4 |       4       
+|size (MB)  |   ||                     2185.7|    2309.2|     958.5|    1021.5|    791.5|    798.0
 |===
 
 .Greater Los Angeles (4 geocells)
-[cols="9*>"]
+[width="90%",options="header"]
 |===
-|           |           |          |Baseline  |Option 1A |Option 1C |Option 1D |Option 3 |Option 4     
+|           |           |          |Baseline  |Option 1A |Option 1C |Option 1D |Exper. 3 |Exper. 4     
 
 |Dataset(s) |Feat count |PVF count |     time |     time |     time |     time |    time |    time
 |tree       |        5  |        2 |       <1 |        1 |       <1 |       <1 |       1 |      <1
@@ -88,17 +89,12 @@ The following is a concise description of the methodolocy used for execution of 
 |cultural   |  3138841  |     6013 |    15:02 |    12:02 |     6:14 |     7:25 |    6:57 |    7:17
 |powerline  |     3932  |      160 |        1 |        1 |        1 |        1 |       1 |       1
 |railroad   |     9367  |       87 |        1 |        1 |        1 |        1 |       1 |      <1
-|===
-[cols="9*>"]
-|===
-3+|total time |                         15:04 |    12:05 |     6:16 |     7:27 |    7:01 |    7:19
-3+|file count |                         38961 |    12986 |     6493 |     6493 |      14 |      14         
-3+|size (MB)  |                         3738.2|    4275.9|    1958.6|    2067.0|   1335.7|   1339.3
+|total time |      ||                   15:04 |    12:05 |     6:16 |     7:27 |    7:01 |    7:19
+|file count |      ||                   38961 |    12986 |     6493 |     6493 |      14 |      14         
+|size (MB)  |      ||                   3738.2|    4275.9|    1958.6|    2067.0|   1335.7|   1339.3
 |===
 
 == Legend
-* Baseline is Experiment 1
-* Options 1A, 1C and 1D are for Alternative 1 (Experiment 2)
 * Option 3 is for Alternative 2 (Experiment 3)
 * Option 4 is for Alternative 3 (Experiment 4) 
 * Feat count: feature count of valid features found of the given type
@@ -111,12 +107,12 @@ The following is a concise description of the methodolocy used for execution of 
 == Notes and observations
 * All source CDB files were on a local RAID drive so network traffic did not contribute to the timings.
 * In the Greater Los Angeles database, there somehow were more features of some types coming from geopackage files compared to shape files (3140180 instead of 3138841 cultural features, and 4012 instead of 3932 powerline features), but there were also over 1000 warnings from OGR during conversion and while reading of the type "Warning 1: Unable to parse srs_id '100000' well-known text ''." After the 1000th such warning, also got "More than 1000 errors or warnings have been reported. No more will be reported from now."  Perhaps the conversion from .shp to .gpkg with ogr2ogr.exe generated these excess invalid files. These warnings appeared in the Downtown LA database as well, but the feature counts matched after conversion. We did not check any further downstream in our pipeline as to this discrepancy.
-* For the powerline network dataset, stats include both the tower point features and the wire lineal features.
-* There's a slight increase in the file size in the Los Angeles databases when going from option 3 to 4, whereas it's a significant decrease in the Yemen database. From a quick inspection of the data, this seems to correlate with the fact that almost all the cultural features in Los Angeles come from 100_GSFeatures which require unique records per instance, whereas for Yemen the majority of cultural features come from 101_GTFeatures.
-* Option 3 has slightly better timings for large-count datasets than option 4 in our use case since we scan each LOD in order, so having LODs in separate layers in the option 3 geopackage performs better.
+* For the powerline network dataset, statistics include both the tower point features and the wire lineal features.
+* There's a slight increase in the file size in the Los Angeles databases when comparing the results of Experiment 3 and Experiment 4. However, there is a significant decrease in the size of the Yemen database. From a quick inspection of the data, this seems to correlate with the fact that almost all the cultural features in Los Angeles come from 100_GSFeatures which require unique records per instance, whereas for Yemen the majority of cultural features come from 101_GTFeatures.
+* Experiment 3 has slightly better timings for large-count datasets than Experiment 4 in our use case since we scan each LOD in order, so having LODs in separate layers in the option 3 GeoPackage performs better.
 
 == Conclusions
-* Among the three Alternative 1 choices we tested, the best outcome in both time and file size came from option 1C.
-* For Alternatives 2 and 3, speed is slightly improved relative to 1D but not 1C. On the other hand, size is markedly improved against all options in Alternative 1, as would be expected. Since, by design, these two alternatives go against the spirit of CDB data segmentation by file at the LOD level, they may not be as easy to adopt into the standard.
+* For the three Experiment 2 choices we tested, the best outcome in both time and file size came from option 1C.
+* For Experiments 3 and 4, speed is slightly improved relative to Experiment 3 sub-option 1D but not sub-option 1C. On the other hand, the resulting storage size is markedly improved when compared against all options in Experiment 2, as would be expected. This is because, by design, these Experiments 3 and 4 go against the spirit of CDB data segmentation by file at the LOD level. As such, the approaches used in Experiments 3 and 4 may not be as easy to incorporate and adopt as part of the CDB Standard.
 * If we are to recommend only one alternative for inclusion as an alternate primary dataset in a future OCG CDB revision, it would be option 1C.
 
