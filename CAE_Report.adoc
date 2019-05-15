@@ -1,0 +1,59 @@
+= CDB Vector Data in GeoPackage Interoperability Experiment
+
+== CAE Report
+
+Author: Bernard Leclerc and Jonathan Rodriguez
+
+== Focus of the Experiment
+
+We focused on Experiment #2 described on the OGC portal at this address:
+
+  https://portal.opengeospatial.org/?m=projects&a=view&project_id=592
+
+In short, we focused on the part of the experiment where each Shapefile is replaced by one GeoPackage file.
+
+== Sample Database
+
+We did not use the sample CDB provided by the participants because our goal was to compare the performance of our internal applications when running with a CDB produced by CAE before and after the replacement of Shapefiles with GeoPackage files.
+
+However, we believe that our findings apply equally well to other databases.
+
+== Comparing File Formats
+
+The first step of our experiment was to compare other file formats that would be appropriate to store CDB Vector Data. These formats include GeoJSON and GML in addition to Shapefiles and GeoPackage. Note that all formats are supported by GDAL.
+
+NOTE: The conversion from Shapefile to other formats was done using +ogr2ogr+, a GDAL command-line utility.
+
+.File Format Comparison
+[options="header"]
+|====================
+|File Format|File Size|Disk Size|Load Time|Decode Time
+1.3+.^|Shapefile  |  |  |  |  
+  |  |  |  |  
+  |  |  |  |  
+1.3+.^|GeoPackage |  |  |  |  
+  |  |  |  |  
+  |  |  |  |  
+1.3+.^|GeoJSON    |  |  |  |  
+  |  |  |  |  
+  |  |  |  |  
+1.3+.^|GML        |  |  |  |  
+  |  |  |  |  
+  |  |  |  |  
+|====================
+
+.Observations
+. GeoJSON provides the most compact representation of vector data
+. GML is  an XML format, it is verbose and produces bigger files
+. GeoPackage has a large overhead for _small_ files
+
+== Conclusions
+
+
+.CDB Data Model
+The CDB Data Model must be explicitly separated from its Physical Implementation. This experiment has shown that the Vector Data Model is thightly coupled with its physical implementation using Shapefile. In fact, the choice of Shapefile has tinted the actual Data Model in ways that are not desirable.
+
+For instance, the current standard specifies in section 3.6.2.4 that the LOD of a tile is implemented as a subdirectory called LC for negative level of details or Lxx for positive level of details. In addition to the presence of a LOD subdirectory, the Standard specifies in section 3.6.3.1 that the name of the file also contains an indication of its LOD.
+
+In addition, the concept of one _**CDB Tile**_ being equal to one _**CDB File**_ must be relaxed to facilitate the implementation of CDB using new file formats.
+
