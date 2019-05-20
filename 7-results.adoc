@@ -34,3 +34,25 @@ A couple of performance comments (so far):
  .Doing a query to get features out of a very large table is MUCH slower (option 4).  I am getting 40x slowdowns for heavily forested areas where I am querying 4700 points out of a table with >2.8M points.
 . The more columns a table has, the larger the slowdown (ie, a query in option 4 vs a query in option3 might take twice as long with 8 columns, but 4 times as long with 30 columns)
 .. Depending on how much time we have left, testing option 1b might be worthwhile.  It should yield faster queries to not flatten class-level attributes into the feature table.
+
+===Holder of info for inclusion
+
+=== Who is doing what
+
+==== Hexagon/Luciad
+
+For our involvement as a participant in the current GeoPackage conversion IE we are at this point planning to complete all listed experiments (1 - 4).
+
+Additionally, we are currently modifying our existing CDB client software to produce the converted vector data in the GeoPackage format and are implementing Option 1d of the conversion strategies.
+
+We will be focused primarily on the client visualization performance for our contribution to the ER. As discussed on last week's call we will also provide some file system metrics after the data conversion. If time permits we will perform the conversions and experiments for all three datasets.
+
+=== Metrics captured
+
+==== FSI
+For the client side, FSI documented the following metrics:
+
+- Time to open a GeoPackage (plus SQLite overhead) vs reading/parsing multiple smaller files for shapefile (more I/O operations)
+- Time to find/get a layer
+- Time to close and dispose of a GeoPackage vs shapefile
+- Time to query getting a set of features by SQL query of dataset/lod/row/column vs an rtree SQL search
