@@ -12,9 +12,9 @@
 (( This IE is based on preliminary work conducted under funding by the U.S. Army Geospatial Center (AGC), the results of which have been publicly released as OGC Document Number 18-077:  OGC CDB and GeoPackage Discussion Paper   (https://portal.opengeospatial.org/files/?artifact_id=80537&version=1). The Discussion Paper documents the results of research, design, and prototype efforts to present the OGC with an approach to creating “GeoCDB” — a technology mashing of GeoPackage and OGC CDB — as a deterministic repository of easily read data geospatial datasets suitable for storage, runtime access, and dissemination for live, virtual, constructive, gaming, and mission command (MC) systems. ))
 
 === Recommendations for Future Work
-(( This section should answer the question: What does this ER mean for the Working Group and OGC in general? What aspects shall be addressed next? In any specific order? What actions are necessary? ))
+This Interoperability Experiment addressed the specific issue of how best to and develop guidance for storing GeoPackage containers in a CDB datastore. AS a result of the experiments conducted in this IE activity, the particants have identifed a number of other potential interoperability experiments that could be conducted in the future.
 
-(( This is a write up for why this ER should be important to the working group and OGC. This paragraph provides recommendations on how to further proceed with the achievements documented in this ER. ))
+This current and potential future IEs will provide highly relevant input into the specification and development of CDB Version 2.0.
 
 ===	Document contributor contact points
 
