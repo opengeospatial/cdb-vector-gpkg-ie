@@ -1,8 +1,125 @@
 [[ResultsClause]]
 == IE Experiment Results
-=== Results Related to CDB Data Store (Experiment 1)
 
-=== Results from Experiment 2
+This section of the Engineering Report provides details of the results of the experiments performed by each of the IE participants.
+
+=== Aechelon Technology IE Report
+
+==== Use case and experiment focus
+
+The following is a description of a key use case in the Aechelon content processing workflow to use in an image generator.
+
+* A CDB data store is used as the source for content to feed a publishing process into the Aechelon Image Generator (IG) runtime format. While reducing CDB storage requirements is a consideration, the primary concern in this workflow is with read access speed. Even so, the time taken by the 'feature scan' step of the publishing process, where the CDB source vector files are scanned to identify the features to import, is 2 orders of magnitude smaller than the rest of the pipeline. However, any improvements in speed and/or storage requirements have a positive impact on the efficiency of the Achelon publication workflow.
+* Note: After the feature scan step in the publishing process, all references to all features are in various python data structures, which are then given to the first of multiple processing steps to begin the data transformations. For example, point features with models will have their OpenFlight models converted to an intermediate Aechelon-specific model format, while their instance geographical data are saved in an Aechelon-specific lookup table format.
+
+The publishing software is in python, with invocations of C++ EXEs for performance-critical processing. The feature scan step is entirely in Python, version 3.5. Please note that for the image generation workflow, only metadata fields that affect the appearance of features are considered and remainder of the CDB content is ignored, such as tactical data, or the entire geopolitical dataset. The hydrography network dataset is also ignored since the RMTexture dataset is used to identify areas of water. 
+
+For the purposes of this experiment, five feature types were considered and processed: Cultural, Lights, Powerlines, Railroads, and Trees. All of the performance information provided in the tables below are related to these five feature types.
+
+The changes implemented on the publisher side to support GeoPackage were the minimal necessary to get functional parity with the Shapefile based implementation. In other words, no attempt was made to optimize the code to take advantage of the internals of the GeoPackage files using sqlite, and all data access went through the OGR module.
+
+==== Methodology
+
+The following is a concise description of the methodolocy used for execution of the Aechelon committed tasks in this Interoperability Experiment.
+
+* Following generation of the GeoPackage files for each option, changes were made as needed in the publishing scripts to be able to read and publish the data.
+* Each feature type was tested by spot-checking in the image generator using a small reference database with representative data for each of the five feature types.
+* The next step was to convert the following three of the four CDB data stores made available for the interoperability experiments. However, the entire publication end-to-end workflow for image generation was not performed due to the considerable time it would take for each run:
+  ** Yemen (4 geocells), from Presagis.
+  ** Downtown Los Angeles (1 geocell), from VATC.
+  ** Greater Los Angeles (4 geocells), from Cognitics.
+* To generate data for Experiment 2, option 1A:
+  ** Ran Option1.py from the Cognitics conversion scripts in the master branch (https://github.com/Cognitics/GeoCDB/tree/master).
+  ** Deleted existing .shp, .shx, sidecar .dbf, .dbt & .prj files (i.e. kept .dbf files holding class/extended data.)
+* To generate data for Experiment 2, option 1C:
+  ** Ran Option1.py from the Cognitics conversion scripts in the Presagis branch (https://github.com/Cognitics/GeoCDB/tree/Presagis).
+  ** Deleted the existing .shp, .shx, .dbf, .dbt & .prj files.
+* To generate data for Experiment 2, option 1D:
+  ** Ran Option1d.py from the Cognitics conversion scripts in the master branch (after update of March 17, 2019, and some local edits to protect against 'None' during conversion of the LA databases.)
+  ** Deleted the existing .shp, .shx, .dbf, .dbt & .prj files.
+* To generate data for Experiment 3:
+  ** Ran Option3.py from the Cognitics conversion scripts in the master branch (after update of March 17, 2019, and some local edits to uncomment writing the class metadata to the instance tables and to protect against 'None' during conversion of the LA databases.)
+  ** Deleted the 100_GSFeature, 101_GTFeature, 202_RailroadNetwork and 203_PowerlineNetwork folders from each geocell.
+* To generate data for Experiment 4:
+  ** Ran Option4.py from the Cognitics conversion scripts in the master repository (after update of March 17, 2019, and some local edits to uncomment writing the class metadata to the instance tables and to protect against 'None' during conversion of the LA databases.)
+  ** Deleted the 100_GSFeature, 101_GTFeature, 202_RailroadNetwork and 203_PowerlineNetwork folders from each geocell.
+* Then, for each option, disabled the publishing process beyond the 'feature scan' step and captured the following metrics for the three CDB data stores.
+
+==== Metrics
+
+The following three tables provide basic performance metrics for the three CDB data stores processed in this experiment. Providing performance metrics is one of the tasks identified in Experiment 1 of the GeoPackage in CDB IE.
+
+In the tables below, "Baseline" refers to metrics based on the source ShapeFiles. Option 1A, Option 1C, and Option 1D refer to the sub-options for Experiment 2 (one to one transformation of Shapefiles into GeoPackages).
+
+.Yemen (4 geocells)
+[width="90%",options="header"]
+|===
+|           |           |          |Baseline  |Option 1A |Option 1C |Option 1D |Exper. 3 |Exper. 4     
+|Dataset(s) |Feat count |PVF count |     time |     time |     time |     time |    time |    time
+|tree       |     64091 |     440  |        8 |        7 |        7 |       16 |       6 |       2
+|light      |        60 |      13  |       <1 |       <1 |       <1 |       <1 |       1 |       1
+|cultural   |     16502 |     409  |       12 |        9 |        5 |        7 |       5 |       4
+|powerline  |       975 |      20  |       <1 |       <1 |       <1 |       <1 |       1 |       1
+|railroad   |         0 |       0  |        0 |        0 |        0 |        0 |       0 |       0
+|total time |  | |                         21 |       17 |       13 |       24 |      14 |       8
+|file count |  | |                       8224 |     2056 |     1023 |     1023 |      10 |      10           
+|size (MB)  |  | |                        34.2|     152.5|     161.9|     165.9|     57.6|     38.1 
+|===
+
+                                                                                               
+.Downtown Los Angeles (1 geocell)
+[width="90%",options="header"]
+|===
+|           |           |          |Baseline  |Option 1A |Option 1C |Option 1D |Exper. 3 |Exper. 4     
+
+|Dataset(s) |Feat count |PVF count |     time |     time |     time |     time |    time |    time
+|tree       |        2  |        1 |       <1 |       <1 |       <1 |       <1 |      <1 |      <1
+|light      |        0  |        0 |        0 |        0 |        0 |        0 |       0 |       0
+|cultural   |  1730622  |     1948 |     9:01 |     7:13 |     3:06 |     3:34 |    3:26 |    3:41
+|powerline  |     1208  |       56 |        2 |        1 |        1 |        1 |      <1 |       1
+|railroad   |     1386  |        4 |        1 |       <1 |       <1 |       <1 |      <1 |       1
+|total time |   ||                      9:04 |     7:15 |     3:08 |     3:36 |    3:27 |    3:44          
+|file count |   ||                     12540 |     4180 |     2090 |     2090 |       4 |       4       
+|size (MB)  |   ||                     2185.7|    2309.2|     958.5|    1021.5|    791.5|    798.0
+|===
+
+.Greater Los Angeles (4 geocells)
+[width="90%",options="header"]
+|===
+|           |           |          |Baseline  |Option 1A |Option 1C |Option 1D |Exper. 3 |Exper. 4     
+
+|Dataset(s) |Feat count |PVF count |     time |     time |     time |     time |    time |    time
+|tree       |        5  |        2 |       <1 |        1 |       <1 |       <1 |       1 |      <1
+|light      |        0  |        0 |        0 |        0 |        0 |        0 |       1 |      <1
+|cultural   |  3138841  |     6013 |    15:02 |    12:02 |     6:14 |     7:25 |    6:57 |    7:17
+|powerline  |     3932  |      160 |        1 |        1 |        1 |        1 |       1 |       1
+|railroad   |     9367  |       87 |        1 |        1 |        1 |        1 |       1 |      <1
+|total time |      ||                   15:04 |    12:05 |     6:16 |     7:27 |    7:01 |    7:19
+|file count |      ||                   38961 |    12986 |     6493 |     6493 |      14 |      14         
+|size (MB)  |      ||                   3738.2|    4275.9|    1958.6|    2067.0|   1335.7|   1339.3
+|===
+
+==== Legend
+
+* Feat count: feature count of valid features found of the given type
+* PVF count: primary vector file count, after validation, for the given type (i.e. only counting .shp files for Experiment 1 or .gpkg files for Experiment 2.)
+* Time: in minute:second notation when over 1 minute, else in seconds
+* The cultural feature data set is from both 100_GSFeatures (S001_T001 & S002_T001) and 101_GTFeatures (S001_T001)
+* File count: total number of files from 100_GSFeatures, 101_GTFeatures, 202_RailroadNetwork & 203_PowerLineNetwork
+* Size: storage, in MB, used by all the files from 100_GSFeatures, 101_GTFeatures, 202_RailroadNetwork & 203_PowerLineNetwork
+
+==== Notes and observations
+* All source CDB files were on a local RAID drive so network traffic did not contribute to the timings.
+* In the Greater Los Angeles database, there somehow were more features of some types coming from geopackage files compared to shape files (3140180 instead of 3138841 cultural features, and 4012 instead of 3932 powerline features), but there were also over 1000 warnings from OGR during conversion and while reading of the type "Warning 1: Unable to parse srs_id '100000' well-known text ''." After the 1000th such warning, also got "More than 1000 errors or warnings have been reported. No more will be reported from now."  Perhaps the conversion from .shp to .gpkg with ogr2ogr.exe generated these excess invalid files. These warnings appeared in the Downtown LA database as well, but the feature counts matched after conversion. Checking any further downstream for discrepencies in the processing pipeline was not performed.
+* For the powerline network dataset, statistics include both the tower point features and the wire lineal features.
+* There's a slight increase in the file size in the Los Angeles databases when comparing the results of Experiment 3 and Experiment 4. However, there is a significant decrease in the size of the Yemen database. From a quick inspection of the data, this seems to correlate with the fact that almost all the cultural features in Los Angeles come from 100_GSFeatures which require unique records per instance, whereas for Yemen the majority of cultural features come from 101_GTFeatures.
+* Experiment 3 has slightly better timings for large-count datasets than Experiment 4 in our use case since we scan each LOD in order, so having LODs in separate layers in the option 3 GeoPackage performs better.
+
+==== Conclusions
+* For the three Experiment 2 options Aechelon tested, the best outcome in both time and file size came from option 1C.
+* For Experiments 3 and 4, speed is slightly improved relative to Experiment 3 sub-option 1D but not sub-option 1C. On the other hand, the resulting storage size is markedly improved when compared against all options in Experiment 2, as would be expected. This is because, by design, these Experiments 3 and 4 go against the spirit of CDB data segmentation by file at the LOD level. This makes it more difficult to remove LODs, if so desired, when copying or exporting the CDB vector data. As such, the approaches used in Experiments 3 and 4 may not be as easy to incorporate and adopt as part of the CDB Standard.
+* To achieve the improvements in storage while also maintaining the speeds comparable with sub-option 1C and addressing the file-per-LOD issue, Aechelon recommends two additional experiments: (a) where each component selector of each LOD is in its own geopackage file---effectively a variant of sub-option 1C where the U and R references of the same component selectors are combined into one file; and (b) where each dataset’s LODs are in a separate geopackage file---effectively a variant of Experiment 3 where instead of storing each LOD in a separate layer in the same geopackage file, each LOD is a separate file.
+* If Aechelon were to recommend only one processing alternative, among those in this experiment, for inclusion as an alternate primary vector format in a future OCG CDB revision, it would be option 1C.
 
 ==== Compusult metrics from Experiment 2
 Approach: One GeoPackage per LOD per dataset
@@ -22,9 +139,9 @@ Total byte size of ShapeFiles (bytes): 3,569,324
 Total byte size of GeoPackages (bytes): 41,715,712
 Elapsed time (seconds): 173
 
-=== Results from Experiment 3
+=== FlightSafety Experiment Results
 
-=== Results from Experiment 4
+
 
 === Guidance
 A couple of performance comments (so far):
