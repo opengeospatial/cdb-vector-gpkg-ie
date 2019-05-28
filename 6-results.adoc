@@ -173,7 +173,47 @@ Further testing was performed to see what the trade offs were between options 1,
 - GeoPackage Option 3 was a conversion of each CDB dataset's features into a table for each level of detail (LOD) and component selector set, placed into a single GeoPackage (1 per dataset).  It also contained the most tables, and typically had more feature records than option 1 but fewer than option 4.
 - GeoPackage Option 4 was a conversion of each CDB dataset's features into a table for each component selector set, placed into a single GeoPackage (1 per dataset).  This method placed all levels of detail into the same table, resulting in a handful of tables, but possibly millions of features per table.
 
-=== Guidance
+==== FlightSafety Metrics
+
+===== Original Dataset Statistics
+Basic statistics were collected on the original CDB datasets used in the Interoperability Experiment.  The CDB storage size and file counts do not include any 0-sized files (they weren't required by the CDB specification) and do not include non-standard extension data.  The last two rows represent the proportion of vector data in the CDB, by the percentage of files and storage used.  The vector datasets used are:
+- 100_GSFeature
+- 101_GTFeature
+- 102_GeoPolitical
+- 201_RoadNetwork
+- 202_RailroadNetwork
+- 203_PowerlineNetwork
+- 204_HydrographyNetwork
+- 401_Navigation
+
+.Table of Dataset Statistics
+[width="90%",options="header"]
+|===
+|           | Northwest Pacific|  Yemen|Los Angeles
+|*Provider*	  |Cognitics	 |Presagis	|VATC
+|*CDB Geocell Tiles*|	27|	4|	1
+|*CDB Storage Size*|	214 GB	|17.4 GB	|59.6 GB
+|*CDB File Count*|	427,536 files	|112,837 files	|62,895 files
+|*Vector Storage Size*|	9,152 MB	|53.4 MB	|2,381 MB
+|*Vector File Count*|	109,490 files	|4714 files	|13,075 files
+|% of CDB storage as vectors	|4.18 %	|0.30 %	|3.90 %
+|% of CDB files as vectors	|25.6 %	|4.18 %	|20.8 %
+|===
+
+The main takeaway from this table is that vector data does not consume a large amount of storage space, but accounts for a prodigious number of files within a typical CDB.  The main driver of file counts are that Shapefiles are a multi-file format, where three (or four with the .prj projection file) files represent a single Shapefile.  In addition to the multifile format, CDB uses extra class-level and extended-level attributes encoded as extra DBF files.  So anywhere from 3 to 8 files are used to represent a single logical vector file.
+
+===== Specific Vector File Test Data
+Some of the testing below involved loading specific point/linear/areal vectors that represent a single Shapefile.  For these tests, examples were found that represent "worst-case" examples of large vector files.  These larger files would take more time to load, and most occurred within higher LODs that would lead to larger tables in options 3 and 4.  The following table records the specific shapefile data for individual tests.
+
+[width="90%",options="header"]
+|===
+|  | Northwest Pacific	| Yemen	|Los Angeles
+|*Point Vector* |	N46W124_D101_S002_T001_L04_U15_R12	| N12E045_D100_S001_T001_L04_U12_R0	| N34W119_D100_S001_T001_L05_U8_R20
+|*Linear Vector* |	N48W123_D201_S002_T003_L01_U0_R0	| N12E045_D201_S002_T003_L00_U0_R0	| N34W119_D201_S002_T003_L04_U1_R15
+|*Areal Vector* |	N47W120_D204_S002_T005_L02_U0_R2	| N12E044_D100_S002_T005_L02_U3_R3	| N34W119_D204_S002_T005_L03_U4_R7
+|===
+
+== Guidance
 A couple of performance comments (so far):
 
 . Structure of the data matters.  Timing differences in SQL queries on integers rather than strings is enough to matter.
