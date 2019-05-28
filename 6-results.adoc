@@ -18,7 +18,7 @@ For the purposes of this experiment, five feature types were considered and proc
 
 The changes implemented on the publisher side to support GeoPackage were the minimal necessary to get functional parity with the Shapefile based implementation. In other words, no attempt was made to optimize the code to take advantage of the internals of the GeoPackage files using sqlite, and all data access went through the OGR module.
 
-==== Methodology
+==== Aechelon Experiment Methodology
 
 The following is a concise description of the methodolocy used for execution of the Aechelon committed tasks in this Interoperability Experiment.
 
@@ -141,7 +141,37 @@ Elapsed time (seconds): 173
 
 === FlightSafety Experiment Results
 
+==== FlightSafety International's Use Case for CDB
+FlightSafety has developed both a CDB generation tool and a CDB Publisher client.  The performance requirements of the CDB Publisher are much greater than CDB generation, so this report will focus on loading and consuming a CDB dataset. The CDB Publisher uses a CDB data store as the source data for building the synthetic environment for FlightSafety's VITAL 1100 image generator system.  These systems are used for pilot training on a variety of flight simulator systems. The Publisher does not do any preprocessing of the CDB dataset; all CDB data that it consumes is discovered and loaded during the publishing.  This approach was chosen due to the world-wide scope of CDB and unknown quantity of content.  The CDB specification's structure makes it easy to find the file(s) containing the data needed for the synthetic environment creation. Based on the flight training system requirements, an appropriate level of detail of vector and model data is discovered and loaded.  The Publisher adapts to the available levels of detail of vector data, and the flight characteristics of the training device. The publishing system is primarily in C++, and the testing was all performed with C++ libraries and code.  The Shapefile API that is tested is a custom FlightSafety library, optimized for faster performance.
 
+==== FlightSafety Experiment Focus
+The experiments were focused on just-in-time uses of CDB, similar to how a FlightSafety visual system would use the data. Statistics were collected on the original CDB dataset, and the converted GeoPackage CDB datasets.  These were used to infer the cost of database configuration management and transmission/deployment to a training device. Testing was done on both currently encoded CDB shapefiles, and on converted GeoPackage encoded files (covering options 1, 3, and 4). Tests focused on the latency of loading files, processing data, and closing files. Tests were done on different conversion options and settings to come up with optimal recommendations
+
+==== FlightSafety Experiment Methodology
+
+This is the methodology used to evaluate, convert and test the CDB datasets using GeoPackage vector encoding.
+
+===== Data Acquisition: 
+Three CDB datasets were downloaded (from Cognitics, Presagis, and VATC) and loaded on a system. The datasets were then split into two CDBs, one of which contains all vector data and the other contains everything else.  They were linked together using CDB's versioning mechanism, so that the FlightSafety publisher sees the data as a single dataset. Further:
+- Any official or unofficial extension to the CDB was removed for testing purposes.
+- Any 0 size vector file was deleted from the CDB with vector data.  These were 0 size shp and shx files for datasets that should only be dbf, and cases of 0 size dbt files when they weren't needed alongside their dbf parent file.
+
+===== Data Evaluation: 
+All three CDB datasets were flown using FlightSafety's VITAL 1100 image generator and CDB publisher. During the fly-through, any data artifacts were noted and recorded.
+
+===== Data Conversion: 
+The python conversion scripts developed by Cognitics, Inc. were downloaded from GitHub. The scripts were modified to properly flatten class-level attributes into the feature table, and to properly handle DBase floating point and logical field types.  Index tables were also added to aid SQL queries designed to get back data for a specific CDB vector file. Script changes were published to a public GitHub under a FlightSafety account (link). When the scripts were run, they created a new output directory for the CDB vector data.  The Metadata folder was copied from the original vector CDB version, which then links this GeoPackage version to the rest of the CDB data. The three main conversion scripts used implemented GeoPackage encoding options 1, 3, and 4.
+
+===== GeoPackage Testing: 
+The initial data collection centered on the number of vector files and how much disk space was consumed.  All full CDB storage devices used a 4kB block size and recorded sizes include the "dead" space due to the minimum block size. The initial tests were testing shapefiles vs. option 1.  All vector files were located, and timed on the file open and accessing the data within the file.  Total processing time was recorded and compared between the two encodings.  This test accessed the geometry and all the attributes, whether they would have been used by the FlightSafety CDB publisher or not.
+
+The next set of tests involved working with worst case examples and comparing the same file open and access time as before, but for single files.  This highlights performance on the largest vector files.  The average performance times are reported here. 
+
+Further testing was performed to see what the trade offs were between options 1, 3, and 4.  These included loading identical vectors (from a single original shapefile) from each of three GeoPackage files converted in different ways: 
+
+- GeoPackage Option 1 was a straight conversion of the shapefile.  The GeoPackage contains a single data table with flattened class-level attributes, with the same number of records as the original shapefile
+- GeoPackage Option 3 was a conversion of each CDB dataset's features into a table for each level of detail (LOD) and component selector set, placed into a single GeoPackage (1 per dataset).  It also contained the most tables, and typically had more feature records than option 1 but fewer than option 4.
+- GeoPackage Option 4 was a conversion of each CDB dataset's features into a table for each component selector set, placed into a single GeoPackage (1 per dataset).  This method placed all levels of detail into the same table, resulting in a handful of tables, but possibly millions of features per table.
 
 === Guidance
 A couple of performance comments (so far):
