@@ -13,6 +13,13 @@ Our view is that a form of Option 1 is backwards compatible with the existing sp
 
 === Conclusions
 
+==== Aechelon
+
+* For the three Experiment 2 options Aechelon tested, the best outcome in both time and file size came from option 1C.
+* For Experiments 3 and 4, speed is slightly improved relative to Experiment 3 sub-option 1D but not sub-option 1C. On the other hand, the resulting storage size is markedly improved when compared against all options in Experiment 2, as would be expected. This is because, by design, these Experiments 3 and 4 go against the spirit of CDB data segmentation by file at the LOD level. This makes it more difficult to remove LODs, if so desired, when copying or exporting the CDB vector data. As such, the approaches used in Experiments 3 and 4 may not be as easy to incorporate and adopt as part of the CDB Standard.
+* To achieve the improvements in storage while also maintaining the speeds comparable with sub-option 1C and addressing the file-per-LOD issue, Aechelon recommends two additional experiments: (a) where each component selector of each LOD is in its own geopackage file---effectively a variant of sub-option 1C where the U and R references of the same component selectors are combined into one file; and (b) where each dataset’s LODs are in a separate geopackage file---effectively a variant of Experiment 3 where instead of storing each LOD in a separate layer in the same geopackage file, each LOD is a separate file.
+* If Aechelon were to recommend only one processing alternative, among those in this experiment, for inclusion as an alternate primary vector format in a future OCG CDB revision, it would be option 1C.
+
 ==== FlightSafety
 
 -	Shapefiles are a problematic format for several reasons: 
