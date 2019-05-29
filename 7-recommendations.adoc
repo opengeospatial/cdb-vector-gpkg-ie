@@ -1,9 +1,57 @@
+== Recommendations, Observations, and Conclusions
+
 This section discusses issues, recommendations and change requests.
 
-1. Backwards compatibility in the CDB context
+=== Backwards compatibility in the CDB context
+
+==== FlightSafety observations on backwards compatibility
+Our view is that a form of Option 1 is backwards compatible with the existing specification, for the following reasons:
+
+-	The CDB concept of a single "logical" file representing a vector file is preserved.
+-	The CDB conceptual model leans toward mixing the data model and the files on disk.  This should be disentangled in a future version of CDB, but it is difficult to do in a minor revision.
+-	CDB Versioning, where one file from a CDB dataset replaces/hides a file from another CDB dataset, would be difficult to fit together with a GeoPackage that contained "all" the vector files for that dataset.  A preferable solution is to evolve the conceptual model to handle this case in CDB 2.0.
+
+=== Conclusions
+
+==== FlightSafety
+
+-	Shapefiles are a problematic format for several reasons: 
+--	Shapefiles are a multi-file format to represent a single "logical" file.  Management of multi-file formats is always a bit harder than handing a single file.
+--	The CDB specification's use of extra DBF (DBase III) files for class-level and extended-level attribution is not standard for any current GIS tool, and makes the multi-file format problem worse.
+--	There are other small-level issues with shapefiles, including limited field name length, limited numbers of attributes, limited data types, and a single geometry type per shapefile.
+--	In all three test CDB datasets, the number of files greatly exceed the proportion of space on disk.  The large number of small files causes problems with efficient disk space usage and slows the distribution of a CDB dataset.
+-	Replacing a single shapefile with a GeoPackage (Option 1) seems to be a better solution for CDB 1.2 or a future CDB 1.x
+--	Changes to CDB clients involve less work than other options.
+--	On average, the performance was better with GeoPackage
+--	On specific worst case tests, Line Strings and Polygons were faster with GeoPackage.  Points were mixed, but likely fast enough for this use case.
+--	It would also fit within CDB's pre-existing versioning mechanism better than the other options, as it can maintain the single "file" paradigm where a vector file replaces/hides another vector file (even if the "file" is really a multi-file format).
+--	The class-level attributes would be easy to import into a flattened GeoPackage.  Importing extended-level attributes as a related table makes sense as well, although redesigning the odd extended attribute encoding would be recommended.
+--	The SWG is encouraged to implement a single vector encoding per CDB dataset/version, and a way to discover the vector encoding implemented from a file in the Metadata folder.
+-	GeoPackage options 3 or 4 would be best suited to a future compatibility-breaking version of CDB 2.0. 
+--	CDB client changes would be more extensive, but the performance gain would likely be worth the effort.
+--	More detail and additional specification requirements would be necessary to describe how to version CDB datasets when that dataset no longer maintains the "traditional" directory and file format that versioning was designed for. 
+--	The SQL query when loading the vectors that would be contained within a single shapefile can take twice as long as when these vectors are in a single GeoPackage, but the open cost can be amortized across many queries if the GeoPackage files remain open for a longer period of time.
+-	The OGC Interoperability Experiment was a good testing ground to develop familiarity with GeoPackage and to help the SWG come to a better consensus on the use of GeoPackage.  We would recommend having more IE's as other parts of the specification are reviewed and improved.
+
+
+=== Recommendations
+
+==== FlightSafety
+
+GeoPackage Recommendations
+
+-	From our experience, GDAL's GeoPackage driver will create non-standard GeoPackage files.  The SWG needs to decide if that is allowed, or if a stricter GeoPackage implementation is required. 
+--	GDAL defaults to using "fid" as the primary key in geometry tables.  GeoPackage specifies "id"
+--	As the conversion scripts use GDAL to convert geometry from shapefile to GeoPackage, GDAL allows the creation of MultiPolygon and MultiLineString features in Polygon and LineString tables (respectively).  When this happens, GDAL emits a warning that it is not creating standard GeoPackage files.  We would recommend standardizing with GeoPackage, in only allowing a single geometry type within a table.
+--	The conversion from shapefile logical fields to GeoPackage should be standardized.  It would be best to convert any CDB logical field (whether it was logical, string, or integer) into a GeoPackage boolean field.
+--	The table name should include enough information to be unique, no matter which option is implemented.
+-	The dataset/component selectors/lod/up/right values must be stored in the table.  Integers are recommended for storage for better performance.
+-	If the SWG decides on using option 3 or 4 for a future version of CDB, then index search tables should be required for better performance when querying data from a specific CDB Tile-LOD.
+
 
 2. Forwards compatibility in the CDB context
 
 3. How to let an application now what vector data encoding is/are available.
 
 4. Versioning and GPKG and CDB 1.2
+
