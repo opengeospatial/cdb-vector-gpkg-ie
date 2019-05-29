@@ -229,7 +229,6 @@ Before the first set of tests, the CDB datasets were converted one-to-one from s
 |*% Fewer Vector Files* |	77 %	|76 %	|80 %
 |===
 
-
 File counts for the GeoPackage CDB were between a 4:1 and 5:1 reduction in vector files.  The size changes varied dramatically, likely due to how efficient the attributes were packed into the original Shapefile's instance and class-level DBF files.  In general, an increase in CDB size is expected using option 1.
 
 ===== Option 1 Testing Focus
@@ -270,6 +269,39 @@ Performance +
 |===
 
 GeoPackage performance numbers were mixed for point data.  The GeoPackage performance seems linear with the number of features, but the Shapefile API tested was much faster on one case (Los Angeles) and much slower on another (Yemen).
+
+Note:  _The Northwest Pacific dataset uses a minimal number of class-level attributes, resulting in a larger flattened GeoPackage size.  In contrast, the Los Angeles dataset uses mostly unique class-level attributes, which yields a larger overall Shapefile size, but smaller GeoPackage size because fewer class-level attributes needed to be duplicated._
+
+[width="90%",options="header"]
+|===
+|*Line String Vectors*| Northwest Pacific	| Yemen	|Los Angeles
+|*Feature Count* |	8,183	2,457	3,343
+|*Shapefile Size* |	1.96 MB	|0.71 MB	|2.83 MB
+|*GeoPackage Size* |	2.65 MB	|1.08 MB	|1.18 MB
+|*Shapefile Read* |	62.2 ms	|26.3 ms	|17.4 ms
+|*GeoPackage Read* |	49.9 ms	|19.0 ms	|23.1 ms
+|* Relative GeoPackage +
+Performance +
+(>1.0 is faster)* |	1.246	|1.383	|1.225
+|===
+
+The use of GeoPackage increased performance across the board when linear data (22-38%) is processed and used.
+
+[width="90%",options="header"]
+|===
+|*PolygonVectors*| Northwest Pacific	| Yemen	|Los Angeles
+|*Feature Count* |	94	|198	|127
+|*Shapefile Size* |	388 kB	|387 kB	|126 kB
+|*GeoPackage Size* |	512 kB	|556 kB	|188 kB
+|*Shapefile Read* |	9.3 ms	|10.0 ms	|7.3 ms
+|*GeoPackage Read* |	6.3 ms	|6.4 ms	|4.9 ms
+|*Relative GeoPackage +
+|*Performance +
+(>1.0 is faster)* |	1.476	|1.569	|1.502
+|===
+
+Larger performance increases for areal data (47% - 56%), at the cost of relatively larger storage size. However, the sample size (number of polygon features) is quite small.
+
 
 == Guidance
 A couple of performance comments (so far):
