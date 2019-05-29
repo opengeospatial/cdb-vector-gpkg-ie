@@ -275,7 +275,7 @@ Note:  _The Northwest Pacific dataset uses a minimal number of class-level attri
 [width="90%",options="header"]
 |===
 |*Line String Vectors*| Northwest Pacific	| Yemen	|Los Angeles
-|*Feature Count* |	8,183	2,457	3,343
+|*Feature Count* |	8,183	|2,457	|3,343
 |*Shapefile Size* |	1.96 MB	|0.71 MB	|2.83 MB
 |*GeoPackage Size* |	2.65 MB	|1.08 MB	|1.18 MB
 |*Shapefile Read* |	62.2 ms	|26.3 ms	|17.4 ms
@@ -296,7 +296,7 @@ The use of GeoPackage increased performance across the board when linear data (2
 |*Shapefile Read* |	9.3 ms	|10.0 ms	|7.3 ms
 |*GeoPackage Read* |	6.3 ms	|6.4 ms	|4.9 ms
 |*Relative GeoPackage +
-|*Performance +
+Performance +
 (>1.0 is faster)* |	1.476	|1.569	|1.502
 |===
 
