@@ -169,9 +169,11 @@ The next set of tests involved working with worst case examples and comparing th
 
 Further testing was performed to see what the trade offs were between options 1, 3, and 4.  These included loading identical vectors (from a single original shapefile) from each of three GeoPackage files converted in different ways: 
 
-- GeoPackage Option 1 was a straight conversion of the shapefile.  The GeoPackage contains a single data table with flattened class-level attributes, with the same number of records as the original shapefile
-- GeoPackage Option 3 was a conversion of each CDB dataset's features into a table for each level of detail (LOD) and component selector set, placed into a single GeoPackage (1 per dataset).  It also contained the most tables, and typically had more feature records than option 1 but fewer than option 4.
-- GeoPackage Option 4 was a conversion of each CDB dataset's features into a table for each component selector set, placed into a single GeoPackage (1 per dataset).  This method placed all levels of detail into the same table, resulting in a handful of tables, but possibly millions of features per table.
+- GeoPackage Option 1 (Experiment 2 in the IE Activity Plan) was a straight conversion of the shapefile.  The GeoPackage contains a single data table with flattened class-level attributes, with the same number of records as the original shapefile
+- GeoPackage Option 3 (Experiment 3 in the IE Activity Plan) was a conversion of each CDB dataset's features into a table for each level of detail (LOD) and component selector set, placed into a single GeoPackage (1 per dataset).  It also contained the most tables, and typically had more feature records than option 1 but fewer than option 4.
+- GeoPackage Option 4 (Experiment $ in the IE Activity Plan) was a conversion of each CDB dataset's features into a table for each component selector set, placed into a single GeoPackage (1 per dataset).  This method placed all levels of detail into the same table, resulting in a handful of tables, but possibly millions of features per table.
+
+Note: _The results for Experiment 1 (Conversion) are provided in the discussions of Option 1, 3, and 4 (IE Experiments 2, 3, and 4)._
 
 ==== FlightSafety Metrics
 
@@ -301,6 +303,53 @@ Performance +
 |===
 
 Larger performance increases for areal data (47% - 56%), at the cost of relatively larger storage size. However, the sample size (number of polygon features) is quite small.
+
+==== GeoPackage Option 3 and 4 Testing
+
+Please remember that in the FlightSafety presentation of results:
+
+Option 1 = Experiment 2 +
+Option 3 = Experiment 3 +
+Option 4 = Experiment 4 +
+
+===== Option 3 & 4 Conversion Statistics
+
+In addition to the one-to-one shapefile to GeoPackage encoding, we wished to also test the other GeoPackage encodings represented by options 3 and 4.  Conversions were performed to create these new CDB datasets using the modified python conversion scripts.  These were tested against the option 1 CDB datasets used in the previous tests.  The dataset statistics (file sizes and counts) are in the table below.  Conversion notes include:
+
+- The parts of the file name (dataset code/component selectors/lod/row/column values) were initially stored as strings.  Converting these to integers led to about a 10% improvement over the initial string conversion.
+- Index tables were created for the parts of the filename that did not comprise the table name.  This led to significant improvements that were up to 90% faster than without the index. 
+-- Option 3 table names were of the form:  "D100_L04_S001_T001".  So indexes were created for the row and column values, assuming that a user might want to generate a SQL query on that table's row and column values.
+-- Option 4 table names were of the form:  "D100_S001_T001".  So indexes were created for the lod, row and column values, assuming that a user might want to generate a SQL query on that table's lod and row and column values.
+
+[width="90%",options="header"]
+|===
+|*Conversion Statistics*| Northwest Pacific	| Yemen	|Los Angeles
+|*GeoPackage 1 File Count* |	25,083 files	|1,146 files	|2,615 files
+|*GeoPackage 3/4 File Count* |	161 files	|22 files	|7 files
+|*% Fewer Vector Files +
+Options 3/4 vs Option 1* |	99.4 %	|98 %	|99.7 %
+|===
+
+As expected the number of files is much smaller using options 3 or 4.
+
+[width="90%",options="header"]
+|===
+|*Conversion Statistics*| Northwest Pacific	| Yemen	|Los Angeles
+|*Shapefile Storage Size* |	9,152 MB	|53.4 MB	|2,381 MB
+|*GeoPackage 1 Storage Size* |	17,827 MB	|157.9 MB	|938 MB
+|*GeoPackage 3 Storage Size* |	16,479 MB	|59.3 MB	|728 MB
+|*GeoPackage 4 Storage Size* |	16,729 MB	|55.5 MB	|740 MB
+|*Options 1 & 3 Relative Size +
+(> 1 is larger)* |	0.92	|0.38	|0.78
+|*Options 1 & 4 Relative Size +
+(> 1 is larger)* |	0.94	|0.35	|0.79
+|*Shapefile vs Option 3 Size +
+(> 1 is larger)* |	1.80	|1.11	|0.31
+|*Shapefile vs Option 4 Size +
+(> 1 is larger)* |	1.83	|1.04	|0.31
+|===
+
+In all cases, the combined GeoPackage datasets required less storage than the option 1 GeoPackage files. This was true even though the combined datasets have index tables that the Option 1 GeoPackages do not have.  Note that in all cases even combining the GeoPackage files into a minimal set does not lead to a smaller vector dataset than Shapefiles.
 
 
 == Guidance
