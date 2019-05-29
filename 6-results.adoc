@@ -351,6 +351,112 @@ As expected the number of files is much smaller using options 3 or 4.
 
 In all cases, the combined GeoPackage datasets required less storage than the option 1 GeoPackage files. This was true even though the combined datasets have index tables that the Option 1 GeoPackages do not have.  Note that in all cases even combining the GeoPackage files into a minimal set does not lead to a smaller vector dataset than Shapefiles.
 
+===== Testing Procedure
+The testing focus for comparing the different GeoPackage encoding options was on the latency of loading the GeoPackage file and using SQL queries to return the records converted from a single Shapefile.  This approach is similar to the Shapefiles vs GeoPackage testing done above, but the test was constructed slightly differently.
+
+-	The GeoPackage was opened and an SQL query was performed to return the data that represented a single shapefile's vector data.  In each query, the number of records in the table varied according to the type of conversion performed, but the amount of data and the values returned by the query were identical.
+-	The SQL queries used for each GeoPackage option were variations on the following: 
+--	Option 1:  SELECT * FROM 'D100_S001_T001_L04_U12_R0'
+--	Option 3:  SELECT * FROM '100_GSFeature_L04_S001_T001' WHERE _UREF='12' AND _RREF='0'
+--	Option 4:  SELECT * FROM '100_GSFeature_S001_T001' WHERE _LOD='4' AND _UREF='12' AND _RREF='0'
+-	For timing purposes, each GeoPackage's open and query was run 100 times, alternating between each option test in succession.
+-	The relative speed row shows the performance hit of doing an open on a larger GeoPackage with more tables and more records to search through.  For example, a 2.0 represents a test that took twice as long as the option 1 test.
+
+[width="90%",options="header"]
+|===
+|*Point Queries*| Northwest Pacific	| Yemen	|Los Angeles
+|*Option 1 Table Size (Count)* |	16,384	|5,552	|4,734
+|*Option 1 Read GeoPackage* |	87.3 ms	|39.6 ms	|38.6 ms
+|*Option 3 Table Size (Count)* |	3,375,935	| 7,766	| 493,936
+|*Option 3 SQL Query* |	138.2 ms	|59.3 ms	|51.5 ms
+|*Speed Relative to Option 1 +
+(>1 is faster)* |	0.63	|0.67	|0.75
+|*Option 4 Table Size (Count)*|	6,865,325	|43,122	|2,842,150
+|*Option 4 SQL Query*|	173.9 ms	|44.9 ms	|79.7 ms
+|*Speed Relative to Option 1 +
+(>1 is faster)* |	0.50	|0.88	|0.48
+|===
+
+Option 3 GeoPackage file opens are sensitive to the number of tables in the GeoPackage, and tend to dominate the timing of cases with fewer features.  Option 4 has fewer tables and faster GeoPackage opens, but is more sensitive to the number of records in the table that need to be searched.
+
+[width="90%",options="header"]
+|===
+|*Line String Queries*| Northwest Pacific	| Yemen	|Los Angeles
+|*Option 1 Table Size (Count)* |	8,183	|2,457	|3,343
+|*Option 1 Read GeoPackage* |	53.8 ms	|22.3 ms	|26.4 ms
+|*Option 3 Table Size (Count)* |	16,454	|2,457	|80,697
+|*Option 3 SQL Query*|	63.6 ms	|24.5 ms	|28.7 ms
+|*Speed Relative to Option 1 +
+(>1 is faster)* |	0.85	|0.91	|0.92
+|*Option 4 Table Size (Count)* |	79,512	|2,457	|149,757
+|*Option 4 SQL Query* |	52.4 ms	|23.0 ms	|29.7 ms
+|*Speed Relative to Option 1 +
+(>1 is faster)* |	1.03	|0.97	|0.89
+|===
+
+In both options 3 and 4, GeoPackage files perform slightly worse, but perform better than the point query because of fewer features returned.
+
+[width="90%",options="header"]
+|===
+|*Polygon Queries*| Northwest Pacific	| Yemen	|Los Angeles
+|*Option 1 Table Size (Count)* |	94	|198	|127
+|*Option 1 Read GeoPackage* |	5.4 ms	|6.1 ms	|4.3 ms
+|*Option 3 Table Size (Count)* |	207	|330	|1,238
+|*Option 3 SQL Query* |	11.3 ms	|16.2 ms	|6.3 ms
+|*Speed Relative to Option 1 +
+(>1 is faster)* |	0.48	|0.37	|0.69
+|*Option 4 Table Size (Count)* |	2,250	|1,531	|1,480
+|*Option 4 SQL Query* |	6.1 ms	|7.4 ms	|5.0 ms
+|*Speed Relative to Option 1 +
+(>1 is faster)* |	0.88	|0.82	|0.86
+|===
+
+The overhead of opening GeoPackage files with lots of tables in the option 3 encoding is particularly prominent in the polygon queries.  The option 4 encoding is close to the single vector file per GeoPackage timing.
+
+==== Further GeoPackage Option 3 & 4 Testing
+
+===== Testing Procedure
+
+The initial SQL query testing only performed a single query per GeoPackage open and close.  A more typical use case with options 3 and 4 would be to hold a GeoPackage file open for longer periods of time, and perform more queries per file access.  In this test, the same query was performed, but 100 queries were performed while the file was open.  There are limitations to the results of this test, as the same query was performed over and over.  It was likely that the parts of the file being accessed remained in memory the whole time, and this only measures the time to copy the data out of the GeoPackage file.  But it is a starting point toward understanding the performance of repeated queries in a large file.
+
+The test results show the time per query, plus a 1/100 portion of the GeoPackage open and close time.  It also compares this time with Option 1's performance, where there is little gained by keeping the GeoPackage open.
+
+===== Test Results
+
+[width="90%",options="header"]
+|===
+|*Points - 100 Queries*| Northwest Pacific	| Yemen	|Los Angeles
+|*Option 1 - 1 Query* |	87.3 ms	|46.0 ms	|38.6 ms
+|*Option 3 - 100 Queries Average* |	64.6 ms	|25.9 ms	|26.4 ms
+|*Percent Faster than Option 1* |	26%	|35%	|32%
+|*Option 4 - 100 Queries Average* |	68.2 ms	|24.2 ms	|23.8 ms
+|*Percent Faster than Option 1* |	22%	|39%	|38%
+|===
+
+Keeping the GeoPackage open between queries improves performance.  But note that not all cases are faster than the original Shapefile performance.
+
+[width="90%",options="header"]
+|===
+|*Line Strings - 100 Queries*| Northwest Pacific	| Yemen	|Los Angeles
+|*Option 1 - 1 Query* |	53.8 ms	|22.3 ms	|26.4 ms
+|*Option 3 - 100 Queries Average* |	34.1 ms	|11.8 ms	|13.3 ms
+|*Percent Faster than Option 1* |	37%	|47%	|49%
+|*Option 4 - 100 Queries Average* |	34.9 ms	|11.1 ms	|13.3 ms
+|*Percent Faster than Option 1* |	35%	|50%	|49%
+|===
+
+[width="90%",options="header"]
+|===
+|*Polygon - 100 Queries*| Northwest Pacific	| Yemen	|Los Angeles
+|*Option 1 - 1 Query* |	5.4 ms	|6.1 ms	|4.3 ms
+|*Option 3 - 100 Queries Average* |	1.1 ms	|1.6 ms	|0.78 ms
+|*Percent Faster than Option 1* |	80%	|75%	|82%
+|*Option 4 - 100 Queries Average* |	0.79 ms	|1.1 ms	|0.85 ms
+|*Percent Faster than Option 1* |	85%	|82%	|80%
+|===
+
+This approach shows that there is some significant overhead in opening large GeoPackage files.  Keeping them open can mitigate some of the overhead.  We do not believe that a full client would see this level of performance, but there is a good possibility a client would see improved performance over option 1.
+
 
 == Guidance
 A couple of performance comments (so far):
