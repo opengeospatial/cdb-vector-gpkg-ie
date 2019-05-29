@@ -5,6 +5,8 @@
 
 (( Once the IE activity is completed, Insert key findings here. ))
 
+Just a note for now. Aechelon and FlightSafety - Shapefile ==> GeoPackage good for 1.2
+
 === Requirements & Research Motivation
 (( In the commercial modelling and simulation industry, geospatial data content and use is exploding at a rate that is outpacing the innovation and utilization of the traditional M&S industry. The M&S and geospatial-intelligence (GEOINT) industries are on a path of convergence. Within the OGC, there are two geospatial standards that best enable the unification of the M&S and GEOINT industries: OGC CDB and GeoPackage. OGC CDB and GeoPackage are both standards increasingly used in M&S and GEOINT industry, but they both contain weaknesses and strengths when it comes to the combined needs of both industries. ))
 
