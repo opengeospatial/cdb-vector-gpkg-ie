@@ -213,6 +213,64 @@ Some of the testing below involved loading specific point/linear/areal vectors t
 |*Areal Vector* |	N47W120_D204_S002_T005_L02_U0_R2	| N12E044_D100_S002_T005_L02_U3_R3	| N34W119_D204_S002_T005_L03_U4_R7
 |===
 
+==== Shapefile vs. GeoPackage Option 1 (Experiment 2) Testing
+
+===== Option 1 Conversion Statistics
+Before the first set of tests, the CDB datasets were converted one-to-one from shapefiles to GeoPackage, using the option 1 conversion.  Dataset statistics were then collected on the new datasets and compared with the original datasets.
+
+[width="90%",options="header"]
+|===
+|  | Northwest Pacific	| Yemen	|Los Angeles
+|*Shapefile Vector Storage Size* |	9,152 MB	|53.4 MB	|2,381 MB
+|*Shapefile Vector File Count* |	109,490 files	|4714 files	|13,075 files
+|*GeoPackage 1 Storage Size* |	17,827 MB	|157.9 MB	|938 MB
+|*GeoPackage 1 File Count* |	25,083 files	|1,146 files	|2,615 files
+|*Relative Size (>1 is larger)* |	1.95	|2.96	|0.39
+|*% Fewer Vector Files* |	77 %	|76 %	|80 %
+|===
+
+
+File counts for the GeoPackage CDB were between a 4:1 and 5:1 reduction in vector files.  The size changes varied dramatically, likely due to how efficient the attributes were packed into the original Shapefile's instance and class-level DBF files.  In general, an increase in CDB size is expected using option 1.
+
+===== Option 1 Testing Focus
+The testing focused on the latency of loading and processing the vector data files, and traversing all the geometry features and attributes.  This approach was used to simulate a flight simulation client's use of CDB.
+
+===== Test Procedure 1
+The first test was to traverse the entire CDB dataset, find all the vector files and collect the time it took to open, process, and close each vector file.  For each dataset, every vector file was located by walking the directory structure, and then the file loading and processing was timed.  This test was run 30 times on the smaller CDB datasets (Yemen and Los Angeles) and 10 times on the larger Northwest Pacific dataset.  The sum of the file load and process steps are recorded below (while ignoring the file search times).
+
+[width="90%",options="header"]
+|===
+|*All Vector Files*| Northwest Pacific	| Yemen	|Los Angeles
+|*Shapefile Timing* |	835 sec	|10.2 sec	|27.5 sec
+|*GeoPackage Timing* |	478 sec	|4.2 sec	|25.7 sec
+|*GeoPackage Speed Comparison* |	42% faster	|58% faster	|6.7% faster
+|*Average Shapefile Storage Size* |	374 kB	|48 kB	|923 kB
+|===
+
+This table shows, on average, that using GeoPackages are faster than using Shapefiles.  These results imply that GeoPackage has a better advantage with smaller files. For example, GeoPackage performed best on Yemen with its relatively small shapefile/vector files.  However, there is less of an advantage with larger vector files. Therefore, further testing using larger files is recommended.
+
+===== Test Procedure 2
+The next set of tests focused on some of the largest individual vector files. This test was performed to evaluate some of the worst case examples.  The exact file names are mentioned above in the Specific Vector File Test Data section.  These test datasets were much larger than the average vector file and cover the three basic geometry types: Points, Line Strings and Polygons.  This allowed testing of files that have many attributes compared to coordinates (points), and testing of files with many coordinates compared to the number of attributes (polygons).
+
+- The file size for Shapefiles includes both the instance-level files (.shp, .shx, .dbf) and the class-level attributes (.dbf), but no extended attributes or projection information.  The GeoPackage file size was the single .gpkg file.
+- The timing numbers include opening the file and traversing the geometry and every attribute in each record, including those that would otherwise not be used by the FlightSafety client.  The timing test was performed 100 times alternating between loading from the shapefile CDB dataset, and the equivalent GeoPackage CDB dataset.
+- The last row represents the relative performance of GeoPackage as compared to Shapefiles, with a number higher than 1.0 representing increased speed.
+
+[width="90%",options="header"]
+|===
+|*Point Vectors*| Northwest Pacific	| Yemen	|Los Angeles
+|*Feature Count* |	16,384	|5,552	|4,734
+|*Shapefile Size* |	1.91 MB	|1.40 MB	|3.63 MB
+|*GeoPackage Size* |	3.93 MB	|1.46 MB	|1.18 MB
+|*Shapefile Read* |	55.8 ms	|64.4 ms	|17.4 ms
+|*GeoPackage Read* |	82.3 ms	|36.78 ms	|39.9 ms
+|*Relative GeoPackage +
+Performance +
+(>1.0 is faster)* |	0.678	|1.751	|0.437
+|===
+
+GeoPackage performance numbers were mixed for point data.  The GeoPackage performance seems linear with the number of features, but the Shapefile API tested was much faster on one case (Los Angeles) and much slower on another (Yemen).
+
 == Guidance
 A couple of performance comments (so far):
 
