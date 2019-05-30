@@ -132,11 +132,35 @@ This experiment researched the approach of using flattened attribution plus the 
 .Flattened Attributes Approach
 image::images/experiment-2-option-1d.png[width=800,align="center"]
 
-=== Experiment 3
+=== Experiment 3 - Each CDB LoD as a layer in GeoPackage
+
+The methodology for Experiment 3 involves: 
+
+The goal of this experiment is to significantly reduce the number of files in both a CDB datastore and in the resulting GeoPackage. Steps in this experiment include:
+
+- Modify implementation software to support storing an entire CDB Level of Detail (LoD) in a single GeoPackage.
+- Evaluate and compare performance using the baseline CDB datasets and the Alternative #2 datasets.
+- Evaluate analysis and results from Experiment #3 for performance, backwards-compatibility and risks to interoperability.
+
+In this approach, the tables in the GeoPackage correspond to each LOD of CDB. The GeoPackage would contain 24 tables for each of the CDB LODs. Each CDB geotile would contain a GeoPackage to correspond to the CDB data stores (such road networks,
+geospecific points, etc.). CDB tiles for a data store combine into a single GeoPackage table within that given LOD where the tile definition (row and column) would be queryable attributes for each feature. In simple language, to find the features in a tile for a particular geotile’s road network in LOD 3 of CDB, a consumer would open the road network GeoPackage, open the table that corresponds to LOD, and query for results where the column and row reference matches the CDB tile.
 
 FlightSafety and Luciad are planning on running experiment 3.
 
-=== Experiment 4
+=== Experiment 4: Store each Geocell of Vector Data as a layer in GeoPackage
+
+The methodology involves:
+
+This experiment extends Experiment 3 (above) to have a single GeoPackage per Geocell in a CDB datastore. This results in all LODs and all CDB feature layers in a single GeoPackage. The steps in this experiment include:
+
+- Modify implementation software to support storing an entire GeoCell in a GeoPackage.
+- Evaluate and compare performance using the baseline CDB datasets and the Alternative #3 datasets.
+- Evaluate analysis and results from Experiment #4 for performance, backwards-compatibility and risks to interoperability.
+
+In this approach, the tables in the GeoPackage correspond to each data store of CDB (such road networks, geospecific points, etc.). The GeoPackage would contain eight (8) layers representing each of the CDB data stores (GSFeature, GTFeature,
+GeoPolitical, VectorMaterial, RoadNetwork, RailRoadNetwork, PowerLineNetwork, and HydrographyNetwork). CDB tiles and LODs for a data store combine into a single GeoPackage table where the tile definition (row and column) and LOD would be queryable attributes for each feature. In simple language, to find the features in a location for a particular geotile’s road network in LOD 3 of CDB, a consumer would open the geotile’s GeoPackage, open the table that corresponds to data store, and query for results where the LOD column and row reference matches the CDB tile and LOD.
 
 FlightSafety and Luciad are planning on running experiment 4.
+
+
 

@@ -1,0 +1,12 @@
+{
+        "1": {
+                "OGC_doc_number": "19-007",
+                "urn":"http://www.opengis.net/doc/PER/CDB-GPKG-IE",
+                "title":"OGC CDB Vector Data in GeoPackage Interoperability Experiment",
+                "path":"er.adoc",
+                "options": ["--trace"],
+                "a":[
+                        "data-uri"
+                ]
+        }
+}

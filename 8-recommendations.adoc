@@ -1,8 +1,0 @@
-This section discusses issues, recommendations and change requests.
-
-1. Backwards compatibility in the CDB context
-
-2. Forwards compatibility in the CDB context
-
-3. How to let an application now what vector data encoding is/are available.
-
