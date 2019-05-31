@@ -47,7 +47,7 @@ All questions regarding this document should be directed to the editor or the co
 |((Participant)) | (( Paul Foley )) | (( KaDSci ))
 |((Participant)) | (( Priamos Georgiades )) | (( Aechelon ))
 |((Participant)) | (( Robert Goff )) | (( Hexagon US Federal ))
-|((Participant)) | (( Dave Lajoie )) | (( Presgis ))
+|((Participant)) | (( Dave Lajoie )) | (( Presagis ))
 |((Participant)) | (( Graham Long )) | (( Thales ))
 |((Participant)) | (( Jason McDonald )) | (( Compusult ))
 |((Participant)) | (( Nacho Sans-Pastor )) | (( Aechelon ))
