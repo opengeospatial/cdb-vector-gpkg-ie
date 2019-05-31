@@ -20,6 +20,14 @@ Our view is that a form of Option 1 is backwards compatible with the existing sp
 * To achieve the improvements in storage while also maintaining the speeds comparable with sub-option 1C and addressing the file-per-LOD issue, Aechelon recommends two additional experiments: (a) where each component selector of each LOD is in its own geopackage file---effectively a variant of sub-option 1C where the U and R references of the same component selectors are combined into one file; and (b) where each dataset’s LODs are in a separate geopackage file---effectively a variant of Experiment 3 where instead of storing each LOD in a separate layer in the same geopackage file, each LOD is a separate file.
 * If Aechelon were to recommend only one processing alternative, among those in this experiment, for inclusion as an alternate primary vector format in a future OCG CDB revision, it would be option 1C.
 
+==== CAE Conclusions
+
+Although previous experiments with 1-to-1 Shapefile-to-GeoPackage conversion have been very positive, our experiences indicate mixed results. On one hand, we observe substantial benefit in reducing the number of files stored and loaded, and we also observe the possibility of a comparable (or faster) decode time; but on the other hand, we see potentially-problematic increases in the amount of storage space required.
+
+The negative effects are amplified for CDBs with large numbers of small Shapefiles. The GeoPackage format (especially as outputted by GDAL) is very space-inefficient when it comes to encoding tiles with small quantities of data. (Notably, even if we moved to a 1-tile-per-table instead of a 1-tile-per-file approach, the underlying sqlite format seems to allocate a minimum of 4 KB per table regardless of how little data is in it.)
+
+Please see CAE recommendations
+
 ==== FlightSafety
 
 -	Shapefiles are a problematic format for several reasons: 
@@ -42,6 +50,24 @@ Our view is that a form of Option 1 is backwards compatible with the existing sp
 
 
 === Recommendations
+
+==== CAE Recommendations
+
+===== Suggestion 1: Storage versus Transport Format
+
+We have essentially been using GeoPackage as a data _transfer_ format in this experiment, when its design seems to be much better used as a data _storage_ format. The GeoPackage format encodes indexes, triggers, sequences, and metadata as well as feature data, and it also supports real-time addition, removal, and update of records. In this experiment, we make use of none of these features.
+
+We suggest considering GeoJSON as a candidate format for the 1-to-1 Shapefile conversion case (Option 1a). We may, with GeoJSON, obtain the same reduction in file count while simultaneously obtaining better performance and storage characteristics for CDBs with large numbers of small vector files. To obtain scalable performance characteristics with GeoJSON, we will want to base implementations on RapidJSON or similar parser (rather than libjson, which is currently used by GDAL).
+
+It is worth noting here also that GeoJSON supports other variants of the Option 1 experiment, e.g., attribute flattening (Options 1c/1d).
+
+===== Suggestion 2: GeoPackage as an Incremental Data Store Version
+
+In this experiement, we have explored the idea of placing GeoPackages _inside_ a CDB. We suggest that this may not be the best approach for maximizing compatibility. GeoPackage, like CDB, functions conceptually as an independent data store. We would like to raise the possibility of using GeoPackage as an incremental data store _version_, which would essentially allow a GeoPackage to replace a CDB version at its root (at least to the extent that all data inside the CDB can be converted losslessly into GeoPackage data). The idea is to be able to add a GeoPackage as an incremental version without modifying the underlying CDB, or vice versa. What we would have to do in this case is define a bidirectional equivalency between a CDB directory path and a GeoPackage/sqlite index--this would allow us clearly-defined semantics for mixing and matching GeoPackage and CDB data stores, with minimal impact on existing standards and implementations.
+
+===== Suggestion 3: The CDB Directory Hierarchy as a Key-Value Store
+
+We would like to raise a particular opportunity for future-proofing the standard. Conceptually, the CDB directory hierarchy functions as an index: any given directory path is essentially a key, and the value accessed by the key is a file. If we introduce a level of abstraction that allows us to discuss the CDB as a type of key-value store, then we open up a range of new possibilities in terms of physical implementation. For example, there are any number of database engines that are able to function as fast key-value stores, from lightweight mobile solutions like sqlite to highly-distributed cloud-capable NoSQL solutions like MongoDB. This would conceptually simplify the idea of a geographic database, allowing implementors more freedom to choose the storage technology that best suits them while simultaneously providing a natural path toward remote/Internet query of CDBs.
 
 ==== FlightSafety
 
