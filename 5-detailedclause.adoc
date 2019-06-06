@@ -10,7 +10,7 @@ This section discusses the experiment and particpant participation in detail. Th
 The following tables for provides an overview of wchich experiments were executed by each particpant.
 
 |===
-|Partipant|Experiment 1|Experiment 2|Experiment 3|Experiment 4
+|Participant|Experiment 1|Experiment 2|Experiment 3|Experiment 4
 |Aechelon|X|X| |
 |CAE|X|X| |
 |Compusult|X|X|X|X
