@@ -24,6 +24,18 @@ Three complete CDB data stores were provided for use in this Interoperability Ex
 
 ==== The CDB Data Stores and tools used in this IE
 
+This section provides a short summary of the CDB data stores and tools used by each of the participants in this OGC Interoperability Experiment. Greater detail for each particpants work can be found in Section 6 (Results) of this report.
+
+===== Aechelon
+
+Aechelon used the following CDB data stores in their experiments:
+
+- Yemen (4 geocells), from Presagis.
+- Downtown Los Angeles (1 geocell), from VATC.
+- Greater Los Angeles (4 geocells), from Cognitics.
+
+Aechelon used the following tools in their experiments. The CDB data stores were used as the source for content to feed a publishing process into the Aechelon Image Generator (IG) runtime format. The publishing software is in python, with invocations of C++ EXEs for performance-critical processing. The feature scan step is entirely in Python, version 3.5. The changes implemented on the publisher side to support GeoPackage were the minimal necessary to get functional parity with the Shapefile based implementation. In other words, no attempt was made to optimize the code to take advantage of the internals of the GeoPackage files using sqlite, and all data access went through the OGR module.
+
 ===== Hexagon/Luciad
 Hexagon/Luciad utilized the Yemen CDB data store. The tools used for all experiments are elements of Luciad CDB Studio.
 
