@@ -1,10 +1,15 @@
 == Recommendations, Observations, and Conclusions
 
-This section discusses issues, recommendations and change requests.
+This section discusses conclusions and recommendations . There is also a section on the issue of backwards compatability. A number of issues for future discussion and consideration were also identified. These include:
+
+- Forwards compatibility in the CDB context
+- How to let an application know what vector data encoding is/are available.
+- Versioning and GPKG and CDB 1.2
 
 === Backwards compatibility in the CDB context
 
 ==== FlightSafety observations on backwards compatibility
+
 Our view is that a form of Option 1 is backwards compatible with the existing specification, for the following reasons:
 
 -	The CDB concept of a single "logical" file representing a vector file is preserved.
@@ -48,6 +53,13 @@ Please see CAE recommendations
 --	The SQL query when loading the vectors that would be contained within a single shapefile can take twice as long as when these vectors are in a single GeoPackage, but the open cost can be amortized across many queries if the GeoPackage files remain open for a longer period of time.
 -	The OGC Interoperability Experiment was a good testing ground to develop familiarity with GeoPackage and to help the SWG come to a better consensus on the use of GeoPackage.  We would recommend having more IE's as other parts of the specification are reviewed and improved.
 
+==== Hexagon/Luciad Conclusions
+
+*Standard Visualization Metrics* - Overall visualization performance was similar between all experiments for each dataset. Converting to GeoPackage has no significant impact either positive or negative on visualization once the data is loaded.
+
+*Data Ingest* - Data ingest for visualization was highly dependent on the size and structure of the underlying GeoPackage datasets and the architecture of the data ingest code. Both load times and heap memory usage were much greater for the combined GeoPackages on large datasets. While major adjustments to the GeoPackage interactivity was beyond the scope of this IE minor modifications to reduce file I/O on the combined datasets showed potential for improvement in data loading time.
+
+*Data Conversion* - For data conversion the best results were also obtained from Experiments 3 & 4. The caveat here is that some memory issues were encountered with the provided datasets as more layers and data were added to a single GeoPackage which introduces questions of scalability for these approaches.
 
 === Recommendations
 
@@ -81,6 +93,9 @@ We would like to raise a particular opportunity for future-proofing the standard
 *	The dataset/component selectors/lod/up/right values must be stored in the table.  Integers are recommended for storage for better performance.
 *	If the SWG decides on using option 3 or 4 for a future version of CDB, then index search tables should be required for better performance when querying data from a specific CDB Tile-LOD.
 
+==== Hexaagon/Luciad Recommendation
+
+Further investigation into the optimal structure of combining multiple sub-datasets (rail, hydrography, etc) and multiple levels of detail into a single GeoPackage could alleviate several encountered performance drawbacks with the CDB datasets in Experiments 3 & 4. At this point without this investigation and guidance Hexagon US Federal recommends the CDB architecture presented in Experiment 2 which provides both a reduction in the dataset’s file count and minimizes the impact to existing CDB applications accessing data in the current tiled directory structure.
 
 2. Forwards compatibility in the CDB context
 
