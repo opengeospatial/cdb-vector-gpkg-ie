@@ -73,13 +73,13 @@ We would like to raise a particular opportunity for future-proofing the standard
 
 ===== GeoPackage Recommendations
 
--	From our experience, GDAL's GeoPackage driver will create non-standard GeoPackage files.  The SWG needs to decide if that is allowed, or if a stricter GeoPackage implementation is required. 
---	GDAL defaults to using "fid" as the primary key in geometry tables.  GeoPackage specifies "id"
---	As the conversion scripts use GDAL to convert geometry from shapefile to GeoPackage, GDAL allows the creation of MultiPolygon and MultiLineString features in Polygon and LineString tables (respectively).  When this happens, GDAL emits a warning that it is not creating standard GeoPackage files.  We would recommend standardizing with GeoPackage, in only allowing a single geometry type within a table.
---	The conversion from shapefile logical fields to GeoPackage should be standardized.  It would be best to convert any CDB logical field (whether it was logical, string, or integer) into a GeoPackage boolean field.
---	The table name should include enough information to be unique, no matter which option is implemented.
--	The dataset/component selectors/lod/up/right values must be stored in the table.  Integers are recommended for storage for better performance.
--	If the SWG decides on using option 3 or 4 for a future version of CDB, then index search tables should be required for better performance when querying data from a specific CDB Tile-LOD.
+*	From our experience, GDAL's GeoPackage driver will create non-standard GeoPackage files.  The SWG needs to decide if that is allowed, or if a stricter GeoPackage implementation is required. 
+**	GDAL defaults to using "fid" as the primary key in geometry tables.  GeoPackage specifies "id"
+**	As the conversion scripts use GDAL to convert geometry from shapefile to GeoPackage, GDAL allows the creation of MultiPolygon and MultiLineString features in Polygon and LineString tables (respectively).  When this happens, GDAL emits a warning that it is not creating standard GeoPackage files.  We would recommend standardizing with GeoPackage, in only allowing a single geometry type within a table.
+**	The conversion from shapefile logical fields to GeoPackage should be standardized.  It would be best to convert any CDB logical field (whether it was logical, string, or integer) into a GeoPackage boolean field.
+**	The table name should include enough information to be unique, no matter which option is implemented.
+*	The dataset/component selectors/lod/up/right values must be stored in the table.  Integers are recommended for storage for better performance.
+*	If the SWG decides on using option 3 or 4 for a future version of CDB, then index search tables should be required for better performance when querying data from a specific CDB Tile-LOD.
 
 
 2. Forwards compatibility in the CDB context
