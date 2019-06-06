@@ -7,7 +7,7 @@ This section discusses the experiment and particpant participation in detail. Th
 - Experiment 3: Store each CDB LOD as a layer in GeoPackage.
 - Experiment 4: Store each Geocell of Vector Data as a layer in GeoPackage.
 
-The following tables for provides an overview of wchich experiments were executed by each particpant.
+The following table provides an overview of which experiments were executed by each participant.
 
 |===
 |Participant|Experiment 1|Experiment 2|Experiment 3|Experiment 4
