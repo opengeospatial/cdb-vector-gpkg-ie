@@ -18,23 +18,23 @@ Point, line, and area features are encoded in a CDB store as Shapefiles and are 
 
 === Details on Experiment 1: CDB Data Used
 
-Three complete CDB data stores were provided for use in this Interoperability Experiment. The provision of CDB dta stores and the subsequent conversion of Shapefiles into GeoPackages was defined in the IE Activity Plan in Experiment 1. The participants identified a number of activities associated with executing Experiment 1.
+==== Overview
 
-. Identify and document any differences in the Shapefile to GeoPackage conversions that resulted from the use of different conversion tools.
-. 
+Three complete CDB data stores were provided for use in this Interoperability Experiment. The provision of CDB dta stores and the subsequent conversion of Shapefiles into GeoPackages was defined in the IE Activity Plan in Experiment 1. The participants identified a number of activities associated with executing Experiment 1. A key objective of this experiment was to capture and compare metrics as well as to identify and document any differences in the Shapefile to GeoPackage conversions that resulted from the use of different conversion tools.
 
-=== The CDB Data Stores used in this IE
+==== The CDB Data Stores and tools used in this IE
 
-==== << >>
+===== Hexagon/Luciad
+Hexagon/Luciad utilized the Yemen CDB data store. The tools used for all experiments are elements of Luciad CDB Studio.
 
-==== Presagis
+The CDB Studio is a component based modular application developed using the Luciad Platform, a development platform for solving C4ISR needs in the Defense, Aviation and Maritime domains.  The Luciad CDB Studio provides the ability to create OGC CDB data stores directly from imagery, elevation, and vector geospatial data products.  The application also has strong support for GeoPackages. It can export any source, including CDB into GeoPackage imagery, elevation, or vector data. It also supports a GeoPackage styling extension and the ability to convert CDB 3D Models into OGC 3D Tiles stored in GeoPackage.
 
-The Presagis provided data store is for the country of Yemen. 
+===== Presagis
+Presagis provided a CDB data store for the country of Yemen. 
 
-==== VATC
-
-The VATC provided CDB data store was created from fully open data sources.
-The data provided in this CDB data store are in one CDB Geocell containing downtown Los Angeles.The data include:
+===== VATC
+VATC provided a CDB data store created from fully open data sources footnote:[For the IE, VATC made the data available at https://storage.cloud.google.com/epic_builder/OGC_IE/LosAngeles_CDB.zip?_ga=2.3746352.-1225582785.1543877247].
+The data provided in the VATC CDB data store are in one CDB Geocell containing downtown Los Angeles.The data include:
 
 - USGS NAIP 1m background (Entire Geocell) (CDB Lod 7)
 - USGS HighRes Ortho Program 1ft Ortho (Southern section of Geocell) (CDB Lod 9)
@@ -42,13 +42,7 @@ The data provided in this CDB data store are in one CDB Geocell containing downt
 - OpenStreetMap Vector Map (Entire geocell)
 - Los Angeles County Building footprint information. (Approximately 1,734,043 buildings were extruded from the footprint data)
 
-For the IE, VATC made the data available at https://storage.cloud.google.com/epic_builder/OGC_IE/LosAngeles_CDB.zip?_ga=2.3746352.-1225582785.1543877247
-
-=== Tools used to convert Shapefiles to GeoPackages
-
-==== VATC
-
-We will have link’s to download our core 3rd Party as built libraries for windows. (linux users will need to build with cmake… depending on support library) and Github links for opensource lib’s that have been modified to support CDB (this includes OpenSceneGraph, osgEarth, and GDAL) (note we do not anticipate any further fixes to the GDAL library will be required for this IE and the built GDAL version from the 3rd Party is expected to suffice for this experiment) 
+VATC used opensource lib’s that were modified to support CDB (this includes OpenSceneGraph, osgEarth, and GDAL). They did not apply any changes to the GDAL library for this IE and the built GDAL version from the 3rd Party is expected to suffice for this experiment. 
 
 === Key discussion topics related to CDB data stores
 
@@ -67,8 +61,7 @@ The following IE participants executed the following options defined for Experim
 - Compusult - All options
 - FlightSafety - FlightSafety intends to test all the option 1 variants, as well as option 3 and 4.  We are going to have more of a client focus with our testing, since that is more performance sensitive.  
 - Luciad - Option 1d
-- Presagis - 
-If time permit, we will also test the dynamic creation of Vector data when the simulation modifies the database at runtime.
+- Presagis - If time permit, we will also test the dynamic creation of Vector data when the simulation modifies the database at runtime.
 - VATC - Supported Option 1b initially both with data creation and opensource visualization of this option. We will make a best effort to include visualization for Compusult’s LA updates as well as our own (and others as published) .  It is our intent as well to support one other option (option 3 most likely)
 
 The Participants identifed four possible approaches to converting and/or using GeoPackages in a CDB data store.
@@ -145,8 +138,6 @@ The goal of this experiment is to significantly reduce the number of files in bo
 In this approach, the tables in the GeoPackage correspond to each LOD of CDB. The GeoPackage would contain 24 tables for each of the CDB LODs. Each CDB geotile would contain a GeoPackage to correspond to the CDB data stores (such road networks,
 geospecific points, etc.). CDB tiles for a data store combine into a single GeoPackage table within that given LOD where the tile definition (row and column) would be queryable attributes for each feature. In simple language, to find the features in a tile for a particular geotile’s road network in LOD 3 of CDB, a consumer would open the road network GeoPackage, open the table that corresponds to LOD, and query for results where the column and row reference matches the CDB tile.
 
-FlightSafety and Luciad are planning on running experiment 3.
-
 === Experiment 4: Store each Geocell of Vector Data as a layer in GeoPackage
 
 The methodology involves:
@@ -160,7 +151,6 @@ This experiment extends Experiment 3 (above) to have a single GeoPackage per Geo
 In this approach, the tables in the GeoPackage correspond to each data store of CDB (such road networks, geospecific points, etc.). The GeoPackage would contain eight (8) layers representing each of the CDB data stores (GSFeature, GTFeature,
 GeoPolitical, VectorMaterial, RoadNetwork, RailRoadNetwork, PowerLineNetwork, and HydrographyNetwork). CDB tiles and LODs for a data store combine into a single GeoPackage table where the tile definition (row and column) and LOD would be queryable attributes for each feature. In simple language, to find the features in a location for a particular geotile’s road network in LOD 3 of CDB, a consumer would open the geotile’s GeoPackage, open the table that corresponds to data store, and query for results where the LOD column and row reference matches the CDB tile and LOD.
 
-FlightSafety and Luciad are planning on running experiment 4.
 
 
 
