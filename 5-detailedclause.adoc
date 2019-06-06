@@ -1,5 +1,28 @@
 [[DetailedClause]]
 == Details of the Experiments Performed
+This section discusses the experiment and particpant participation in detail. The experiments performed in this Interoperability Experiment include:
+
+- Experiment 1: Conversion of Shapefiles in one or more CDB data stores into Geopackages as required for Experiments 2, 3, and/or 4.
+- Experiment 2: One to one conversion of a Shapefile into a GeoPackage. There are four sub-options that are described below.
+- Experiment 3: Store each CDB LOD as a layer in GeoPackage.
+- Experiment 4: Store each Geocell of Vector Data as a layer in GeoPackage.
+
+The following tables for provides an overview of wchich experiments were executed by each particpant.
+
+|===
+|Partipant|Experiment 1|Experiment 2|Experiment 3|Experiment 4
+|Aechelon|X|X| |
+|CAE|X|X| |
+|Compusult|X|X|X|X
+|FlightSafety|X|X|X|X
+|Hexagon/Luciad|X|X|X|X
+|VATC|X|X| |
+|===
+
+- Aechelon - Options 1a, 1b & 1c with the Yemen and Los Angeles DBs
+- Presagis - If time permit, we will also test the dynamic creation of Vector data when the simulation modifies the database at runtime.
+- VATC - Supported Option 1b initially both with data creation and opensource visualization of this option. We will make a best effort to include visualization for Compusult’s LA updates as well as our own (and others as published) .  It is our intent as well to support one other option (option 3 most likely)
+
 === A CDB Data Store - General Overview
 
 A CDB structured data store is physically arranged on disk into the following top level directory structures:
@@ -16,13 +39,13 @@ Most CDB datasets are organized in a tile structure and stored in the \CDB\Tiles
 
 Point, line, and area features are encoded in a CDB store as Shapefiles and are organized into several Vector Datasets and LoDs. For each LoD, the CDB standard specifies the maximum number of points allowed per Tile-LoD and the resulting average Feature Density is defined. All vector data in a CDB store are referenced to the WGS 84 Earth-centered,  Earth-fixed  terrestrial  reference  system  and geodetic datum.
 
-=== Details on Experiment 1: CDB Data Used
+=== CDB Data and Tools Used By Participants
 
 ==== Overview
 
 Three complete CDB data stores were provided for use in this Interoperability Experiment. The provision of CDB dta stores and the subsequent conversion of Shapefiles into GeoPackages was defined in the IE Activity Plan in Experiment 1. The participants identified a number of activities associated with executing Experiment 1. A key objective of this experiment was to capture and compare metrics as well as to identify and document any differences in the Shapefile to GeoPackage conversions that resulted from the use of different conversion tools.
 
-==== The CDB Data Stores and tools used in this IE
+==== Experiment 1: Conversion - The CDB Data Stores and tools used in this IE
 
 This section provides a short summary of the CDB data stores and tools used by each of the participants in this OGC Interoperability Experiment. Greater detail for each particpants work can be found in Section 6 (Results) of this report.
 
@@ -61,25 +84,13 @@ The data provided in the VATC CDB data store are in one CDB Geocell containing d
 
 VATC used opensource lib’s that were modified to support CDB (this includes OpenSceneGraph, osgEarth, and GDAL). They did not apply any changes to the GDAL library for this IE and the built GDAL version from the 3rd Party is expected to suffice for this experiment. 
 
-=== Key discussion topics related to CDB data stores
+==== Key discussion topics related to CDB data stores
 
 Given the size of the CDB data stores used in this IE, there was discussion related to how best to provide data stores updated with GeoPackage content. The general concensus was that downloading the entire data store just to get the GeoPackages was non-optimal and time wasteful. Therefore, the particpants discussed using *_Version_* metadata (Volume 1 CDB Standard, Clause 5.1.8). They determined that the original CDB data with Shapefiles would be Version 1 and that CDB enhanced with GeoPackages would be Version 2. 
 
 === Details Related to Experiment 2
 
 Experiment 2 focused on approaches to replacing each Shapefile in an existing CDB data store thereby consolidating the three geometry files into a single GeoPackage. The objectives was to determine the best practices for not only replacing Shapefiles for also allowing the storage and use of both Shapefiles and Geopackages in a CDB data store. Part of this experiment was to also evaluate and compare performance using the baseline CDB datasets made available as part of Experiment 1. finally, this experiment also focused on evaluating and analyzing and results from Experiment #2 related to performance, backwards-compatibility and risks to interoperability.
-
-==== Participation in Experiment 2
-
-The following IE participants executed the following options defined for Experiment 2. Note: Details of the options are provided below.
-
-- Aechelon - Options 1a, 1b & 1c with the Yemen and Los Angeles DBs
-- CAE Montreal - option 1a with the numerous CDB databases that are available and perform a before-after comparison of the overall performance of the system.
-- Compusult - All options
-- FlightSafety - FlightSafety intends to test all the option 1 variants, as well as option 3 and 4.  We are going to have more of a client focus with our testing, since that is more performance sensitive.  
-- Luciad - Option 1d
-- Presagis - If time permit, we will also test the dynamic creation of Vector data when the simulation modifies the database at runtime.
-- VATC - Supported Option 1b initially both with data creation and opensource visualization of this option. We will make a best effort to include visualization for Compusult’s LA updates as well as our own (and others as published) .  It is our intent as well to support one other option (option 3 most likely)
 
 The Participants identifed four possible approaches to converting and/or using GeoPackages in a CDB data store.
 
