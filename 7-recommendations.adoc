@@ -13,7 +13,7 @@ Our view is that a form of Option 1 is backwards compatible with the existing sp
 
 === Conclusions
 
-==== Aechelon
+==== Aechelon Conclusions
 
 * For the three Experiment 2 options Aechelon tested, the best outcome in both time and file size came from option 1C.
 * For Experiments 3 and 4, speed is slightly improved relative to Experiment 3 sub-option 1D but not sub-option 1C. On the other hand, the resulting storage size is markedly improved when compared against all options in Experiment 2, as would be expected. This is because, by design, these Experiments 3 and 4 go against the spirit of CDB data segmentation by file at the LOD level. This makes it more difficult to remove LODs, if so desired, when copying or exporting the CDB vector data. As such, the approaches used in Experiments 3 and 4 may not be as easy to incorporate and adopt as part of the CDB Standard.
@@ -28,7 +28,7 @@ The negative effects are amplified for CDBs with large numbers of small Shapefil
 
 Please see CAE recommendations
 
-==== FlightSafety
+==== FlightSafety Conclusions
 
 -	Shapefiles are a problematic format for several reasons: 
 --	Shapefiles are a multi-file format to represent a single "logical" file.  Management of multi-file formats is always a bit harder than handing a single file.
@@ -69,9 +69,9 @@ In this experiement, we have explored the idea of placing GeoPackages _inside_ a
 
 We would like to raise a particular opportunity for future-proofing the standard. Conceptually, the CDB directory hierarchy functions as an index: any given directory path is essentially a key, and the value accessed by the key is a file. If we introduce a level of abstraction that allows us to discuss the CDB as a type of key-value store, then we open up a range of new possibilities in terms of physical implementation. For example, there are any number of database engines that are able to function as fast key-value stores, from lightweight mobile solutions like sqlite to highly-distributed cloud-capable NoSQL solutions like MongoDB. This would conceptually simplify the idea of a geographic database, allowing implementors more freedom to choose the storage technology that best suits them while simultaneously providing a natural path toward remote/Internet query of CDBs.
 
-==== FlightSafety
+==== FlightSafety Recommendations
 
-GeoPackage Recommendations
+===== GeoPackage Recommendations
 
 -	From our experience, GDAL's GeoPackage driver will create non-standard GeoPackage files.  The SWG needs to decide if that is allowed, or if a stricter GeoPackage implementation is required. 
 --	GDAL defaults to using "fid" as the primary key in geometry tables.  GeoPackage specifies "id"
