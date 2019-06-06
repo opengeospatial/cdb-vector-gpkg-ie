@@ -16,8 +16,6 @@ The publishing software is in python, with invocations of C++ EXEs for performan
 
 For the purposes of this experiment, five feature types were considered and processed: Cultural, Lights, Powerlines, Railroads, and Trees. All of the performance information provided in the tables below are related to these five feature types.
 
-The changes implemented on the publisher side to support GeoPackage were the minimal necessary to get functional parity with the Shapefile based implementation. In other words, no attempt was made to optimize the code to take advantage of the internals of the GeoPackage files using sqlite, and all data access went through the OGR module.
-
 ==== Aechelon Experiment Methodology
 
 The following is a concise description of the methodolocy used for execution of the Aechelon committed tasks in this Interoperability Experiment.
