@@ -36,6 +36,11 @@ Aechelon used the following CDB data stores in their experiments:
 
 Aechelon used the following tools in their experiments. The CDB data stores were used as the source for content to feed a publishing process into the Aechelon Image Generator (IG) runtime format. The publishing software is in python, with invocations of C++ EXEs for performance-critical processing. The feature scan step is entirely in Python, version 3.5. The changes implemented on the publisher side to support GeoPackage were the minimal necessary to get functional parity with the Shapefile based implementation. In other words, no attempt was made to optimize the code to take advantage of the internals of the GeoPackage files using sqlite, and all data access went through the OGR module.
 
+===== CAE Montreal
+CAE did not use the sample CDB provided by the participants because their goal was to compare the performance of their internal applications when running with a CDB produced by CAE before and after the replacement of Shapefiles with GeoPackage files. However, they believe that our findings may apply equally well to other databases.
+
+CAE used a slightly modified version of GDAL for converting Shapefiles to GeoPackages. See Section 6 Results for more detailed information.
+
 ===== Hexagon/Luciad
 Hexagon/Luciad utilized the Yemen CDB data store. The tools used for all experiments are elements of Luciad CDB Studio.
 
