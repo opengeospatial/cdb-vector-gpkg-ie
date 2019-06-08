@@ -11,7 +11,7 @@ The following table provides an overview of which experiments were executed by e
 
 |===
 |Participant|Experiment 1|Experiment 2|Experiment 3|Experiment 4
-|Aechelon|X|X| |
+|Aechelon|X|X|X |X
 |CAE|X|X| |
 |Compusult|X|X|X|X
 |FlightSafety|X|X|X|X
