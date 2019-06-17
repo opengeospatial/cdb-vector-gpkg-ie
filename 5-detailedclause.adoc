@@ -19,10 +19,6 @@ The following table provides an overview of which experiments were executed by e
 |VATC|X|X| |
 |===
 
-- Aechelon - Options 1a, 1b & 1c with the Yemen and Los Angeles DBs
-- Presagis - If time permit, we will also test the dynamic creation of Vector data when the simulation modifies the database at runtime.
-- VATC - Supported Option 1b initially both with data creation and opensource visualization of this option. We will make a best effort to include visualization for Compusult’s LA updates as well as our own (and others as published) .  It is our intent as well to support one other option (option 3 most likely)
-
 === A CDB Data Store - General Overview
 
 A CDB structured data store is physically arranged on disk into the following top level directory structures:
