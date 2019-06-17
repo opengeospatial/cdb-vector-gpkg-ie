@@ -2,7 +2,7 @@
 == Details of the Experiments Performed
 This section discusses the experiment and particpant participation in detail. The experiments performed in this Interoperability Experiment include:
 
-- Experiment 1: Conversion of Shapefiles in one or more CDB data stores into Geopackages as required for Experiments 2, 3, and/or 4.
+- Experiment 1: Conversion of Shapefiles in one or more CDB data stores into GeoPackages as required for Experiments 2, 3, and/or 4.
 - Experiment 2: One to one conversion of a Shapefile into a GeoPackage. There are four sub-options that are described below.
 - Experiment 3: Store each CDB LOD as a layer in GeoPackage.
 - Experiment 4: Store each Geocell of Vector Data as a layer in GeoPackage.
