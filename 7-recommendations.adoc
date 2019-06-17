@@ -93,7 +93,7 @@ We would like to raise a particular opportunity for future-proofing the standard
 *	The dataset/component selectors/lod/up/right values must be stored in the table.  Integers are recommended for storage for better performance.
 *	If the SWG decides on using option 3 or 4 for a future version of CDB, then index search tables should be required for better performance when querying data from a specific CDB Tile-LOD.
 
-==== Hexaagon/Luciad Recommendation
+==== Hexagon/Luciad Recommendation
 
 Further investigation into the optimal structure of combining multiple sub-datasets (rail, hydrography, etc) and multiple levels of detail into a single GeoPackage could alleviate several encountered performance drawbacks with the CDB datasets in Experiments 3 & 4. At this point without this investigation and guidance Hexagon US Federal recommends the CDB architecture presented in Experiment 2 which provides both a reduction in the dataset’s file count and minimizes the impact to existing CDB applications accessing data in the current tiled directory structure.
 
