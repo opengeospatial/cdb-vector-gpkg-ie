@@ -1,7 +1,7 @@
 == Summary
 (( This OGC Engineering Report (ER) documents the results of the CDB Vector Data in GeoPackage Interoperability Experiment (IE). The participants in this IE tested the encoding of vector data into one or more GeoPackage(s) and storing the result in a CDB data store. GeoPackage Version 1.2 and CDB Version 1.1 and related Best Practices were the standards baseline used for this experiment. The IE builds on the work described in the OGC "CDB, Leveraging GeoPackage" Discussion Paper. ))
 
-(( A primary objective of this IE was to agree and document possible change requests and/or best practices for storing vector data in a CDB data other than ShapeFiles. These suggested changes requests and/or best/practices would be used as the basis for SDB SWG discusions related to possible revisions to the CDB standard. ))
+(( A primary objective of this IE was to agree and document possible change requests and/or best practices for storing vector data in a CDB data using encodings and/or containers other than Shapefiles. These suggested changes requests and/or best/practices will be used as the basis for SDB SWG discusions related to possible revisions to the CDB standard. ))
 
 (( Once the IE activity is completed, Insert key findings here. ))
 
