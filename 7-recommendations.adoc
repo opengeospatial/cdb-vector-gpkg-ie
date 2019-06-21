@@ -16,16 +16,14 @@ Our view is that a form of Option 1 is backwards compatible with the existing sp
 -	The CDB conceptual model leans toward mixing the data model and the files on disk.  This should be disentangled in a future version of CDB, but it is difficult to do in a minor revision.
 -	CDB Versioning, where one file from a CDB dataset replaces/hides a file from another CDB dataset, would be difficult to fit together with a GeoPackage that contained "all" the vector files for that dataset.  A preferable solution is to evolve the conceptual model to handle this case in CDB 2.0.
 
-=== Conclusions
+=== Findings
 
-==== Aechelon Conclusions
+==== Aechelon Findings
 
 * For the three Experiment 2 options Aechelon tested, the best outcome in both time and file size came from option 1C.
 * For Experiments 3 and 4, speed is slightly improved relative to Experiment 3 sub-option 1D but not sub-option 1C. On the other hand, the resulting storage size is markedly improved when compared against all options in Experiment 2, as would be expected. This is because, by design, these Experiments 3 and 4 go against the spirit of CDB data segmentation by file at the LOD level. This makes it more difficult to remove LODs, if so desired, when copying or exporting the CDB vector data. As such, the approaches used in Experiments 3 and 4 may not be as easy to incorporate and adopt as part of the CDB Standard.
-* To achieve the improvements in storage while also maintaining the speeds comparable with sub-option 1C and addressing the file-per-LOD issue, Aechelon recommends two additional experiments: (a) where each component selector of each LOD is in its own geopackage file---effectively a variant of sub-option 1C where the U and R references of the same component selectors are combined into one file; and (b) where each dataset’s LODs are in a separate geopackage file---effectively a variant of Experiment 3 where instead of storing each LOD in a separate layer in the same geopackage file, each LOD is a separate file.
-* If Aechelon were to recommend only one processing alternative, among those in this experiment, for inclusion as an alternate primary vector format in a future OCG CDB revision, it would be option 1C.
 
-==== CAE Conclusions
+==== CAE Findings
 
 Although previous experiments with 1-to-1 Shapefile-to-GeoPackage conversion have been very positive, our experiences indicate mixed results. On one hand, we observe substantial benefit in reducing the number of files stored and loaded, and we also observe the possibility of a comparable (or faster) decode time; but on the other hand, we see potentially-problematic increases in the amount of storage space required.
 
@@ -33,7 +31,7 @@ The negative effects are amplified for CDBs with large numbers of small Shapefil
 
 Please see CAE recommendations
 
-==== FlightSafety Conclusions
+==== FlightSafety Findings
 
 -	Shapefiles are a problematic format for several reasons: 
 --	Shapefiles are a multi-file format to represent a single "logical" file.  Management of multi-file formats is always a bit harder than handing a single file.
@@ -53,7 +51,7 @@ Please see CAE recommendations
 --	The SQL query when loading the vectors that would be contained within a single shapefile can take twice as long as when these vectors are in a single GeoPackage, but the open cost can be amortized across many queries if the GeoPackage files remain open for a longer period of time.
 -	The OGC Interoperability Experiment was a good testing ground to develop familiarity with GeoPackage and to help the SWG come to a better consensus on the use of GeoPackage.  We would recommend having more IE's as other parts of the specification are reviewed and improved.
 
-==== Hexagon/Luciad Conclusions
+==== Hexagon/Luciad Findings
 
 *Standard Visualization Metrics* - Overall visualization performance was similar between all experiments for each dataset. Converting to GeoPackage has no significant impact either positive or negative on visualization once the data is loaded.
 
@@ -62,6 +60,14 @@ Please see CAE recommendations
 *Data Conversion* - For data conversion the best results were also obtained from Experiments 3 & 4. The caveat here is that some memory issues were encountered with the provided datasets as more layers and data were added to a single GeoPackage which introduces questions of scalability for these approaches.
 
 === Recommendations
+
+This section describes key recommendations from each of the participating organizations. A short summary of the recommendations is provided is the Summary Section of this Engineering report.
+
+==== Aechelon
+
+To achieve the improvements in storage while also maintaining the speeds comparable with sub-option 1C and addressing the file-per-LOD issue, Aechelon recommends two additional experiments: (a) where each component selector of each LOD is in its own geopackage file---effectively a variant of sub-option 1C where the U and R references of the same component selectors are combined into one file; and (b) where each dataset’s LODs are in a separate geopackage file---effectively a variant of Experiment 3 where instead of storing each LOD in a separate layer in the same geopackage file, each LOD is a separate file.
+
+If Aechelon were to recommend only one processing alternative, among those in this experiment, for inclusion as an alternate primary vector format in a future OCG CDB revision, it would be option 1C in Experiment 2.
 
 ==== CAE Recommendations
 
