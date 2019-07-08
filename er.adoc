@@ -75,7 +75,7 @@
 // *****************************************************************************
 :category: OGC Public Engineering Report
 :publicationDate: 2019-MM-DD
-:approvalDate: 2019-MM-DD
+:approvalDate: 2019-June-27
 :referenceURLID: GPKG-IE
 :copyrightYear: 2019
 //
