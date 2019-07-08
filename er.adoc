@@ -51,7 +51,7 @@
 // Date posted to OGC Portal>Pending Documents, with format: yyyy-mm-dd.
 // *****************************************************************************
 
-:submissionDate: 2019-MM-DD
+:submissionDate: 2019-June-5
 
 // *****************************************************************************
 // Names of all editors, comma-separated (e.g., John Doe, Sue Smith)
