@@ -2,15 +2,6 @@
 
 For the purposes of this report, the definitions specified in Clause 4 of the OWS Common Implementation Standard https://portal.opengeospatial.org/files/?artifact_id=38867&version=2[OGC 06-121r9] shall apply. In addition, the following terms and definitions apply.
 
-* term name
-
- text of the definition
-
-* term name|synonym
-
- text of the definition
-
-
 ===	Abbreviated terms
 
 The following abbreviated terms provides a list of the abbreviated terms and the symbols necessary for understanding this document.
