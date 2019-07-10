@@ -5,6 +5,8 @@
 
 (( While there are a number of issues, such as file path naming conventions that need to considered and agreed to by the SWG, the particpant consensus is that the GeoPackage identified and tested in <<Details Related to Experiment 2>>. ))
 
+((Please note that a reader of this Engineering Report has a basic understanding of both the CDB storage model and the GeoPackage Standard.))
+
 === Requirements & Research Motivation
 (( In the commercial modelling and simulation industry, geospatial data content generation and use is exploding at a rate that is outpacing the innovation and utilization of the traditional Modelling and Simulation (M&S) industry. At the same time, the M&S and geospatial-intelligence (GEOINT) industries are on a path to convergence. Within the OGC, there are two geospatial standards that best enable the unification of the M&S and GEOINT industries: OGC CDB and GeoPackage. OGC CDB and GeoPackage are both standards increasingly used in M&S and GEOINT industry. However, they both contain weaknesses and strengths when it comes to the combined needs of both industries. ))
 
