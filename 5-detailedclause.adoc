@@ -60,6 +60,10 @@ CAE did not use the sample CDB provided by the participants because their goal w
 
 CAE used a slightly modified version of GDAL for converting Shapefiles to GeoPackages. See Section 6 Results for more detailed information.
 
+===== FlightSafety
+
+FlightSafety used the 4 geocell Yemen from Presagis, the 1 geocell downtown Los Angeles from VATC, and the 27 geocell Northwest Pacific CDB from Congitics. FlightSafety used modified GDAL and python scripts to convert the datasets to GeoPackage. FlightSafety used their own software implementation to read in and perform queries on the GeoPackage files for testing.
+
 ===== Hexagon/Luciad
 Hexagon/Luciad utilized the Yemen CDB data store. The tools used for all experiments are elements of Luciad CDB Studio.
 
