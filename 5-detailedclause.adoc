@@ -113,7 +113,7 @@ image::images/experiment-2-option-1a.png[width=600,align="center"]
 This experiment researched the approach of using normalized SQL in the conversion of Shapefiles into GeoPackages. This approach has the following characteristics:
 
 - Utilizes a standard normalized relational database design, utilizing foreign keys.
-- There is a 12:1 reduction in the number of files.
+- There is a 4:1 to 7:1 reduction in the number of files.
 - There are three layers per GeoPackage.
 - The Feature Class and Extended Attribute tables have no geometry.
 - However, “Off the Shelf” GeoPackage software will not be aware of the extended and feature class attributes. This can be somewhat mitigated when a SQL View is used, which gives viewers (clients) read-only visibility  over these attributes.
@@ -126,7 +126,7 @@ image::images/experiment-2-option-1b.png[width=800,align="center"]
 
 This experiment researched the approach of using flattened attribution in the conversion of Shapefiles into GeoPackages. This approach has the following characteristics:
 
-- There is a 12:1 reduction in the number of files.
+- There is a 4:1 to 7:1 reduction in the number of files.
 - Some duplication of data, resulting in larger files.
 - There is one layer per GeoPackage.
 - The Feature Class and Extended Attributes are populated for each feature.
@@ -159,11 +159,11 @@ The methodology for Experiment 3 involves:
 
 The goal of this experiment is to significantly reduce the number of files in both a CDB datastore and in the resulting GeoPackage. Steps in this experiment include:
 
-- Modify implementation software to support storing an entire CDB Level of Detail (LoD) in a single GeoPackage.
+- Modify implementation software to support storing an entire CDB dataset in a single GeoPackage with each LOD stored in a single table.
 - Evaluate and compare performance using the baseline CDB datasets and the Alternative #2 datasets.
 - Evaluate analysis and results from Experiment #3 for performance, backwards-compatibility and risks to interoperability.
 
-In this approach, the tables in the GeoPackage correspond to each LOD of CDB. The GeoPackage would contain 24 tables for each of the CDB LODs. Each CDB geotile would contain a GeoPackage to correspond to the CDB data stores (such road networks,
+In this approach, the tables in the GeoPackage correspond to each LOD of CDB. Including negative LODs, the GeoPackage would contain 34 tables for each of the CDB LODs. Each CDB geotile would contain a GeoPackage to correspond to the CDB data stores (such road networks,
 geospecific points, etc.). CDB tiles for a data store combine into a single GeoPackage table within that given LOD where the tile definition (row and column) would be queryable attributes for each feature. In simple language, to find the features in a tile for a particular geotile’s road network in LOD 3 of CDB, a consumer would open the road network GeoPackage, open the table that corresponds to LOD, and query for results where the column and row reference matches the CDB tile.
 
 === Experiment 4: Store each Geocell of Vector Data as a layer in GeoPackage
@@ -177,8 +177,8 @@ This experiment extends Experiment 3 (above) to have a single GeoPackage per Geo
 - Evaluate analysis and results from Experiment #4 for performance, backwards-compatibility and risks to interoperability.
 
 In this approach, the tables in the GeoPackage correspond to each data store of CDB (such road networks, geospecific points, etc.). The GeoPackage would contain eight (8) layers representing each of the CDB data stores (GSFeature, GTFeature,
-GeoPolitical, VectorMaterial, RoadNetwork, RailRoadNetwork, PowerLineNetwork, and HydrographyNetwork). CDB tiles and LODs for a data store combine into a single GeoPackage table where the tile definition (row and column) and LOD would be queryable attributes for each feature. In simple language, to find the features in a location for a particular geotile’s road network in LOD 3 of CDB, a consumer would open the geotile’s GeoPackage, open the table that corresponds to data store, and query for results where the LOD column and row reference matches the CDB tile and LOD.
+GeoPolitical, RoadNetwork, RailRoadNetwork, PowerLineNetwork, and HydrographyNetwork). CDB tiles and LODs for a data store combine into a single GeoPackage table where the tile definition (row and column) and LOD would be queryable attributes for each feature. In simple language, to find the features in a location for a particular geotile’s road network in LOD 3 of CDB, a consumer would open the geotile’s GeoPackage, open the table that corresponds to data store, and query for results where the LOD column and row reference matches the CDB tile and LOD.
 
-
+Note: The Cognitics conversion scripts created a GeoPackage per dataset rather than a GeoPackage per geocell tile.
 
 
