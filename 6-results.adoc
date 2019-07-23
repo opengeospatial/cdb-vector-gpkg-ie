@@ -14,15 +14,15 @@ The following is a description of a key use case in the Aechelon content process
 
 The publishing software is in python, with invocations of C++ EXEs for performance-critical processing. The feature scan step is entirely in Python, version 3.5. Please note that for the image generation workflow, only metadata fields that affect the appearance of features are considered and remainder of the CDB content is ignored, such as tactical data, or the entire geopolitical dataset. The hydrography network dataset is also ignored since the RMTexture dataset is used to identify areas of water. 
 
-For the purposes of this experiment, five feature types were considered and processed: Cultural, Lights, Powerlines, Railroads, and Trees. All of the performance information provided in the tables below are related to these five feature types.
+For the purposes of this experiment, five feature types were considered and processed: Cultural, Lights, Powerlines, Railroads, and Trees. All of the performance information provided in the tables below is related to these five feature types.
 
 ==== Aechelon Experiment Methodology
 
-The following is a concise description of the methodolocy used for execution of the Aechelon committed tasks in this Interoperability Experiment.
+The following is a concise description of the methodology used for execution of the Aechelon committed tasks in this Interoperability Experiment.
 
-* Following generation of the GeoPackage files for each option, changes were made as needed in the publishing scripts to be able to read and publish the data.
+* Following generation of the GeoPackage files for each option, changes were made as needed in the publishing scripts to be able to read and publish the GeoPackage structured data.
 * Each feature type was tested by spot-checking in the image generator using a small reference database with representative data for each of the five feature types.
-* The next step was to convert the following three of the four CDB data stores made available for the interoperability experiments. However, the entire publication end-to-end workflow for image generation was not performed due to the considerable time it would take for each run:
+* The next step was to convert the following three of the four CDB data stores made available for the interoperability experiments. However, the entire publication end-to-end workflow for image generation was not performed due to the considerable time it would take for each run. CDB data processed for the Aechelon experiments were:
   ** Yemen (4 geocells), from Presagis.
   ** Downtown Los Angeles (1 geocell), from VATC.
   ** Greater Los Angeles (4 geocells), from Cognitics.
@@ -47,7 +47,7 @@ The following is a concise description of the methodolocy used for execution of 
 
 The following three tables provide basic performance metrics for the three CDB data stores processed in this experiment. Providing performance metrics is one of the tasks identified in Experiment 1 of the GeoPackage in CDB IE.
 
-In the tables below, "Baseline" refers to metrics based on the source ShapeFiles. Option 1A, Option 1C, and Option 1D refer to the sub-options for Experiment 2 (one to one transformation of Shapefiles into GeoPackages).
+In the tables below, "Baseline" refers to metrics based on the source Shapefiles. Option 1A, Option 1C, and Option 1D refer to the sub-options for Experiment 2 (one to one transformation of Shapefiles into GeoPackages).
 
 .Yemen (4 geocells)
 [width="90%",options="header"]
@@ -108,7 +108,7 @@ In the tables below, "Baseline" refers to metrics based on the source ShapeFiles
 
 ==== Notes and observations
 * All source CDB files were on a local RAID drive so network traffic did not contribute to the timings.
-* In the Greater Los Angeles database, there somehow were more features of some types coming from geopackage files compared to shape files (3140180 instead of 3138841 cultural features, and 4012 instead of 3932 powerline features), but there were also over 1000 warnings from OGR during conversion and while reading of the type "Warning 1: Unable to parse srs_id '100000' well-known text ''." After the 1000th such warning, also got "More than 1000 errors or warnings have been reported. No more will be reported from now."  Perhaps the conversion from .shp to .gpkg with ogr2ogr.exe generated these excess invalid files. These warnings appeared in the Downtown LA database as well, but the feature counts matched after conversion. Checking any further downstream for discrepencies in the processing pipeline was not performed.
+* In the Greater Los Angeles database, there somehow were more features of some types coming from geopackage files compared to Shapefiles (3140180 instead of 3138841 cultural features, and 4012 instead of 3932 powerline features), but there were also over 1000 warnings from OGR during conversion and while reading of the type "Warning 1: Unable to parse srs_id '100000' well-known text ''." After the 1000th such warning, also got "More than 1000 errors or warnings have been reported. No more will be reported from now."  Perhaps the conversion from .shp to .gpkg with ogr2ogr.exe generated these excess invalid files. These warnings appeared in the Downtown LA database as well, but the feature counts matched after conversion. Checking any further downstream for discrepencies in the processing pipeline was not performed.
 * For the powerline network dataset, statistics include both the tower point features and the wire lineal features.
 * There's a slight increase in the file size in the Los Angeles databases when comparing the results of Experiment 3 and Experiment 4. However, there is a significant decrease in the size of the Yemen database. From a quick inspection of the data, this seems to correlate with the fact that almost all the cultural features in Los Angeles come from 100_GSFeatures which require unique records per instance, whereas for Yemen the majority of cultural features come from 101_GTFeatures.
 * Experiment 3 has slightly better timings for large-count datasets than Experiment 4 in our use case since we scan each LOD in order, so having LODs in separate layers in the option 3 GeoPackage performs better.
@@ -198,7 +198,7 @@ CAE found that the conversion to GeoPackages can substantially increase the amou
 Notes and observations:
 
 * Some of our CDBs have a very large number of very small vector files. This leads to an increase in disk space usage: CDB 2 in particular requires 20.6 GB to store 12.4 GB of Shapefiles (assuming a 4 KB allocation unit).
-* We have not done a complete measurement of file size distributions, but in the case of CDB 1, we do know that over 40% percentage of the shapefiles consist of a single .dbf. The median ESRI Shapefile size (sum of .shp/.shx/.dbf/.dbt) is about 3 KB, lower quartile under 1 KB, upper quartile 38 KB. Only 20% of the shapefiles are larger than 112 KB.
+* We have not done a complete measurement of file size distributions, but in the case of CDB 1, we do know that over 40% percentage of the Shapefiles consist of a single .dbf. The median ESRI Shapefile size (sum of .shp/.shx/.dbf/.dbt) is about 3 KB, lower quartile under 1 KB, upper quartile 38 KB. Only 20% of the Shapefiles are larger than 112 KB.
 
 * CDB 2, which we believe appproaches a worst-case scenario in terms of disk usage increase, has a nearly 6 times increase in on-disk vector data-storage requirements (from 20.6 GB to 119.1 GB). This constitutes a non-negligible risk.
 
@@ -259,9 +259,9 @@ Available Datasets:
 - 401_Navigation
 - 201_RoadNetwork
 
-Number of ShapeFiles processed: 358
+Number of Shapefiles processed: 358
 Number of GeoPackages created: 18
-Total byte size of ShapeFiles (bytes): 3,569,324
+Total byte size of Shapefiles (bytes): 3,569,324
 Total byte size of GeoPackages (bytes): 41,715,712
 Elapsed time (seconds): 173
 
@@ -271,7 +271,7 @@ Elapsed time (seconds): 173
 FlightSafety has developed both a CDB generation tool and a CDB Publisher client.  The performance requirements of the CDB Publisher are much greater than CDB generation, so this report will focus on loading and consuming a CDB dataset. The CDB Publisher uses a CDB data store as the source data for building the synthetic environment for FlightSafety's VITAL 1100 image generator system.  These systems are used for pilot training on a variety of flight simulator systems. The Publisher does not do any preprocessing of the CDB dataset; all CDB data that it consumes is discovered and loaded during the publishing.  This approach was chosen due to the world-wide scope of CDB and unknown quantity of content.  The CDB specification's structure makes it easy to find the file(s) containing the data needed for the synthetic environment creation. Based on the flight training system requirements, an appropriate level of detail of vector and model data is discovered and loaded.  The Publisher adapts to the available levels of detail of vector data, and the flight characteristics of the training device. The publishing system is primarily in C++, and the testing was all performed with C++ libraries and code.  The Shapefile API that is tested is a custom FlightSafety library, optimized for faster performance.
 
 ==== FlightSafety Experiment Focus
-The experiments were focused on just-in-time uses of CDB, similar to how a FlightSafety visual system would use the data. Statistics were collected on the original CDB dataset, and the converted GeoPackage CDB datasets.  These were used to infer the cost of database configuration management and transmission/deployment to a training device. Testing was done on both currently encoded CDB shapefiles, and on converted GeoPackage encoded files (covering options 1, 3, and 4). Tests focused on the latency of loading files, processing data, and closing files. Tests were done on different conversion options and settings to come up with optimal recommendations
+The experiments were focused on just-in-time uses of CDB, similar to how a FlightSafety visual system would use the data. Statistics were collected on the original CDB dataset, and the converted GeoPackage CDB datasets.  These were used to infer the cost of database configuration management and transmission/deployment to a training device. Testing was done on both currently encoded CDB Shapefiles, and on converted GeoPackage encoded files (covering options 1, 3, and 4). Tests focused on the latency of loading files, processing data, and closing files. Tests were done on different conversion options and settings to come up with optimal recommendations
 
 ==== FlightSafety Experiment Methodology
 
@@ -289,13 +289,13 @@ All three CDB datasets were flown using FlightSafety's VITAL 1100 image generato
 The python conversion scripts developed by Cognitics, Inc. were downloaded from GitHub. The scripts were modified to properly flatten class-level attributes into the feature table, and to properly handle DBase floating point and logical field types.  Index tables were also added to aid SQL queries designed to get back data for a specific CDB vector file. Script changes were published to a public GitHub under a FlightSafety account (link). When the scripts were run, they created a new output directory for the CDB vector data.  The Metadata folder was copied from the original vector CDB version, which then links this GeoPackage version to the rest of the CDB data. The three main conversion scripts used implemented GeoPackage encoding options 1, 3, and 4.
 
 ===== GeoPackage Testing: 
-The initial data collection centered on the number of vector files and how much disk space was consumed.  All full CDB storage devices used a 4kB block size and recorded sizes include the "dead" space due to the minimum block size. The initial tests were testing shapefiles vs. option 1.  All vector files were located, and timed on the file open and accessing the data within the file.  Total processing time was recorded and compared between the two encodings.  This test accessed the geometry and all the attributes, whether they would have been used by the FlightSafety CDB publisher or not.
+The initial data collection centered on the number of vector files and how much disk space was consumed.  All full CDB storage devices used a 4kB block size and recorded sizes include the "dead" space due to the minimum block size. The initial tests were testing Shapefiles vs. option 1.  All vector files were located, and timed on the file open and accessing the data within the file.  Total processing time was recorded and compared between the two encodings.  This test accessed the geometry and all the attributes, whether they would have been used by the FlightSafety CDB publisher or not.
 
 The next set of tests involved working with worst case examples and comparing the same file open and access time as before, but for single files.  This highlights performance on the largest vector files.  The average performance times are reported here. 
 
-Further testing was performed to see what the trade offs were between options 1, 3, and 4.  These included loading identical vectors (from a single original shapefile) from each of three GeoPackage files converted in different ways: 
+Further testing was performed to see what the trade offs were between options 1, 3, and 4.  These included loading identical vectors (from a single original Shapefile) from each of three GeoPackage files converted in different ways: 
 
-- GeoPackage Option 1 (Experiment 2 in the IE Activity Plan) was a straight conversion of the shapefile.  The GeoPackage contains a single data table with flattened class-level attributes, with the same number of records as the original shapefile
+- GeoPackage Option 1 (Experiment 2 in the IE Activity Plan) was a straight conversion of the Shapefile.  The GeoPackage contains a single data table with flattened class-level attributes, with the same number of records as the original Shapefile
 - GeoPackage Option 3 (Experiment 3 in the IE Activity Plan) was a conversion of each CDB dataset's features into a table for each level of detail (LOD) and component selector set, placed into a single GeoPackage (1 per dataset).  It also contained the most tables, and typically had more feature records than option 1 but fewer than option 4.
 - GeoPackage Option 4 (Experiment $ in the IE Activity Plan) was a conversion of each CDB dataset's features into a table for each component selector set, placed into a single GeoPackage (1 per dataset).  This method placed all levels of detail into the same table, resulting in a handful of tables, but possibly millions of features per table.
 
@@ -331,7 +331,7 @@ Basic statistics were collected on the original CDB datasets used in the Interop
 The main takeaway from this table is that vector data does not consume a large amount of storage space, but accounts for a prodigious number of files within a typical CDB.  The main driver of file counts are that Shapefiles are a multi-file format, where three (or four with the .prj projection file) files represent a single Shapefile.  In addition to the multifile format, CDB uses extra class-level and extended-level attributes encoded as extra DBF files.  So anywhere from 3 to 8 files are used to represent a single logical vector file.
 
 ===== Specific Vector File Test Data
-Some of the testing below involved loading specific point/linear/areal vectors that represent a single Shapefile.  For these tests, examples were found that represent "worst-case" examples of large vector files.  These larger files would take more time to load, and most occurred within higher LODs that would lead to larger tables in options 3 and 4.  The following table records the specific shapefile data for individual tests.
+Some of the testing below involved loading specific point/linear/areal vectors that represent a single Shapefile.  For these tests, examples were found that represent "worst-case" examples of large vector files.  These larger files would take more time to load, and most occurred within higher LODs that would lead to larger tables in options 3 and 4.  The following table records the specific Shapefile data for individual tests.
 
 [width="90%",options="header"]
 |===
@@ -344,7 +344,7 @@ Some of the testing below involved loading specific point/linear/areal vectors t
 ==== Shapefile vs. GeoPackage Option 1 (Experiment 2) Testing
 
 ===== Option 1 Conversion Statistics
-Before the first set of tests, the CDB datasets were converted one-to-one from shapefiles to GeoPackage, using the option 1 conversion.  Dataset statistics were then collected on the new datasets and compared with the original datasets.
+Before the first set of tests, the CDB datasets were converted one-to-one from Shapefiles to GeoPackage, using the option 1 conversion.  Dataset statistics were then collected on the new datasets and compared with the original datasets.
 
 [width="90%",options="header"]
 |===
@@ -374,13 +374,13 @@ The first test was to traverse the entire CDB dataset, find all the vector files
 |*Average Shapefile Storage Size* |	374 kB	|48 kB	|923 kB
 |===
 
-This table shows, on average, that using GeoPackages are faster than using Shapefiles.  These results imply that GeoPackage has a better advantage with smaller files. For example, GeoPackage performed best on Yemen with its relatively small shapefile/vector files.  However, there is less of an advantage with larger vector files. Therefore, further testing using larger files is recommended.
+This table shows, on average, that using GeoPackages are faster than using Shapefiles.  These results imply that GeoPackage has a better advantage with smaller files. For example, GeoPackage performed best on Yemen with its relatively small Shapefile/vector files.  However, there is less of an advantage with larger vector files. Therefore, further testing using larger files is recommended.
 
 ===== Test Procedure 2
 The next set of tests focused on some of the largest individual vector files. This test was performed to evaluate some of the worst case examples.  The exact file names are mentioned above in the Specific Vector File Test Data section.  These test datasets were much larger than the average vector file and cover the three basic geometry types: Points, Line Strings and Polygons.  This allowed testing of files that have many attributes compared to coordinates (points), and testing of files with many coordinates compared to the number of attributes (polygons).
 
 - The file size for Shapefiles includes both the instance-level files (.shp, .shx, .dbf) and the class-level attributes (.dbf), but no extended attributes or projection information.  The GeoPackage file size was the single .gpkg file.
-- The timing numbers include opening the file and traversing the geometry and every attribute in each record, including those that would otherwise not be used by the FlightSafety client.  The timing test was performed 100 times alternating between loading from the shapefile CDB dataset, and the equivalent GeoPackage CDB dataset.
+- The timing numbers include opening the file and traversing the geometry and every attribute in each record, including those that would otherwise not be used by the FlightSafety client.  The timing test was performed 100 times alternating between loading from the Shapefile CDB dataset, and the equivalent GeoPackage CDB dataset.
 - The last row represents the relative performance of GeoPackage as compared to Shapefiles, with a number higher than 1.0 representing increased speed.
 
 [width="90%",options="header"]
@@ -440,7 +440,7 @@ Option 4 = Experiment 4 +
 
 ===== Option 3 & 4 Conversion Statistics
 
-In addition to the one-to-one shapefile to GeoPackage encoding, we wished to also test the other GeoPackage encodings represented by options 3 and 4.  Conversions were performed to create these new CDB datasets using the modified python conversion scripts.  These were tested against the option 1 CDB datasets used in the previous tests.  The dataset statistics (file sizes and counts) are in the table below.  Conversion notes include:
+In addition to the one-to-one Shapefile to GeoPackage encoding, we wished to also test the other GeoPackage encodings represented by options 3 and 4.  Conversions were performed to create these new CDB datasets using the modified python conversion scripts.  These were tested against the option 1 CDB datasets used in the previous tests.  The dataset statistics (file sizes and counts) are in the table below.  Conversion notes include:
 
 - The parts of the file name (dataset code/component selectors/lod/row/column values) were initially stored as strings.  Converting these to integers led to about a 10% improvement over the initial string conversion.
 - Index tables were created for the parts of the filename that did not comprise the table name.  This led to significant improvements that were up to 90% faster than without the index. 
@@ -480,7 +480,7 @@ In all cases, the combined GeoPackage datasets required less storage than the op
 ===== Testing Procedure
 The testing focus for comparing the different GeoPackage encoding options was on the latency of loading the GeoPackage file and using SQL queries to return the records converted from a single Shapefile.  This approach is similar to the Shapefiles vs GeoPackage testing done above, but the test was constructed slightly differently.
 
--	The GeoPackage was opened and an SQL query was performed to return the data that represented a single shapefile's vector data.  In each query, the number of records in the table varied according to the type of conversion performed, but the amount of data and the values returned by the query were identical.
+-	The GeoPackage was opened and an SQL query was performed to return the data that represented a single Shapefile's vector data.  In each query, the number of records in the table varied according to the type of conversion performed, but the amount of data and the values returned by the query were identical.
 -	The SQL queries used for each GeoPackage option were variations on the following: 
 --	Option 1:  SELECT * FROM 'D100_S001_T001_L04_U12_R0'
 --	Option 3:  SELECT * FROM '100_GSFeature_L04_S001_T001' WHERE _UREF='12' AND _RREF='0'
@@ -586,7 +586,7 @@ This approach shows that there is some significant overhead in opening large Geo
 === Hexagon US Federal Technology Experiment Report
 ==== Experiment Methodology - Dataset Conversion
 
-*Experiment 1* - While the initial direction of the Interoperability Experiment involved utilizing the provided open source scripts to facilitate the conversion, there was an interest expressed from a Data Creator role in performing this operation with other software. CDB Studio features the capability to both ingest and generate CDB data stores so this was a natural fit for this application and Hexagon US Federal’s participation. The conversion process was developed to align closely with the provided workflow but was slightly altered in specific ways in line with how the application ingests data. Although an exhaustive analysis of the differences between the custom conversion logic and the provided scripts was not performed, where possible any differences are noted in this report. For Experiment 1, the shapefile data was converted by adding the feature geometry and instance-level attributes into a GeoPackage using built-in capabilities in the LuciadLightpseed API. Class attributes were stored in a separate table using the pattern in Option 1b where the CNAM attribute for each feature is a foreign key for the class attributes table. The extended attributes were stored in a separate RTE table as in Option 1d and linked by a mapping table in accordance with the RTE spec.
+*Experiment 1* - While the initial direction of the Interoperability Experiment involved utilizing the provided open source scripts to facilitate the conversion, there was an interest expressed from a Data Creator role in performing this operation with other software. CDB Studio features the capability to both ingest and generate CDB data stores so this was a natural fit for this application and Hexagon US Federal’s participation. The conversion process was developed to align closely with the provided workflow but was slightly altered in specific ways in line with how the application ingests data. Although an exhaustive analysis of the differences between the custom conversion logic and the provided scripts was not performed, where possible any differences are noted in this report. For Experiment 1, the Shapefile data was converted by adding the feature geometry and instance-level attributes into a GeoPackage using built-in capabilities in the LuciadLightpseed API. Class attributes were stored in a separate table using the pattern in Option 1b where the CNAM attribute for each feature is a foreign key for the class attributes table. The extended attributes were stored in a separate RTE table as in Option 1d and linked by a mapping table in accordance with the RTE spec.
 
 *Experiment 2* – For this experiment the vector feature and attribute information for each tile was converted into a single GeoPackage dataset. The CDB directory structure was maintained with folders under each vector component for the levels of detail and U designation and individual GeoPackages for each R offset.
 
@@ -628,9 +628,9 @@ Visualization metrics were gathered on the initial load of the CDB datasets whic
 
 ==== Notes on Metrics
 
-*Time to Convert* – This is the total time to process the conversion of the dataset from the original version containing shapefile data into GeoPackage version. Deletion of the original shapefile data was done as a secondary manual step and was not included in this metric.
+*Time to Convert* – This is the total time to process the conversion of the dataset from the original version containing Shapefile data into GeoPackage version. Deletion of the original shapefile data was done as a secondary manual step and was not included in this metric.
 
-*Size on Disk* – The size on disk was obtained by viewing the Windows Explorer properties window on the Tiles folder of the generated data. It is not inclusive of unmodified data components such as imagery and elevation. The size reported for the original shapefile dataset was a measure of the replaced files.
+*Size on Disk* – The size on disk was obtained by viewing the Windows Explorer properties window on the Tiles folder of the generated data. It is not inclusive of unmodified data components such as imagery and elevation. The size reported for the original Shapefile dataset was a measure of the replaced files.
 
 *File Count* – Similar to the size on disk, this metric was gathered by viewing the Windows Explorer properties view on the Tiles folder of the generated data and does not include data components that were unaffected by the GeoPackage conversion process.
 
@@ -642,9 +642,9 @@ Visualization metrics were gathered on the initial load of the CDB datasets whic
 
 ==== Notes and Observations
 
--	The relative times for the dataset conversion differed with the size of the datasets involved. Generating the E3 and E4 datasets for Yemen were roughly on par with or faster than E2’s one-to-one conversion, but the large LA dataset showed a vast increase in time for E3 and E4 so the value of the specific method is tied to the expected use case. The E2 dataset with the one-to-one shapefile to GeoPackage conversion was still faster than the original dataset which indicates that this increase involves GeoPackage access and scalability with large datasets.
+-	The relative times for the dataset conversion differed with the size of the datasets involved. Generating the E3 and E4 datasets for Yemen were roughly on par with or faster than E2’s one-to-one conversion, but the large LA dataset showed a vast increase in time for E3 and E4 so the value of the specific method is tied to the expected use case. The E2 dataset with the one-to-one Shapefile to GeoPackage conversion was still faster than the original dataset which indicates that this increase involves GeoPackage access and scalability with large datasets.
 
--	The size of the GeoPackage datasets were above that of the original shapefile data. This may be due to overhead and additional metadata in the GeoPackage format as it was much more prevalent on E2’s one-to-one conversion.
+-	The size of the GeoPackage datasets were above that of the original Shapefile data. This may be due to overhead and additional metadata in the GeoPackage format as it was much more prevalent on E2’s one-to-one conversion.
 
 -	Adaptations to the architecture of CDB Studio could further improve efficiency with GeoPackage. Enhancements in the LuciadLightspeeed API could also aid performance, such as built-in RTE handling to minimize JDBC connections.
 
