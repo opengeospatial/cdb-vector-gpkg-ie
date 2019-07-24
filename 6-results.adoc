@@ -20,7 +20,7 @@ For the purposes of this experiment, five feature types were considered and proc
 
 The following is a concise description of the methodology used for execution of the Aechelon committed tasks in this Interoperability Experiment.
 
-* Following generation of the GeoPackage files for each option, changes were made as needed in the publishing scripts to be able to read and publish the GeoPackage structured data.
+* Following generation of the GeoPackage files for each Experiment, changes were made as needed in the publishing scripts to be able to read and publish the GeoPackage structured data.
 * Each feature type was tested by spot-checking in the image generator using a small reference database with representative data for each of the five feature types.
 * The next step was to convert the following three of the four CDB data stores made available for the interoperability experiments. However, the entire publication end-to-end workflow for image generation was not performed due to the considerable time it would take for each run. CDB data processed for the Aechelon experiments were:
   ** Yemen (4 geocells), from Presagis.
@@ -45,7 +45,7 @@ The following is a concise description of the methodology used for execution of 
 
 ==== Metrics
 
-The following three tables provide basic performance metrics for the three CDB data stores processed in this experiment. Providing performance metrics is one of the tasks identified in Experiment 1 of the GeoPackage in CDB IE.
+The following three tables provide basic performance metrics for the three CDB data stores processed in Experiments 2, 3, and 4. Providing performance metrics is one of the tasks identified in Experiment 1 of the GeoPackage in CDB IE.
 
 In the tables below, "Baseline" refers to metrics based on the source Shapefiles. Option 1A, Option 1C, and Option 1D refer to the sub-options for Experiment 2 (one to one transformation of Shapefiles into GeoPackages).
 
@@ -238,7 +238,7 @@ The final test was to benchmark the loading time for a certain geographical regi
 | Data transferred >| 479 MB >| 906 MB >| 89.1% more bytes
 |=========================
 
-[*] Our observed GeoPackge decode time is split into GDAL-related processing and internal format conversion (which is not optimized). Although our total GeoPackage decode time was measured at 9.09 seconds slower than Shapefile decode time, the GDAL-only portion of the decode time was 1.72 seconds faster. Writing a well-optimized GeoPackage decoder that decoded directly from SQLite into CAE's internal representation should expect a small performance win.
+[*] Our observed GeoPackage decode time is split into GDAL-related processing and internal format conversion (which is not optimized). Although our total GeoPackage decode time was measured at 9.09 seconds slower than Shapefile decode time, the GDAL-only portion of the decode time was 1.72 seconds faster. Writing a well-optimized GeoPackage decoder that decoded directly from SQLite into CAE's internal representation should expect a small performance win.
 
 Notes and observations:
 
@@ -267,10 +267,10 @@ Elapsed time (seconds): 173
 === FlightSafety Experiment Results
 
 ==== FlightSafety International's Use Case for CDB
-FlightSafety has developed both a CDB generation tool and a CDB Publisher client.  The performance requirements of the CDB Publisher are much greater than CDB generation, so this report will focus on loading and consuming a CDB dataset. The CDB Publisher uses a CDB data store as the source data for building the synthetic environment for FlightSafety's VITAL 1100 image generator system.  These systems are used for pilot training on a variety of flight simulator systems. The Publisher does not do any preprocessing of the CDB dataset; all CDB data that it consumes is discovered and loaded during the publishing.  This approach was chosen due to the world-wide scope of CDB and unknown quantity of content.  The CDB specification's structure makes it easy to find the file(s) containing the data needed for the synthetic environment creation. Based on the flight training system requirements, an appropriate level of detail of vector and model data is discovered and loaded.  The Publisher adapts to the available levels of detail of vector data, and the flight characteristics of the training device. The publishing system is primarily in C++, and the testing was all performed with C++ libraries and code.  The Shapefile API that is tested is a custom FlightSafety library, optimized for faster performance.
+FlightSafety has developed both a CDB generation tool and a CDB Publisher client.  The performance requirements of the CDB Publisher are much greater than CDB generation, so this report will focus on loading and consuming a CDB dataset. The CDB Publisher uses a CDB data store as the source data for building the synthetic environment for FlightSafety's VITAL 1100 image generator system.  These systems are used for pilot training on a variety of flight simulator systems. The Publisher does not do any preprocessing of the CDB dataset; all CDB data that it consumes is discovered and loaded during the publishing.  This approach was chosen due to the world-wide scope of CDB and unknown quantity of content.  The CDB well defined storage structure makes it easy to find the file(s) containing the data needed for the synthetic environment creation. Based on the flight training system requirements, an appropriate level of detail of vector and model data is discovered and loaded.  The Publisher adapts to the available levels of detail of vector data, and the flight characteristics of the training device. The publishing system is primarily in C++, and the testing was all performed with C++ libraries and code.  The Shapefile API that is tested is a custom FlightSafety library, optimized for faster performance.
 
 ==== FlightSafety Experiment Focus
-The experiments were focused on just-in-time uses of CDB, similar to how a FlightSafety visual system would use the data. Statistics were collected on the original CDB dataset, and the converted GeoPackage CDB datasets.  These were used to infer the cost of database configuration management and transmission/deployment to a training device. Testing was done on both currently encoded CDB Shapefiles and on converted GeoPackage encoded files (covering options 1, 3, and 4). Tests focused on the latency of loading files, processing data, and closing files. Tests were done on different conversion options and settings to come up with optimal recommendations
+The experiments were focused on just-in-time uses of CDB, similar to how a FlightSafety visual system would use the data. Statistics were collected on the original CDB dataset, and the converted GeoPackage CDB datasets.  These were used to infer the cost of database configuration management and transmission/deployment to a training device. Testing was done on both currently encoded CDB Shapefiles and on converted GeoPackage encoded files (Experiment 2, options 1, 3, and 4). Tests focused on the latency of loading files, processing data, and closing files. Tests were done on different conversion options and settings to come up with optimal recommendations
 
 ==== FlightSafety Experiment Methodology
 
@@ -285,7 +285,7 @@ Three CDB datasets were downloaded (from Cognitics, Presagis, and VATC) and load
 All three CDB datasets were flown using FlightSafety's VITAL 1100 image generator and CDB publisher. During the fly-through, any data artifacts were noted and recorded.
 
 ===== Data Conversion: 
-The Python conversion scripts developed by Cognitics, Inc. were downloaded from GitHub. The scripts were modified to properly flatten class-level attributes into the feature table, and to properly handle DBase floating point and logical field types.  Index tables were also added to aid SQL queries designed to get back data for a specific CDB vector file. Script changes were published to a public GitHub under a FlightSafety account (link). When the scripts were run, they created a new output directory for the CDB vector data.  The Metadata folder was copied from the original vector CDB version, which then links this GeoPackage version to the rest of the CDB data. The three main conversion scripts used implemented GeoPackage encoding options 1, 3, and 4.
+The Python conversion scripts developed by Cognitics, Inc. were downloaded from GitHub. The scripts were modified to properly flatten class-level attributes into the feature table, and to properly handle DBase floating point and logical field types.  Index tables were also added to aid SQL queries designed to get back data for a specific CDB vector file. Script changes were published to a public GitHub under a FlightSafety account (link). When the scripts were run, they created a new output directory for the CDB vector data.  The Metadata folder was copied from the original vector CDB version, which then links this GeoPackage version to the rest of the CDB data. The three main conversion scripts used implemented GeoPackage encoding for Experiment 2 (and sub-options), Experiment 3 and Experiment 4.
 
 ===== GeoPackage Testing: 
 The initial data collection centered on the number of vector files and how much disk space was consumed.  All full CDB storage devices used a 4kB block size and recorded sizes include the "dead" space due to the minimum block size. The initial tests were testing Shapefiles vs. Option 1.  All vector files were located and timed on the file open and accessing the data within the file.  Total processing time was recorded and compared between the two encodings.  This test accessed the geometry and all the attributes, whether they would have been used by the FlightSafety CDB publisher or not.
@@ -294,11 +294,11 @@ The next set of tests involved working with worst case examples and comparing th
 
 Further testing was performed to see what the trade-offs were between options 1, 3, and 4.  These included loading identical vectors (from a single original Shapefile) from each of three GeoPackage files converted in different ways: 
 
-- GeoPackage Option 1 (Experiment 2 in the IE Activity Plan) was a straight conversion of the Shapefile.  The GeoPackage contains a single data table with flattened class-level attributes, with the same number of records as the original Shapefile
-- GeoPackage Option 3 (Experiment 3 in the IE Activity Plan) was a conversion of each CDB dataset's features into a table for each level of detail (LOD) and component selector set, placed into a single GeoPackage (1 per dataset).  It also contained the most tables, and typically had more feature records than option 1 but fewer than option 4.
-- GeoPackage Option 4 (Experiment $ in the IE Activity Plan) was a conversion of each CDB dataset's features into a table for each component selector set, placed into a single GeoPackage (1 per dataset).  This method placed all levels of detail into the same table, resulting in a handful of tables, but possibly millions of features per table.
+- GeoPackage Experiment 2 in the IE Activity Plan was a straight conversion of the Shapefile.  The GeoPackage contains a single data table with flattened class-level attributes, with the same number of records as the original Shapefile
+- GeoPackage Experiment 3 in the IE Activity Plan was a conversion of each CDB dataset's features into a table for each level of detail (LOD) and component selector set, placed into a single GeoPackage (1 per dataset).  It also contained the most tables, and typically had more feature records than option 1 but fewer than option 4.
+- GeoPackage Experiment 4 in the IE Activity Plan was a conversion of each CDB dataset's features into a table for each component selector set, placed into a single GeoPackage (1 per dataset).  This method placed all levels of detail into the same table, resulting in a handful of tables, but possibly millions of features per table.
 
-Note: _The results for Experiment 1 (Conversion) are provided in the discussions of Option 1, 3, and 4 (IE Experiments 2, 3, and 4)._
+Note: _The results for Experiment 1 (Conversion) are provided in the discussions of IE Experiments 2, 3, and 4._
 
 ==== FlightSafety Metrics
 
@@ -340,25 +340,25 @@ Some of the testing below involved loading specific point/linear/areal vectors t
 |*Areal Vector* |	N47W120_D204_S002_T005_L02_U0_R2	| N12E044_D100_S002_T005_L02_U3_R3	| N34W119_D204_S002_T005_L03_U4_R7
 |===
 
-==== Shapefile vs. GeoPackage Option 1 (Experiment 2) Testing
+==== Shapefile vs. GeoPackage Experiment 2 Testing
 
-===== Option 1 Conversion Statistics
-Before the first set of tests, the CDB datasets were converted one-to-one from Shapefiles to GeoPackage, using the option 1 conversion.  Dataset statistics were then collected on the new datasets and compared with the original datasets.
+===== Experiment 2 Conversion Statistics
+Before the first set of tests, the CDB datasets were converted one-to-one from Shapefiles to GeoPackage, using the Option 1a conversion.  Dataset statistics were then collected on the new datasets and compared with the original datasets.
 
 [width="90%",options="header"]
 |===
 |  | Northwest Pacific	| Yemen	|Los Angeles
 |*Shapefile Vector Storage Size* |	9,152 MB	|53.4 MB	|2,381 MB
 |*Shapefile Vector File Count* |	109,490 files	|4714 files	|13,075 files
-|*GeoPackage 1 Storage Size* |	17,827 MB	|157.9 MB	|938 MB
-|*GeoPackage 1 File Count* |	25,083 files	|1,146 files	|2,615 files
+|*GeoPackage Storage Size* |	17,827 MB	|157.9 MB	|938 MB
+|*GeoPackage File Count* |	25,083 files	|1,146 files	|2,615 files
 |*Relative Size (>1 is larger)* |	1.95	|2.96	|0.39
 |*% Fewer Vector Files* |	77 %	|76 %	|80 %
 |===
 
 File counts for the GeoPackage CDB were between a 4:1 and 5:1 reduction in vector files.  The size changes varied dramatically, likely due to how efficient the attributes were packed into the original Shapefile's instance and class-level DBF files.  In general, an increase in CDB size is expected using option 1.
 
-===== Option 1 Testing Focus
+===== Experiment 2 Testing Focus
 The testing focused on the latency of loading and processing the vector data files, and traversing all the geometry features and attributes.  This approach was used to simulate a flight simulation client's use of CDB.
 
 ===== Test Procedure 1
@@ -429,30 +429,24 @@ Performance +
 
 Larger performance increases for areal data (47% - 56%), at the cost of relatively larger storage size. However, the sample size (number of polygon features) is quite small.
 
-==== GeoPackage Option 3 and 4 Testing
+==== GeoPackage Experiments 3 and 4 Testing
 
-Please remember that in the FlightSafety presentation of results:
+===== Experiments 3 & 4 Conversion Statistics
 
-Option 1 = Experiment 2 +
-Option 3 = Experiment 3 +
-Option 4 = Experiment 4 +
-
-===== Option 3 & 4 Conversion Statistics
-
-In addition to the one-to-one Shapefile to GeoPackage encoding, FlightSafety wished to also test the other GeoPackage encodings represented by options 3 and 4.  Conversions were performed to create these new CDB datasets using the modified Python conversion scripts.  These were tested against the option 1 CDB datasets used in the previous tests.  The dataset statistics (file sizes and counts) are in the table below.  Conversion notes include:
+In addition to the one-to-one Shapefile to GeoPackage encoding, FlightSafety wished to also test the other GeoPackage encodings represented by Experiments 3 and 4.  Conversions were performed to create these new CDB datasets using the modified Python conversion scripts.  These were tested against the option 1 CDB datasets used in the previous tests.  The dataset statistics (file sizes and counts) are in the table below.  Conversion notes include:
 
 - The parts of the file name (dataset code/component selectors/lod/row/column values) were initially stored as strings.  Converting these to integers led to about a 10% improvement over the initial string conversion.
 - Index tables were created for the parts of the filename that did not comprise the table name.  This led to significant improvements that were up to 90% faster than without the index. 
--- Option 3 table names were of the form:  "D100_L04_S001_T001".  So indexes were created for the row and column values, assuming that a user might want to generate a SQL query on that table's row and column values.
--- Option 4 table names were of the form:  "D100_S001_T001".  So indexes were created for the LoD, row and column values, assuming that a user might want to generate a SQL query on that table's LoD and row and column values.
+-- Experiment 3 table names were of the form:  "D100_L04_S001_T001".  So indexes were created for the row and column values, assuming that a user might want to generate a SQL query on that table's row and column values.
+-- Experiment 4 table names were of the form:  "D100_S001_T001".  So indexes were created for the LoD, row and column values, assuming that a user might want to generate a SQL query on that table's LoD and row and column values.
 
 [width="90%",options="header"]
 |===
 |*Conversion Statistics*| Northwest Pacific	| Yemen	|Los Angeles
-|*GeoPackage 1 File Count* |	25,083 files	|1,146 files	|2,615 files
-|*GeoPackage 3/4 File Count* |	161 files	|22 files	|7 files
+|*GeoPackage Experiment 2 File Count* |	25,083 files	|1,146 files	|2,615 files
+|*GeoPackage Experiments 3/4 File Count* |	161 files	|22 files	|7 files
 |*% Fewer Vector Files +
-Options 3/4 vs Option 1* |	99.4 %	|98 %	|99.7 %
+Experiments 3/4 vs Experiment 2* |	99.4 %	|98 %	|99.7 %
 |===
 
 As expected the number of files is much smaller using options 3 or 4.
@@ -461,60 +455,59 @@ As expected the number of files is much smaller using options 3 or 4.
 |===
 |*Conversion Statistics*| Northwest Pacific	| Yemen	|Los Angeles
 |*Shapefile Storage Size* |	9,152 MB	|53.4 MB	|2,381 MB
-|*GeoPackage 1 Storage Size* |	17,827 MB	|157.9 MB	|938 MB
-|*GeoPackage 3 Storage Size* |	16,479 MB	|59.3 MB	|728 MB
-|*GeoPackage 4 Storage Size* |	16,729 MB	|55.5 MB	|740 MB
-|*Options 1 & 3 Relative Size +
+|*GeoPackage Ex 2 Storage Size* |	17,827 MB	|157.9 MB	|938 MB
+|*GeoPackage Ex 3 Storage Size* |	16,479 MB	|59.3 MB	|728 MB
+|*GeoPackage Ex 4 Storage Size* |	16,729 MB	|55.5 MB	|740 MB
+|*Experiments 2 & 3 Relative Size +
 (> 1 is larger)* |	0.92	|0.38	|0.78
-|*Options 1 & 4 Relative Size +
+|*Experiments 2 & 4 Relative Size +
 (> 1 is larger)* |	0.94	|0.35	|0.79
-|*Shapefile vs Option 3 Size +
+|*Shapefile vs Experiment 3 Size +
 (> 1 is larger)* |	1.80	|1.11	|0.31
-|*Shapefile vs Option 4 Size +
+|*Shapefile vs Experiment 4 Size +
 (> 1 is larger)* |	1.83	|1.04	|0.31
 |===
 
-In all cases, the combined GeoPackage datasets required less storage than the option 1 GeoPackage files. This was true even though the combined datasets have index tables that the Option 1 GeoPackages do not have.  Note that in all cases even combining the GeoPackage files into a minimal set does not lead to a smaller vector dataset than Shapefiles.
+In all cases, the combined GeoPackage datasets required less storage than the Experiment 2 GeoPackage files. This was true even though the combined datasets have index tables that the Experiment 2 GeoPackages do not have.  Note that in all cases even combining the GeoPackage files into a minimal set does not lead to a smaller vector dataset than Shapefiles.
 
 ===== Testing Procedure
 The testing focus for comparing the different GeoPackage encoding options was on the latency of loading the GeoPackage file and using SQL queries to return the records converted from a single Shapefile.  This approach is similar to the Shapefiles vs GeoPackage testing done above, but the test was constructed slightly differently.
 
 -	The GeoPackage was opened and an SQL query was performed to return the data that represented a single Shapefile's vector data.  In each query, the number of records in the table varied according to the type of conversion performed, but the amount of data and the values returned by the query were identical.
 -	The SQL queries used for each GeoPackage option were variations on the following: 
---	Option 1:  SELECT * FROM 'D100_S001_T001_L04_U12_R0'
---	Option 3:  SELECT * FROM '100_GSFeature_L04_S001_T001' WHERE _UREF='12' AND _RREF='0'
---	Option 4:  SELECT * FROM '100_GSFeature_S001_T001' WHERE _LOD='4' AND _UREF='12' AND _RREF='0'
--	For timing purposes, each GeoPackage's open and query was run 100 times, alternating between each option test in succession.
--	The relative speed row shows the performance hit of doing an open on a larger GeoPackage with more tables and more records to search through.  For example, a 2.0 represents a test that took twice as long as the Option 1 test.
-
+--	Experiment 2:  SELECT * FROM 'D100_S001_T001_L04_U12_R0'
+--	Experiment 3:  SELECT * FROM '100_GSFeature_L04_S001_T001' WHERE _UREF='12' AND _RREF='0'
+--	Experiment 4:  SELECT * FROM '100_GSFeature_S001_T001' WHERE _LOD='4' AND _UREF='12' AND _RREF='0'
+-	For timing purposes, each GeoPackage's open and query was run 100 times, alternating between each Experiment test in succession.
+-	The relative speed row shows the performance hit of doing an open on a larger GeoPackage with more tables and more records to search through.  For example, a 2.0 represents a test that took twice as long as the Experiment 2 test.
 [width="90%",options="header"]
 |===
 |*Point Queries*| Northwest Pacific	| Yemen	|Los Angeles
-|*Option 1 Table Size (Count)* |	16,384	|5,552	|4,734
-|*Option 1 Read GeoPackage* |	87.3 ms	|39.6 ms	|38.6 ms
-|*Option 3 Table Size (Count)* |	3,375,935	| 7,766	| 493,936
-|*Option 3 SQL Query* |	138.2 ms	|59.3 ms	|51.5 ms
-|*Speed Relative to Option 1 +
+|*Experiment 2 Table Size (Count)* |	16,384	|5,552	|4,734
+|*Experiment 2 Read GeoPackage* |	87.3 ms	|39.6 ms	|38.6 ms
+|*Experiment 3 Table Size (Count)* |	3,375,935	| 7,766	| 493,936
+|*Experiment 3 SQL Query* |	138.2 ms	|59.3 ms	|51.5 ms
+|*Speed Relative to Experiment 2 +
 (>1 is faster)* |	0.63	|0.67	|0.75
-|*Option 4 Table Size (Count)*|	6,865,325	|43,122	|2,842,150
-|*Option 4 SQL Query*|	173.9 ms	|44.9 ms	|79.7 ms
+|*Experiment 4 Table Size (Count)*|	6,865,325	|43,122	|2,842,150
+|*Experiment 4 SQL Query*|	173.9 ms	|44.9 ms	|79.7 ms
 |*Speed Relative to Option 1 +
 (>1 is faster)* |	0.50	|0.88	|0.48
 |===
 
-Option 3 GeoPackage file opens are sensitive to the number of tables in the GeoPackage, and tend to dominate the timing of cases with fewer features.  Option 4 has fewer tables and faster GeoPackage opens, but is more sensitive to the number of records in the table that need to be searched.
+Experiment 3 GeoPackage file opens are sensitive to the number of tables in the GeoPackage, and tend to dominate the timing of cases with fewer features.  Experiment 4 produced fewer tables and faster GeoPackage opens, but is more sensitive to the number of records in the table that need to be searched.
 
 [width="90%",options="header"]
 |===
 |*Line String Queries*| Northwest Pacific	| Yemen	|Los Angeles
-|*Option 1 Table Size (Count)* |	8,183	|2,457	|3,343
-|*Option 1 Read GeoPackage* |	53.8 ms	|22.3 ms	|26.4 ms
-|*Option 3 Table Size (Count)* |	16,454	|2,457	|80,697
-|*Option 3 SQL Query*|	63.6 ms	|24.5 ms	|28.7 ms
-|*Speed Relative to Option 1 +
+|*Experiment 2 Table Size (Count)* |	8,183	|2,457	|3,343
+|*Experiment 2 Read GeoPackage* |	53.8 ms	|22.3 ms	|26.4 ms
+|*Experiment 3 Table Size (Count)* |	16,454	|2,457	|80,697
+|*Experiment 3 SQL Query*|	63.6 ms	|24.5 ms	|28.7 ms
+|*Speed Relative to Experiment 2 +
 (>1 is faster)* |	0.85	|0.91	|0.92
-|*Option 4 Table Size (Count)* |	79,512	|2,457	|149,757
-|*Option 4 SQL Query* |	52.4 ms	|23.0 ms	|29.7 ms
+|*Experiment 4 Table Size (Count)* |	79,512	|2,457	|149,757
+|*Experiment 4 SQL Query* |	52.4 ms	|23.0 ms	|29.7 ms
 |*Speed Relative to Option 1 +
 (>1 is faster)* |	1.03	|0.97	|0.89
 |===
@@ -524,38 +517,38 @@ In both options 3 and 4, GeoPackage files perform slightly worse, but perform be
 [width="90%",options="header"]
 |===
 |*Polygon Queries*| Northwest Pacific	| Yemen	|Los Angeles
-|*Option 1 Table Size (Count)* |	94	|198	|127
-|*Option 1 Read GeoPackage* |	5.4 ms	|6.1 ms	|4.3 ms
-|*Option 3 Table Size (Count)* |	207	|330	|1,238
-|*Option 3 SQL Query* |	11.3 ms	|16.2 ms	|6.3 ms
-|*Speed Relative to Option 1 +
+|*Experiment 2 Table Size (Count)* |	94	|198	|127
+|*Experiment 2 Read GeoPackage* |	5.4 ms	|6.1 ms	|4.3 ms
+|*Experiment 3 Table Size (Count)* |	207	|330	|1,238
+|*Experiment 3 SQL Query* |	11.3 ms	|16.2 ms	|6.3 ms
+|*Speed Relative to Experiment 2 +
 (>1 is faster)* |	0.48	|0.37	|0.69
-|*Option 4 Table Size (Count)* |	2,250	|1,531	|1,480
-|*Option 4 SQL Query* |	6.1 ms	|7.4 ms	|5.0 ms
-|*Speed Relative to Option 1 +
+|*Experiment 4 Table Size (Count)* |	2,250	|1,531	|1,480
+|*Experiment 4 SQL Query* |	6.1 ms	|7.4 ms	|5.0 ms
+|*Speed Relative to Experiment 2 +
 (>1 is faster)* |	0.88	|0.82	|0.86
 |===
 
-The overhead of opening GeoPackage files with a large number of tables in the option 3 encoding is particularly prominent in the polygon queries.  The option 4 encoding is close to the single vector file per GeoPackage timing.
+The overhead of opening GeoPackage files with a large number of tables in the Experiment 3 encoding is particularly prominent in the polygon queries.  The Experiment 4 encoding is close to the single vector file per GeoPackage timing.
 
-==== Further GeoPackage Option 3 & 4 Testing
+==== Further GeoPackage Experiment 3 & 4 Testing
 
 ===== Testing Procedure
 
-The initial SQL query testing only performed a single query per GeoPackage open and close.  A more typical use case with options 3 and 4 would be to hold a GeoPackage file open for longer periods of time, and perform more queries per file access.  In this test, the same query was performed but 100 queries were performed while the file was open.  There are limitations to the results of this test, as the same query was performed over and over.  It was likely that the parts of the file being accessed remained in memory the whole time, and this only measures the time to copy the data out of the GeoPackage file.  However, this is a starting point toward understanding the performance of repeated queries in a large file.
+The initial SQL query testing only performed a single query per GeoPackage open and close.  A more typical use case with Experiments 3 and 4 would be to hold a GeoPackage file open for longer periods of time, and perform more queries per file access.  In this test, the same query was performed but 100 queries were performed while the file was open.  There are limitations to the results of this test, as the same query was performed over and over.  It was likely that the parts of the file being accessed remained in memory the whole time, and this only measures the time to copy the data out of the GeoPackage file.  However, this is a starting point toward understanding the performance of repeated queries in a large file.
 
-The test results show the time per query, plus a 1/100 portion of the GeoPackage open and close time.  The table also compares this time with Option 1's performance, where there is little gained by keeping the GeoPackage open.
+The test results show the time per query, plus a 1/100 portion of the GeoPackage open and close time.  The table also compares this time with Experiment 2's performance, where there is little gained by keeping the GeoPackage open.
 
 ===== Test Results
 
 [width="90%",options="header"]
 |===
 |*Points - 100 Queries*| Northwest Pacific	| Yemen	|Los Angeles
-|*Option 1 - 1 Query* |	87.3 ms	|46.0 ms	|38.6 ms
-|*Option 3 - 100 Queries Average* |	64.6 ms	|25.9 ms	|26.4 ms
+|*Experiment 2 - 1 Query* |	87.3 ms	|46.0 ms	|38.6 ms
+|*Experiment 3 - 100 Queries Average* |	64.6 ms	|25.9 ms	|26.4 ms
 |*Percent Faster than Option 1* |	26%	|35%	|32%
-|*Option 4 - 100 Queries Average* |	68.2 ms	|24.2 ms	|23.8 ms
-|*Percent Faster than Option 1* |	22%	|39%	|38%
+|*Experiment 4 - 100 Queries Average* |	68.2 ms	|24.2 ms	|23.8 ms
+|*Percent Faster than Experiment 2* |	22%	|39%	|38%
 |===
 
 Keeping the GeoPackage open between queries improves performance but note that not all cases are faster than the original Shapefile performance.
@@ -563,24 +556,24 @@ Keeping the GeoPackage open between queries improves performance but note that n
 [width="90%",options="header"]
 |===
 |*Line Strings - 100 Queries*| Northwest Pacific	| Yemen	|Los Angeles
-|*Option 1 - 1 Query* |	53.8 ms	|22.3 ms	|26.4 ms
-|*Option 3 - 100 Queries Average* |	34.1 ms	|11.8 ms	|13.3 ms
-|*Percent Faster than Option 1* |	37%	|47%	|49%
-|*Option 4 - 100 Queries Average* |	34.9 ms	|11.1 ms	|13.3 ms
-|*Percent Faster than Option 1* |	35%	|50%	|49%
+|*Experiment 2 - 1 Query* |	53.8 ms	|22.3 ms	|26.4 ms
+|*Experiment 3 - 100 Queries Average* |	34.1 ms	|11.8 ms	|13.3 ms
+|*Percent Faster than Experiment 2* |	37%	|47%	|49%
+|*Experiment 4 - 100 Queries Average* |	34.9 ms	|11.1 ms	|13.3 ms
+|*Percent Faster than Experiment 2* |	35%	|50%	|49%
 |===
 
 [width="90%",options="header"]
 |===
 |*Polygon - 100 Queries*| Northwest Pacific	| Yemen	|Los Angeles
-|*Option 1 - 1 Query* |	5.4 ms	|6.1 ms	|4.3 ms
-|*Option 3 - 100 Queries Average* |	1.1 ms	|1.6 ms	|0.78 ms
-|*Percent Faster than Option 1* |	80%	|75%	|82%
-|*Option 4 - 100 Queries Average* |	0.79 ms	|1.1 ms	|0.85 ms
-|*Percent Faster than Option 1* |	85%	|82%	|80%
+|*Experiment 2 - 1 Query* |	5.4 ms	|6.1 ms	|4.3 ms
+|*Experiment 3 - 100 Queries Average* |	1.1 ms	|1.6 ms	|0.78 ms
+|*Percent Faster than Experiment 2* |	80%	|75%	|82%
+|*Experiment 4 - 100 Queries Average* |	0.79 ms	|1.1 ms	|0.85 ms
+|*Percent Faster than Experiment 2* |	85%	|82%	|80%
 |===
 
-This approach shows that there is some significant overhead in opening large GeoPackage files.  Keeping the GeoPackages open can mitigate some of the overhead.  We do not believe that a full client would see this level of performance, but there is a good possibility a client would see improved performance over option 1.
+This approach shows that there is some significant overhead in opening large GeoPackage files.  Keeping the GeoPackages open can mitigate some of the overhead.  We do not believe that a full client would see this level of performance, but there is a good possibility a client would see improved performance over Experiment 2.
 
 === Hexagon US Federal Technology Experiment Report
 ==== Experiment Methodology - Dataset Conversion
@@ -653,7 +646,7 @@ Visualization metrics were gathered on the initial load of the CDB datasets whic
 A couple of performance comments (so far):
 
 . Structure of the data matters.  Timing differences in SQL queries on integers rather than strings is enough to matter.
-. As mentioned by others, opening a GeoPackage with lots of tables is slower than having a single table (option 3).
- .Doing a query to get features out of a very large table is MUCH slower (option 4).   40x slowdowns were observed for heavily forested areas when querying 4700 points out of a table with >2.8M points.
-. The more columns a table has, the larger the slowdown (ie, a query in option 4 vs a query in option3 might take twice as long with 8 columns, but 4 times as long with 30 columns)
-.. With more time, testing option 1b might be worthwhile.  It should yield faster queries to not flatten class-level attributes into the feature table.
+. As mentioned by others, opening a GeoPackage with lots of tables is slower than having a single table (Experiment 3).
+ .Doing a query to get features out of a very large table is MUCH slower (Experiment 4).   40x slowdowns were observed for heavily forested areas when querying 4700 points out of a table with >2.8M points.
+. The more columns a table has, the larger the slowdown (ie, a query in Experiment 4 vs a query in Experiment 3 might take twice as long with 8 columns, but 4 times as long with 30 columns)
+.. With more time, testing Experiment 2, Option 1b might be worthwhile.  It should yield faster queries to not flatten class-level attributes into the feature table.
