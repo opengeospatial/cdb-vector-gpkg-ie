@@ -90,15 +90,15 @@ Given the size of the CDB data stores used in this IE, there was discussion rela
 
 === Details Related to Experiment 2
 
-Experiment 2 focused on approaches to replacing each Shapefile in an existing CDB data store thereby consolidating the three geometry files into a single GeoPackage. The objectives was to determine the best practices for not only replacing Shapefiles for also allowing the storage and use of both Shapefiles and Geopackages in a CDB data store. Part of this experiment was to also evaluate and compare performance using the baseline CDB datasets made available as part of Experiment 1. finally, this experiment also focused on evaluating and analyzing and results from Experiment #2 related to performance, backwards-compatibility and risks to interoperability.
+Experiment 2 focused on approaches to replacing each Shapefile with a corresponding GeoPackage in an existing CDB data store thereby consolidating the three geometry files into a single GeoPackage. The objective was to determine the best practices for not only replacing Shapefiles but also allowing the storage and use of both Shapefiles and Geopackages in a CDB data store. Part of this experiment was to also evaluate and compare performance using the baseline CDB datasets made available as part of Experiment 1. Finally, this experiment also focused on evaluating and analyzing and results from Experiment #2 related to performance, backwards-compatibility and risks to interoperability.
 
-The Participants identifed four possible approaches to converting and/or using GeoPackages in a CDB data store.
+The Participants further identifed four possible Options for converting and/or using GeoPackages in a CDB data store. These Options are labeled as Option 1a, Option 1b, Option 1c, and Option 1d in the remainder of this ER.
 
 ==== Option 1a – 1:1 Conversion of Shapefiles to GeoPackages
 
-This experiment researched the direct 1 to 1 conversion of Shapefiles in a CDB datastore into a corresponding set of Geopackages. GDAL (https://www.gdal.org/drv_geopackage.html) and << >> were used to do the conversion. Charcateristics of the Option 1a approach are:
+This experiment researched the direct 1 to 1 conversion of Shapefiles in a CDB datastore into a corresponding set of Geopackages. https://www.gdal.org/drv_geopackage.html[GDAL] and various commercial tools were used to do the transfer of Shapefile content in a GeoPackage. Characteristics of the Option 1a approach are:
 
-- There is a 4:1 reduction in the  number of files.
+- There is a potential 4:1 reduction in the  number of files.
 - There is one layer (table) per  GeoPackage.
 - The Feature Class and Extended Attribute files have no geometry.
 - “Off the Shelf” GeoPackage  Viewers will have no compatibility  over the feature class and  extended attributes layers.
@@ -157,14 +157,13 @@ image::images/experiment-2-option-1d.png[width=800,align="center"]
 
 The methodology for Experiment 3 involves: 
 
-The goal of this experiment is to significantly reduce the number of files in both a CDB datastore and in the resulting GeoPackage. Steps in this experiment include:
+The goal of this experiment was to significantly reduce the number of files in both a CDB data store and in the resulting GeoPackage. Steps in this experiment include:
 
 - Modify implementation software to support storing an entire CDB dataset in a single GeoPackage with each LOD stored in a single table.
 - Evaluate and compare performance using the baseline CDB datasets and the Alternative #2 datasets.
 - Evaluate analysis and results from Experiment #3 for performance, backwards-compatibility and risks to interoperability.
 
-In this approach, the tables in the GeoPackage correspond to each LOD of CDB. Including negative LODs, the GeoPackage would contain 34 tables for each of the CDB LODs. Each CDB geotile would contain a GeoPackage to correspond to the CDB data stores (such road networks,
-geospecific points, etc.). CDB tiles for a data store combine into a single GeoPackage table within that given LOD where the tile definition (row and column) would be queryable attributes for each feature. In simple language, to find the features in a tile for a particular geotile’s road network in LOD 3 of CDB, a consumer would open the road network GeoPackage, open the table that corresponds to LOD, and query for results where the column and row reference matches the CDB tile.
+In this approach, the tables in the GeoPackage correspond to each LOD of CDB. Including negative LODs, the GeoPackage would contain 34 tables for each of the CDB LODs. Each CDB geotile would contain a GeoPackage to correspond to the CDB data stores (such road networks, geospecific points, etc.). CDB tiles for a data store combine into a single GeoPackage table within that given LOD where the tile definition (row and column) would be queryable attributes for each feature. In simple language, to find the features in a tile for a particular geotile’s road network in LOD 3 of CDB, a consumer would open the road network GeoPackage, open the table that corresponds to LOD, and query for results where the column and row reference matches the CDB tile.
 
 === Experiment 4: Store each Geocell of Vector Data as a layer in GeoPackage
 
