@@ -2,9 +2,10 @@
 
 This section discusses conclusions and recommendations . There is also a section on the issue of backwards compatability. A number of issues for future discussion and consideration were also identified. These include:
 
-- Forwards compatibility in the CDB context
+- Forwards compatibility in the CDB context.
 - How to let an application know what vector data encoding is/are available.
-- Versioning and GPKG and CDB 1.2
+- Versioning and GPKG and CDB 1.2.
+- Additional testing for Experiments 3 and 4 in terms of optimazation.
 
 === Backwards compatibility in the CDB context
 
