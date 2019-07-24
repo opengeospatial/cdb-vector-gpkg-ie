@@ -292,7 +292,7 @@ The initial data collection centered on the number of vector files and how much 
 
 The next set of tests involved working with worst case examples and comparing the same file open and access time as before, but for single files.  This highlights performance on the largest vector files.  The average performance times are reported here. 
 
-Further testing was performed to see what the trade-offs were between options 1, 3, and 4.  These included loading identical vectors (from a single original Shapefile) from each of three GeoPackage files converted in different ways: 
+Further testing was performed to see what the trade-offs were between Experiments 2, 3, and 4.  These included loading identical vectors (from a single original Shapefile) from each of three GeoPackage files converted in different ways: 
 
 - GeoPackage Experiment 2 in the IE Activity Plan was a straight conversion of the Shapefile.  The GeoPackage contains a single data table with flattened class-level attributes, with the same number of records as the original Shapefile
 - GeoPackage Experiment 3 in the IE Activity Plan was a conversion of each CDB dataset's features into a table for each level of detail (LOD) and component selector set, placed into a single GeoPackage (1 per dataset).  It also contained the most tables, and typically had more feature records than option 1 but fewer than option 4.
@@ -330,7 +330,7 @@ Basic statistics were collected on the original CDB datasets used in the Interop
 The main takeaway from this table is that vector data does not consume a large amount of storage space, but accounts for a prodigious number of files within a typical CDB.  The main driver of file counts are that Shapefiles are a multi-file format, where three (or four with the .prj projection file) files represent a single Shapefile.  In addition to the multi-file format, CDB uses extra class-level and extended-level attributes encoded as extra DBF files.  So anywhere from 3 to 8 files are used to represent a single logical vector file.
 
 ===== Specific Vector File Test Data
-Some of the testing below involved loading specific point/linear/areal vectors that represent a single Shapefile.  For these tests, examples were found that represent "worst-case" examples of large vector files.  These larger files would take more time to load, and most occurred within higher LODs that would lead to larger tables in options 3 and 4.  The following table records the specific Shapefile data for individual tests.
+Some of the testing below involved loading specific point/linear/areal vectors that represent a single Shapefile.  For these tests, examples were found that represent "worst-case" examples of large vector files.  These larger files would take more time to load, and most occurred within higher LODs that would lead to larger tables in Experiments 3 and 4.  The following table records the specific Shapefile data for individual tests.
 
 [width="90%",options="header"]
 |===
@@ -356,7 +356,7 @@ Before the first set of tests, the CDB datasets were converted one-to-one from S
 |*% Fewer Vector Files* |	77 %	|76 %	|80 %
 |===
 
-File counts for the GeoPackage CDB were between a 4:1 and 5:1 reduction in vector files.  The size changes varied dramatically, likely due to how efficient the attributes were packed into the original Shapefile's instance and class-level DBF files.  In general, an increase in CDB size is expected using option 1.
+File counts for the GeoPackage CDB were between a 4:1 and 5:1 reduction in vector files.  The size changes varied dramatically, likely due to how efficient the attributes were packed into the original Shapefile's instance and class-level DBF files.  In general, an increase in CDB size is expected using the approaches defined in Experiment 2.
 
 ===== Experiment 2 Testing Focus
 The testing focused on the latency of loading and processing the vector data files, and traversing all the geometry features and attributes.  This approach was used to simulate a flight simulation client's use of CDB.
