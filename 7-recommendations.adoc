@@ -40,13 +40,13 @@ Please see CAE recommendations
 --	There are other small-level issues with Shapefiles, including limited field name length, limited numbers of attributes, limited data types, and a single geometry type per Shapefile.
 --	In all three test CDB datasets, the number of files greatly exceed the proportion of space on disk.  The large number of small files causes problems with efficient disk space usage and slows the distribution of a CDB dataset.
 -	Replacing a single Shapefile with a GeoPackage (Experiment 2) seems to be a better solution for CDB 1.2 or a future CDB 1.x
---	Changes to CDB clients involve less work than other options.
+--	Changes to CDB clients involve less work than other than the Experiment 3 and 4 approaches.
 --	On average, the performance was better with GeoPackage
 --	On specific worst case tests, Line Strings and Polygons were faster with GeoPackage.  Points were mixed, but likely fast enough for this use case.
---	It would also fit within CDB's pre-existing versioning mechanism better than the other options, as it can maintain the single "file" paradigm where a vector file replaces/hides another vector file (even if the "file" is really a multi-file format).
+--	It would also fit within CDB's pre-existing versioning mechanism better than the Experiment 3 and 4 approaches, as it can maintain the single "file" paradigm where a vector file replaces/hides another vector file (even if the "file" is really a multi-file format).
 --	The class-level attributes would be easy to import into a flattened GeoPackage.  Importing extended-level attributes as a related table makes sense as well, although redesigning the odd extended attribute encoding would be recommended.
 --	The SWG is encouraged to implement a single vector encoding per CDB dataset/version, and a way to discover the vector encoding implemented from a file in the Metadata folder.
--	GeoPackage options 3 or 4 would be best suited to a future compatibility-breaking version of CDB 2.0. 
+-	GeoPackage Experiments 3 or 4 would be best suited to a future compatibility-breaking version of CDB 2.0. 
 --	CDB client changes would be more extensive, but the performance gain would likely be worth the effort.
 --	More detail and additional specification requirements would be necessary to describe how to version CDB datasets when that dataset no longer maintains the "traditional" directory and file format that versioning was designed for. 
 --	The SQL query when loading the vectors that would be contained within a single shapefile can take twice as long as when these vectors are in a single GeoPackage, but the open cost can be amortized across many queries if the GeoPackage files remain open for a longer period of time.
