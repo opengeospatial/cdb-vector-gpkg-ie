@@ -9,6 +9,7 @@ The following abbreviated terms provides a list of the abbreviated terms and the
     CRS  Coordinate Reference System
     GPKG GeoPackage
     ER   Engineering Report
+    GDAL Geospatial Data Abstraction Library
     IE   Interoperability Experiment
     IG   Image Generation
     OGC  Open Geospatial Consortium
