@@ -3,7 +3,7 @@
 
 (( A primary objective of this IE was to agree and document possible change requests and/or best practices for storing vector data in a CDB data using encodings and/or containers other than Shapefiles. These suggested changes requests and/or best/practices will be used as the basis for CDB SWG discussions related to possible revisions to the CDB standard. ))
 
-(( While there are a number of issues, such as file path naming conventions that need to considered and agreed to by the SWG, the particpant consensus is that the GeoPackage identified and tested in <<Details Related to Experiment 2>>. ))
+(( While there are a number of issues, such as file path naming conventions that need to considered and agreed to by the SWG, the particpant consensus is that the GeoPackage approach identified and tested in Experiment 2 is a strong candidate for inclusion in Version CDB 1.2))
 
 ((Please note that a reader of this Engineering Report should have a basic understanding of both the CDB storage model and the GeoPackage Standard.))
 
