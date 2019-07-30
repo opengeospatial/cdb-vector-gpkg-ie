@@ -1,4 +1,4 @@
-[[DetailedClause]]
+[[Details of the Experiments Performed]]
 == Details of the Experiments Performed
 This section details the experiments and particpant participation in each experiment. The experiments performed in this Interoperability Experiment included:
 
