@@ -1,4 +1,4 @@
-[[Details of the Experiments Performed]]
+[[Details_of_the_Experiments_Performed]]
 == Details of the Experiments Performed
 This section details the experiments and particpant participation in each experiment. The experiments performed in this Interoperability Experiment included:
 
