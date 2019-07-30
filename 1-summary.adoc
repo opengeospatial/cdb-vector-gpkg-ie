@@ -5,7 +5,7 @@
 
 (( While there are a number of issues, such as file path naming conventions that need to considered and agreed to by the SWG, the particpant consensus is that the GeoPackage approach identified and tested in Experiment 2 is a strong candidate for inclusion in Version CDB 1.2. Experiment 2 focused on a one to one conversion of Shapefiles into GeoPackages.))
 
-((Please note that a reader of this Engineering Report should have a basic understanding of both the CDB storage model and the GeoPackage Standard.))
+((Please note that a reader of this Engineering Report should have a basic understanding of both the CDB storage model and the GeoPackage Standard. Details on the Experiments performed in this IE can be found here <<Details of the Experiments Performed>>.))
 
 ((_Key Recommendation 1_: Experiment 2 Option C provides both a reduction in the dataset’s file count and minimizes the impact to existing CDB applications accessing data in the current tiled directory structure. This approach should be seriously considered as part of CDB Version 1.2. There are several issues that the SWG needs to discuss and resolve, such as how to indicate vector storage type.))
 
