@@ -26,7 +26,7 @@ Our view is that a form of Experiment 2 is backwards compatible with the existin
 
 ==== CAE Findings
 
-Although previous experiments with 1-to-1 Shapefile-to-GeoPackage conversion have been very positive, our experiences indicate mixed results. On one hand, we observe substantial benefit in reducing the number of files stored and loaded, and we also observe the possibility of a comparable (or faster) decode time. However, on the other hand, we see potentially-problematic increases in the amount of storage space required.
+Although previous experiments with one-to-one Shapefile-to-GeoPackage conversion have been very positive, our experiences indicate mixed results. On one hand, we observe substantial benefit in reducing the number of files stored and loaded, and we also observe the possibility of a comparable (or faster) decode time. However, on the other hand, we see potentially-problematic increases in the amount of storage space required.
 
 The negative effects are amplified for CDBs with large numbers of Shapefiles that have small numbers of features. The GeoPackage format (especially as outputted by GDAL) is very space-inefficient when it comes to encoding tiles with small quantities of data. Notably, even if we moved to a 1-tile-per-table instead of a 1-tile-per-file approach, the underlying SQLite format seems to allocate a minimum of 4 KB per table regardless of how little data is in it.
 
@@ -34,7 +34,7 @@ Please see CAE recommendations
 
 ==== FlightSafety Findings
 
--	Shapefiles are a problematic format for several reasons: 
+-	Shapefiles are a problematic format for several reasons:
 --	Shapefiles are a multi-file format to represent a single "logical" file.  Management of multi-file formats is always a bit harder than handing a single file.
 --	The CDB standard's use of extra DBF (DBase III) files for class-level and extended-level attribution is not standard for any current GIS tool which makes the multi-file format problem worse.
 --	There are other small-level issues with Shapefiles, including limited field name length, limited numbers of attributes, limited data types, and a single geometry type per Shapefile.
@@ -46,9 +46,9 @@ Please see CAE recommendations
 --	It would also fit within CDB's pre-existing versioning mechanism better than the Experiment 3 and 4 approaches, as it can maintain the single "file" paradigm where a vector file replaces/hides another vector file (even if the "file" is really a multi-file format).
 --	The class-level attributes would be easy to import into a flattened GeoPackage.  Importing extended-level attributes as a related table makes sense as well, although redesigning the odd extended attribute encoding would be recommended.
 --	The SWG is encouraged to implement a single vector encoding per CDB dataset/version, and a way to discover the vector encoding implemented from a file in the Metadata folder.
--	GeoPackage Experiments 3 or 4 would be best suited to a future compatibility-breaking version of CDB 2.0. 
+-	GeoPackage Experiments 3 or 4 would be best suited to a future compatibility-breaking version of CDB 2.0.
 --	CDB client changes would be more extensive, but the performance gain would likely be worth the effort.
---	More detail and additional specification requirements would be necessary to describe how to version CDB datasets when that dataset no longer maintains the "traditional" directory and file format that versioning was designed for. 
+--	More detail and additional specification requirements would be necessary to describe how to version CDB datasets when that dataset no longer maintains the "traditional" directory and file format that versioning was designed for.
 --	The SQL query when loading the vectors that would be contained within a single shapefile can take twice as long as when these vectors are in a single GeoPackage, but the open cost can be amortized across many queries if the GeoPackage files remain open for a longer period of time.
 -	The OGC Interoperability Experiment was a good testing ground to develop familiarity with GeoPackage and to help the SWG come to a better consensus on the use of GeoPackage.  We would recommend having more IE's as other parts of the specification are reviewed and improved.
 
@@ -76,13 +76,13 @@ If Aechelon were to recommend only one processing alternative, among those in th
 
 CAE has essentially been using GeoPackage as a data _transfer_ format in this experiment, when GeoPackage design seems to be much better used as a data _storage_ format. The GeoPackage format encodes indexes, triggers, sequences, and metadata as well as feature data, and it also supports real-time addition, removal, and update of records. In this experiment, CAE made use of none of these features.
 
-CAE suggests considering GeoJSON as a candidate format for the 1-to-1 Shapefile conversion case (Option 1a). With GeoJSON, we may obtain the same reduction in file count while simultaneously obtaining better performance and storage characteristics for CDBs with large numbers of small vector files. To obtain scalable performance characteristics with GeoJSON, CAE suggests implementations use RapidJSON or similar parser (rather than libjson, which is currently used by GDAL).
+CAE suggests considering GeoJSON as a candidate format for the one-to-one Shapefile conversion case (Option 1a). With GeoJSON, we may obtain the same reduction in file count while simultaneously obtaining better performance and storage characteristics for CDBs with large numbers of small vector files. To obtain scalable performance characteristics with GeoJSON, CAE suggests implementations use RapidJSON or similar parser (rather than libjson, which is currently used by GDAL).
 
 It is also worth noting that GeoJSON supports other variants of the Option 1 experiment; e.g., attribute flattening (Options 1c/1d).
 
 ===== Suggestion 2: GeoPackage as an Incremental Data Store Version
 
-In this experiement, CAE explored the idea of placing GeoPackages _inside_ a CDB. CAE suggests that this may not be the best approach for maximizing compatibility. GeoPackage, like CDB, functions conceptually as an independent data store. CAE would like to raise the possibility of using GeoPackage as an incremental data store _version_, which would essentially allow a GeoPackage to replace a CDB version at its root (at least to the extent that all data inside the CDB can be converted losslessly into GeoPackage data). The idea is to be able to add a GeoPackage as an incremental version without modifying the underlying CDB, or vice versa. What CAE would have to do in this case is define a bidirectional equivalency between a CDB directory path and a GeoPackage/SQLite index--this would allow us clearly-defined semantics for mixing and matching GeoPackage and CDB data stores, with minimal impact on existing standards and implementations.
+In this experiment, CAE explored the idea of placing GeoPackages _inside_ a CDB. CAE suggests that this may not be the best approach for maximizing compatibility. GeoPackage, like CDB, functions conceptually as an independent data store. CAE would like to raise the possibility of using GeoPackage as an incremental data store _version_, which would essentially allow a GeoPackage to replace a CDB version at its root (at least to the extent that all data inside the CDB can be converted losslessly into GeoPackage data). The idea is to be able to add a GeoPackage as an incremental version without modifying the underlying CDB, or vice versa. What CAE would have to do in this case is define a bidirectional equivalency between a CDB directory path and a GeoPackage/SQLite index--this would allow us clearly-defined semantics for mixing and matching GeoPackage and CDB data stores, with minimal impact on existing standards and implementations.
 
 ===== Suggestion 3: The CDB Directory Hierarchy as a Key-Value Store
 
@@ -92,7 +92,7 @@ CAE would like to raise a particular opportunity for future-proofing the standar
 
 ===== GeoPackage Recommendations
 
-*	From our experience, GDAL's GeoPackage driver will create non-standard GeoPackage files.  The SWG needs to decide if that is allowed, or if a stricter GeoPackage implementation is required. 
+*	From our experience, GDAL's GeoPackage driver will create non-standard GeoPackage files.  The SWG needs to decide if that is allowed, or if a stricter GeoPackage implementation is required.
 **	GDAL defaults to using "fid" as the primary key in geometry tables.  GeoPackage specifies "id"
 **	As the conversion scripts use GDAL to convert geometry from Shapefile to GeoPackage, GDAL allows the creation of MultiPolygon and MultiLineString features in Polygon and LineString tables (respectively).  When this happens, GDAL emits a warning that it is not creating standard GeoPackage files.  We would recommend standardizing with GeoPackage, in only allowing a single geometry type within a table.
 **	The conversion from shapefile logical fields to GeoPackage should be standardized.  It would be best to convert any CDB logical field (whether it was logical, string, or integer) into a GeoPackage boolean field.
@@ -108,9 +108,8 @@ Further investigation into the optimal structure of combining multiple sub-datas
 
 . Forwards compatibility in the CDB context
 
-. How to let an application now what vector data encoding is/are available.
+. How to let an application know what vector data encoding is/are available.
 
 . Versioning and GPKG and CDB 1.2
 
 . Guidance on using conversion tools, such as GDAL, to generate consistent and "legal" GeoPackages so that interoperability is enhanced.
-

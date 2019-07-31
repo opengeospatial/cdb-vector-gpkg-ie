@@ -6,14 +6,14 @@ For the purposes of this report, the definitions specified in Clause 4 of the OW
 
 The following abbreviated terms provides a list of the abbreviated terms and the symbols necessary for understanding this document.
 
-    CRS  Coordinate Reference System
-    GPKG GeoPackage
-    ER   Engineering Report
-    GDAL Geospatial Data Abstraction Library
-    IE   Interoperability Experiment
-    IG   Image Generation
-    OGC  Open Geospatial Consortium
-    OGR  OGR Simple Features Library
-    OWS  OGC Web Services
-    SRS  Spatial Reference System
-    SWG  Standards Working Group
+* *CRS*  Coordinate Reference System
+* *GPKG* GeoPackage
+* *ER*   Engineering Report
+* *GDAL* Geospatial Data Abstraction Library
+* *IE*   Interoperability Experiment
+* *IG*   Image Generation
+* *OGC*  Open Geospatial Consortium
+* *OGR*  OGR Simple Features Library
+* *OWS*  OGC Web Services
+* *SRS*  Spatial Reference System
+* *SWG*  Standards Working Group

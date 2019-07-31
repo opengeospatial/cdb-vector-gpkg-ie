@@ -3,9 +3,9 @@
 
 The following normative documents are referenced in this Engineering Report.
 
-* https://portal.opengeospatial.org/files/15-113r5[OGC 15-113r5], Volume 1: OGC CDB Core Standard: Model and Physical Data Store Structure
-* https://portal.opengeospatial.org/files/16-070r3[OGC 16-070r3], Volume 4: OGC CDB Best Practice use of Shapefiles for Vector Data Storage
+* OGC: https://portal.opengeospatial.org/files/15-113r5[OGC 15-113r5], Volume 1: OGC CDB Core Standard: Model and Physical Data Store Structure, Open Geospatial Consortium, 2018
+* OGC: https://portal.opengeospatial.org/files/16-070r3[OGC 16-070r3], Volume 4: OGC CDB Best Practice use of Shapefiles for Vector Data Storage, Open Geospatial Consortium, 2018
 
 The following informative documents are referenced in this Engineering Report.
 
-* https://portal.opengeospatial.org/files/?artifact_id=82553[OGC 18-077r2, OGC CDB, Leveraging GeoPackage Discussion Paper]
+* OGC: https://portal.opengeospatial.org/files/?artifact_id=82553[OGC 18-077r2], OGC CDB, Leveraging GeoPackage Discussion Paper, Open Geospatial Consortium, 2019
