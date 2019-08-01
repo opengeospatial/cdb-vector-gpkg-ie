@@ -1,9 +1,16 @@
 == Summary
 (( This OGC Engineering Report (ER) documents the results of the CDB Vector Data in GeoPackage Interoperability Experiment (IE). The participants in this IE tested transforming CDB Shapefile vector data into one or more GeoPackage(s) and storing the result in a CDB data store. GeoPackage Version 1.2 and CDB Version 1.1 and related Best Practices were the standards baseline used for this experiment. The IE builds on the work described in the OGC https://portal.opengeospatial.org/files/?artifact_id=82553[CDB, Leveraging GeoPackage Discussion Paper]. ))
 
-(( A primary objective of this IE was to agree and document possible change requests and/or best practices for storing vector data in a CDB data using encodings and/or containers other than Shapefiles. These suggested changes requests and/or best/practices will be used as the basis for CDB SWG discussions related to possible revisions to the CDB standard. ))
+(( A primary objective of this IE was to agree and document possible change requests and/or best practices for storing vector data in a CDB data using encodings and/or containers other than Shapefiles. These suggested changes requests and/or best/practices will be used as the basis for CDB Standards Working Group (SWG) discussions related to possible revisions to the CDB standard. ))
 
-(( While there are a number of issues, such as file path naming conventions that need to considered and agreed to by the SWG, the particpant consensus is that the GeoPackage approach identified and tested in Experiment 2 is a strong candidate for inclusion in Version CDB 1.2. Experiment 2 focused on a one to one conversion of Shapefiles into GeoPackages.))
+The experiments performed in this Interoperability Experiment included:
+
+* Experiment 1: Conversion of Shapefiles in one or more CDB data stores into GeoPackages as required for Experiments 2, 3, and/or 4.
+*	Experiment 2: One-to-one conversion of a Shapefile into a GeoPackage.
+*	Experiment 3: Store each CDB Level of Detail (LOD) as a layer in GeoPackage.
+*	Experiment 4: Store each Geocell of Vector Data as a layer in GeoPackage.
+
+(( While there are a number of issues, such as file path naming conventions that need to considered and agreed to by the SWG, the participant consensus is that the GeoPackage approach identified and tested in Experiment 2 is a strong candidate for inclusion in Version CDB 1.2. Experiment 2 focused on a one to one conversion of Shapefiles into GeoPackages.))
 
 ((Please note that a reader of this Engineering Report should have a basic understanding of both the CDB storage model and the GeoPackage Standard. Details on the Experiments performed in this IE can be found here <<Details_of_the_Experiments_Performed>>.))
 
@@ -12,15 +19,15 @@
 ((_Key Recommendation 2_: Consider additional Interoperability Experiments to fully explore (and optimize) Experiments 3 and 4 with an objective of perhaps specifying one or both of these approaches in CDB version 2.0.))
 
 === Requirements & Research Motivation
-(( In the commercial modelling and simulation industry, geospatial data content generation and use is exploding at a rate that is outpacing the innovation and utilization of the traditional Modelling and Simulation (M&S) industry. At the same time, the M&S and geospatial-intelligence (GEOINT) industries are on a path to convergence. Within the OGC, there are two geospatial standards that best enable the unification of the M&S and GEOINT industries: OGC CDB and GeoPackage. OGC CDB and GeoPackage are both standards increasingly used in M&S and GEOINT industry. However, they both contain weaknesses and strengths when it comes to the combined needs of both industries. ))
+(( In the commercial modelling and simulation industry, geospatial data content generation and use is exploding at a rate that is outpacing the innovation and utilization of the traditional Modelling and Simulation (M&S) industry. At the same time, the M&S and Geospatial Intelligence (GEOINT) industries are on a path to convergence. Within the OGC, there are two geospatial standards that best enable the unification of the M&S and GEOINT industries: OGC CDB and GeoPackage. OGC CDB and GeoPackage are both standards increasingly used in M&S and GEOINT industry. However, they both contain weaknesses and strengths when it comes to the combined needs of both industries. ))
 
 === Prior-After Comparison
-(( This IE is based on preliminary work conducted under funding by the U.S. Army Geospatial Center (AGC). The results of that work is publicly released as OGC Document Number 18-077: https://portal.opengeospatial.org/files/?artifact_id=80537&version=1[OGC CDB and GeoPackage Discussion Paper]. The Discussion Paper documents the results of research, design, and prototype efforts to present the OGC with an approach to creating “GeoCDB” — a technology mashing of GeoPackage and OGC CDB — as a deterministic repository of easily read data geospatial datasets suitable for storage, runtime access, and dissemination for live, virtual, constructive, gaming, and mission command (MC) systems. ))
+(( This IE is based on preliminary work conducted under funding by the U.S. Army Geospatial Center (AGC). The results of that work is publicly released as OGC Document Number 18-077: https://portal.opengeospatial.org/files/?artifact_id=80537&version=1[OGC CDB and GeoPackage Discussion Paper] cite:[Freeman2019]. The Discussion Paper documents the results of research, design, and prototype efforts to present the OGC with an approach to creating “GeoCDB” — a technology mashing of GeoPackage and OGC CDB — as a deterministic repository of easily read data geospatial datasets suitable for storage, runtime access, and dissemination for live, virtual, constructive, gaming, and mission command (MC) systems. ))
 
 === Recommendations for Future Work
-This Interoperability Experiment addressed the specific issue of how best to and develop guidance for storing GeoPackage containers in a CDB datastore. AS a result of the experiments conducted in this IE activity, the particants have identifed a number of other potential interoperability experiments that could be conducted in the future.
+This Interoperability Experiment addressed the specific issue of how best to and develop guidance for storing GeoPackage containers in a CDB data store. As a result of the experiments conducted in this IE activity, the participants have identified a number of other potential interoperability experiments that could be conducted in the future.
 
-This current and potential future IEs will provide highly relevant input into the specification and development of CDB Version 2.0.
+This current IE and potential future ones will provide highly relevant input into the specification and development of CDB Version 2.0.
 
 ===	Document contributor contact points
 
@@ -46,7 +53,7 @@ All questions regarding this document should be directed to the editor or the co
 |((Initiator)) | (( Earl Miller )) | (( USSOCOM ))
 |((Initiator)) | (( Ronald Moore )) | (( Leidos ))
 |((Initiator)) | (( Susan Raymie )) | (( USSOCOM ))
-|((Initiator)) | (( Sara Saeedi )) | (( U of Calgary ))
+|((Initiator)) | (( Sara Saeedi )) | (( University of Calgary ))
 |((Participant)) | (( Jordan Dauble )) | (( Simblocks.io ))
 |((Participant)) | (( Paul Foley )) | (( KaDSci ))
 |((Participant)) | (( Priamos Georgiades )) | (( Aechelon ))

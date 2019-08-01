@@ -147,7 +147,7 @@ include::7-recommendations.adoc[]
 // Editors add or remove annexes as necessary.
 // *****************************************************************************
 
-include::annex-a.adoc[]
+//include::annex-a.adoc[]
 
 // *****************************************************************************
 // Revision History should be the last annex before the Bibliography.

@@ -6,8 +6,8 @@
 [width="90%",options="header"]
 |====================
 |Date |Editor |Release | Primary clauses modified |Descriptions
-|January 26, 2019 |C. Reed | .1 |all |Cloned initial version
-|March 2019 |C. Reed | .2 |all | Added various overview sections
-|May 2019|C. Reed| .3 |all |Added in experiment results
+|2019-01-26 |C. Reed | .1 |all |Cloned initial version
+|2019-03-30 |C. Reed | .2 |all | Added various overview sections
+|2019-05-29|C. Reed| .3 |all |Added in experiment results
 | | |  | |
 |====================
